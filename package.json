@@ -13,9 +13,10 @@
     "url": "https://mrhope.site"
   },
   "exports": {
+    "types": "./dist/index.d.ts",
     "import": "./dist/index.esm.js",
     "require": "./dist/index.js",
-    "default": "./dist/index.js"
+    "default": "./dist/index.esm.js"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
