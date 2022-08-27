@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { hash, hashSync } from "../src";
 
 it("Hash sync", () => {

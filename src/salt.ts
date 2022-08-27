@@ -1,6 +1,8 @@
 import { BCRYPT_SALT_LEN, GENSALT_DEFAULT_LOG2_ROUNDS } from "./constant";
 import { encodeBase64 } from "./base64";
-import { nextTick, random } from "./utils";
+import { nextTick } from "./utils";
+import { random } from "@random";
+
 /**
  * Synchronously generates a salt.
  *

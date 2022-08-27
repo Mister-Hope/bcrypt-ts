@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { getSalt, genSaltSync, hashSync, getRounds } from "../src";
 
 it("Get salt", () => {

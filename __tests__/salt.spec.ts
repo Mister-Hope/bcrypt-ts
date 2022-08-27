@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { genSalt, genSaltSync } from "../src";
 
 it("Gen salt sync", () => {
@@ -7,11 +8,9 @@ it("Gen salt sync", () => {
   expect(salt.length).toBe(29);
 });
 
-it("Gen salt async", (done) => {
-  void genSalt(10).then((salt) => {
-    expect(typeof salt).toBe("string");
-    expect(salt.length).toBe(29);
+it("Gen salt async", async () => {
+  const salt = await genSalt(10);
 
-    done();
-  });
+  expect(typeof salt).toBe("string");
+  expect(salt.length).toBe(29);
 });

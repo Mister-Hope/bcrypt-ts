@@ -1,3 +1,4 @@
+import { expect, it } from "vitest";
 import { genSaltSync, hash } from "../src";
 
 it("Should show progress", (done) => {
