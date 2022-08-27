@@ -14,20 +14,30 @@
   },
   "type": "module",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "browser": "./dist/browser.mjs",
-    "node": "./dist/node.mjs",
-    "import": "./dist/node.mjs",
-    "require": "./dist/node.cjs",
-    "default": "./dist/node.mjs"
+    ".": {
+      "browser": "./dist/browser.mjs",
+      "node": "./dist/node.mjs",
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.cjs",
+      "default": "./dist/node.cjs"
+    },
+    "./browser": {
+      "import": "./dist/browser.mjs",
+      "require": "./dist/browser.cjs",
+      "default": "./dist/browser.mjs"
+    },
+    "./node": {
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.cjs",
+      "default": "./dist/node.cjs"
+    }
   },
   "main": "./dist/node.cjs",
   "module": "./dist/node.mjs",
   "browser": "./dist/browser.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "build": "rollup -c",
