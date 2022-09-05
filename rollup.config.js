@@ -44,6 +44,7 @@ export default [
       typescript(),
       terser(),
     ],
+    external: ["node:crypto"],
   },
 
   {
@@ -57,5 +58,6 @@ export default [
       { file: "./dist/node.d.mts", format: "esm" },
     ],
     plugins: [dts()],
+    external: ["node:crypto"],
   },
 ];
