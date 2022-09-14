@@ -50,10 +50,8 @@ export default [
   {
     input: "./src/index.ts",
     output: [
-      { file: "./dist/browser.d.ts", format: "esm" },
       { file: "./dist/browser.d.cts", format: "esm" },
       { file: "./dist/browser.d.mts", format: "esm" },
-      { file: "./dist/node.d.ts", format: "esm" },
       { file: "./dist/node.d.cts", format: "esm" },
       { file: "./dist/node.d.mts", format: "esm" },
     ],

@@ -15,6 +15,7 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/node.d.mts",
       "browser": "./dist/browser.mjs",
       "node": "./dist/node.mjs",
       "import": "./dist/node.mjs",
@@ -22,11 +23,13 @@
       "default": "./dist/node.cjs"
     },
     "./browser": {
+      "types": "./dist/browser.d.mts",
       "import": "./dist/browser.mjs",
       "require": "./dist/browser.cjs",
       "default": "./dist/browser.mjs"
     },
     "./node": {
+      "types": "./dist/node.d.mts",
       "import": "./dist/node.mjs",
       "require": "./dist/node.cjs",
       "default": "./dist/node.cjs"
