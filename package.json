@@ -50,7 +50,7 @@
     "lint:prettier": "prettier --check --write .",
     "test": "vitest --coverage"
   },
-  "packageManager": "pnpm@7.11.0",
+  "packageManager": "pnpm@7.12.2",
   "devDependencies": {
     "@rollup/plugin-alias": "3.1.9",
     "@rollup/plugin-replace": "4.0.0",
