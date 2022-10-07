@@ -32,18 +32,14 @@ it("Compare sync", () => {
   expect(compareSync("hello world", hash3)).toBe(true);
 });
 
-it("Compare async", (done) => {
-  void (async (): Promise<void> => {
-    const salt1 = await genSalt();
-    const hash1 = await hash("hello", salt1);
-    const salt2 = (await genSalt()).replace(/\$2a\$/, "$2y$");
-    const hash2 = await hash("world", salt2);
+it("Compare async", async () => {
+  const salt1 = await genSalt();
+  const hash1 = await hash("hello", salt1);
+  const salt2 = (await genSalt()).replace(/\$2a\$/, "$2y$");
+  const hash2 = await hash("world", salt2);
 
-    expect(await compare("hello", hash1)).toBe(true);
-    expect(await compare("hello", hash2)).toBe(false);
-    expect(await compare("world", hash1)).toBe(false);
-    expect(await compare("world", hash2)).toBe(true);
-
-    done();
-  })();
+  expect(await compare("hello", hash1)).toBe(true);
+  expect(await compare("hello", hash2)).toBe(false);
+  expect(await compare("world", hash1)).toBe(false);
+  expect(await compare("world", hash2)).toBe(true);
 });
