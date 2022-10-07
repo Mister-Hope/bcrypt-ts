@@ -203,12 +203,6 @@ export const genSaltSync: (rounds?: number) => string;
 export const genSalt: (rounds?: number) => Promise<string>;
 ```
 
-## Command line
-
-`Usage: bcrypt <input> [salt]`
-
-If the input has spaces inside, simply surround it with quotes.
-
 ## License
 
 New-BSD / MIT ([see](https://github.com/Mister-Hope/bcrypt-ts/blob/main/LICENSE))
