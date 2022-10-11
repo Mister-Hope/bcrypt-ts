@@ -54,7 +54,7 @@
   "devDependencies": {
     "@rollup/plugin-alias": "3.1.9",
     "@rollup/plugin-replace": "4.0.0",
-    "@rollup/plugin-typescript": "8.5.0",
+    "@rollup/plugin-typescript": "9.0.1",
     "@types/node": "18.7.18",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
