@@ -52,7 +52,7 @@
   },
   "packageManager": "pnpm@7.12.2",
   "devDependencies": {
-    "@rollup/plugin-alias": "3.1.9",
+    "@rollup/plugin-alias": "4.0.0",
     "@rollup/plugin-replace": "4.0.0",
     "@rollup/plugin-typescript": "8.5.0",
     "@types/node": "18.7.18",
