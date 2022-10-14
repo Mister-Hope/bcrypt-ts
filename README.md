@@ -1,4 +1,4 @@
-# bycrypt-ts
+# bcrypt-ts
 
 ptimized bcrypt written in typescript. Working in both Node.js and browser.
 
