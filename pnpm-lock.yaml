@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@rollup/plugin-alias': 4.0.0
+  '@rollup/plugin-alias': 4.0.2
   '@rollup/plugin-replace': 5.0.0
   '@rollup/plugin-typescript': 9.0.1
   '@types/node': 18.7.18
@@ -23,7 +23,7 @@ specifiers:
   vitest: 0.24.3
 
 devDependencies:
-  '@rollup/plugin-alias': 4.0.0_rollup@3.2.3
+  '@rollup/plugin-alias': 4.0.2_rollup@3.2.3
   '@rollup/plugin-replace': 5.0.0_rollup@3.2.3
   '@rollup/plugin-typescript': 9.0.1_bvn3ed5hy3sfde644tygjdj4ia
   '@types/node': 18.7.18
@@ -189,8 +189,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rollup/plugin-alias/4.0.0_rollup@3.2.3:
-    resolution: {integrity: sha512-fGRWzM2F6wXnzAqn4Db8SdB/2Ree0u2XOQaaTy9mhqA35NmUzJXevMBUcpZywPF2MIUUAw+SKfWogKxFSPh+Qw==}
+  /@rollup/plugin-alias/4.0.2_rollup@3.2.3:
+    resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0
