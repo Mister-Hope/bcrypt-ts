@@ -34,9 +34,9 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    // mininal node 14 support
+    // minimal node 14 support
     "target": "es2020"
-    // mininal node 16 support
+    // minimal node 16 support
     // "target": "es2021",
   }
 }

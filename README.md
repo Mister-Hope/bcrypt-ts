@@ -1,6 +1,6 @@
 # bcrypt-ts
 
-ptimized bcrypt written in typescript. Working in both Node.js and browser.
+Optimized bcrypt written in typescript. Working in both Node.js and browser.
 
 > Heavily inspired by [bcrypt.js](https://github.com/dcodeIO/bcrypt.js).
 
@@ -19,7 +19,7 @@ hashes is 60 characters.
 
 - 0 dependencies, with ONLY 8KB Gzip size
 - Written in typescript
-- Provide treeshakable ES module
+- Provide tree-shakable ES module
 
 ## Usage
 
