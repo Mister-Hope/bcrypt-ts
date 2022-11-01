@@ -38,7 +38,7 @@
   "main": "./dist/node.cjs",
   "module": "./dist/node.mjs",
   "browser": "./dist/browser.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/node.d.mts",
   "files": [
     "dist"
   ],
