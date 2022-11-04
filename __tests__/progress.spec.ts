@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { genSaltSync, hash } from "../src";
+import { genSaltSync, hash } from "../src/index.js";
 
 it("Should show progress", () => {
   const salt = genSaltSync(12);

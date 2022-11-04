@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { decodeBase64, encodeBase64 } from "../src";
+import { decodeBase64, encodeBase64 } from "../src/base64.js";
 
 it("Encode Base64", () => {
   expect(

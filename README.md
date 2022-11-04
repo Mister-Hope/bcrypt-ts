@@ -107,24 +107,6 @@ hash("bacon").then((hash) => {
 
 ```ts
 /**
- * Encodes a byte array to base64 with up to len bytes of input, using the custom bcrypt alphabet.
- *
- * @param byteArray Byte array
- * @param length Maximum input length
- */
-export const encodeBase64: (
-  byteArray: number[] | Buffer,
-  length: number
-) => string;
-/**
- * Decodes a base64 encoded string to up to len bytes of output, using the custom bcrypt alphabet.
- *
- * @param contentString String to decode
- * @param length Maximum output length
- */
-export const decodeBase64: (contentString: string, length: number) => number[];
-
-/**
  * Synchronously tests a string against a hash.
  *
  * @param content String to compare

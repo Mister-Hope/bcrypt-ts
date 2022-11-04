@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { genSalt, genSaltSync } from "../src";
+import { genSalt, genSaltSync } from "../src/index.js";
 
 it("Gen salt sync", () => {
   const salt = genSaltSync(10);

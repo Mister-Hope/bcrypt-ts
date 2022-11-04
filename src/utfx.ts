@@ -8,9 +8,9 @@ export const MAX_CODEPOINT = 0x10ffff;
 
 /**
  * Encodes UTF8 code points to UTF8 bytes.
- * @param {(!function():number|null) | number} src Code points source, either as a function returning the next code point
+ * @param src Code points source, either as a function returning the next code point
  *  respectively `null` if there are no more code points left or a single numeric code point.
- * @param {!function(number)} dst Bytes destination as a function successively called with the next byte
+ * @param dst Bytes destination as a function successively called with the next byte
  */
 export const encodeUTF8 = (
   src: number | (() => number | null),
@@ -105,9 +105,9 @@ export const decodeUTF8 = (
 
 /**
  * Converts UTF16 characters to UTF8 code points.
- * @param {!function():number|null} src Characters source as a function returning the next char code respectively
+ * @param src Characters source as a function returning the next char code respectively
  *  `null` if there are no more characters left.
- * @param {!function(number)} dst Code points destination as a function successively called with each converted code
+ * @param dst Code points destination as a function successively called with each converted code
  *  point.
  */
 export const UTF16toUTF8 = (
@@ -159,9 +159,9 @@ export const UTF8toUTF16 = (
 
 /**
  * Converts and encodes UTF16 characters to UTF8 bytes.
- * @param {!function():number|null} src Characters source as a function returning the next char code respectively `null`
+ * @param src Characters source as a function returning the next char code respectively `null`
  *  if there are no more characters left.
- * @param {!function(number)} dst Bytes destination as a function successively called with the next byte.
+ * @param dst Bytes destination as a function successively called with the next byte.
  */
 export const encodeUTF16toUTF8 = (
   src: () => number | null,
@@ -174,9 +174,9 @@ export const encodeUTF16toUTF8 = (
 
 /**
  * Decodes and converts UTF8 bytes to UTF16 characters.
- * @param {!function():number|null} src Bytes source as a function returning the next byte respectively `null` if there
+ * @param src Bytes source as a function returning the next byte respectively `null` if there
  *  are no more bytes left.
- * @param {!function(number)} dst Characters destination as a function successively called with each converted char code.
+ * @param dst Characters destination as a function successively called with each converted char code.
  * @throws {RangeError} If a starting byte is invalid in UTF8
  * @throws {Error} If the last sequence is truncated. Has an array property `bytes` holding the remaining bytes.
  */

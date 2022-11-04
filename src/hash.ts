@@ -1,23 +1,20 @@
-import { encodeBase64, decodeBase64 } from "./base64";
+import { encodeBase64, decodeBase64 } from "./base64.js";
 import {
   BCRYPT_SALT_LEN,
   C_ORIG,
   GENSALT_DEFAULT_LOG2_ROUNDS,
-} from "./constant";
-import { crypt } from "./crypt";
-import { genSalt, genSaltSync } from "./salt";
-import { stringToBytes } from "./utils";
+} from "./constant.js";
+import { crypt } from "./crypt.js";
+import { genSalt, genSaltSync } from "./salt.js";
+import { stringToBytes } from "./utils.js";
 
 /**
  * Internally hashes a string.
  *
+ * @private
  * @param contentString String to hash
  * @param salt Salt to use, actually never null
- * @param {function(Error, string=)=} callback Callback receiving the error, if any, and the resulting hash. If omitted,
- *  hashing is performed synchronously.
- *  @param {function(number)=} progressCallback Callback called with the current progress
- * @returns {string|undefined} Resulting hash if callback has been omitted, otherwise `undefined`
- * @inner
+ * @param progressCallback Callback called with the current progress
  */
 function _hash(
   contentString: string,
@@ -44,6 +41,7 @@ function _hash(
 
     throw err;
   }
+
   if (salt.charAt(2) === "$") (minor = String.fromCharCode(0)), (offset = 3);
   else {
     minor = salt.charAt(2);

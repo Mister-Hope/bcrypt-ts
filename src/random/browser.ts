@@ -1,4 +1,6 @@
 /**
+ * @private
+ *
  * Generates cryptographically secure random bytes.
  *
  * @param length Bytes length

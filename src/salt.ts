@@ -1,6 +1,6 @@
-import { BCRYPT_SALT_LEN, GENSALT_DEFAULT_LOG2_ROUNDS } from "./constant";
-import { encodeBase64 } from "./base64";
-import { nextTick } from "./utils";
+import { encodeBase64 } from "./base64.js";
+import { BCRYPT_SALT_LEN, GENSALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
+import { nextTick } from "./utils.js";
 import { random } from "@random";
 
 /**

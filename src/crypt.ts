@@ -119,7 +119,7 @@ const encipher = (
   return lr;
 };
 
-const streamtoword = (
+const streamtoWord = (
   data: number[],
   offp: number
 ): { key: number; offp: number } => {
@@ -147,7 +147,7 @@ const key = (
   };
 
   for (let i = 0; i < pLength; i++)
-    (sw = streamtoword(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+    (sw = streamtoWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
 
   for (let i = 0; i < pLength; i += 2)
     (lr = encipher(lr, 0, P, S)), (P[i] = lr[0]), (P[i + 1] = lr[1]);
@@ -175,15 +175,15 @@ const ekskey = (
   };
 
   for (let i = 0; i < pLength; i++)
-    (sw = streamtoword(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+    (sw = streamtoWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
 
   offp = 0;
 
   for (let i = 0; i < pLength; i += 2)
-    (sw = streamtoword(data, offp)),
+    (sw = streamtoWord(data, offp)),
       (offp = sw.offp),
       (lr[0] ^= sw.key),
-      (sw = streamtoword(data, offp)),
+      (sw = streamtoWord(data, offp)),
       (offp = sw.offp),
       (lr[1] ^= sw.key),
       (lr = encipher(lr, 0, P, S)),
@@ -191,10 +191,10 @@ const ekskey = (
       (P[i + 1] = lr[1]);
 
   for (let i = 0; i < sLength; i += 2)
-    (sw = streamtoword(data, offp)),
+    (sw = streamtoWord(data, offp)),
       (offp = sw.offp),
       (lr[0] ^= sw.key),
-      (sw = streamtoword(data, offp)),
+      (sw = streamtoWord(data, offp)),
       (offp = sw.offp),
       (lr[1] ^= sw.key),
       (lr = encipher(lr, 0, P, S)),

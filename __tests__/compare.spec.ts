@@ -6,7 +6,7 @@ import {
   hashSync,
   genSalt,
   genSaltSync,
-} from "../src";
+} from "../src/index.js";
 
 it("Compare sync", () => {
   const salt1 = genSaltSync();

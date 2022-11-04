@@ -1,6 +1,8 @@
-import { encodeUTF16toUTF8 } from "./utfx";
+import { encodeUTF16toUTF8 } from "./utfx.js";
 
 /**
+ * @private
+ *
  * Continues with the callback on the next tick.
  */
 export const nextTick =
@@ -14,10 +16,12 @@ export const nextTick =
     : setTimeout;
 
 /**
+ * @private
+ *
  * Converts a JavaScript string to UTF8 bytes.
- * @param {string} str String
- * @returns {!Array.<number>} UTF8 bytes
- * @inner
+ *
+ * @param str String
+ * @returns UTF8 bytes
  */
 
 export const stringToBytes = (str: string): number[] => {
