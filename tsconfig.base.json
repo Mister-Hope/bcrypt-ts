@@ -18,7 +18,7 @@
     "lib": ["dom", "esnext"],
     "listEmittedFiles": false,
     "module": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "newLine": "lf",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
