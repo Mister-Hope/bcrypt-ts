@@ -5,8 +5,8 @@ import {
   C_ORIG,
   P_ORIG,
   S_ORIG,
-} from "./constant";
-import { nextTick } from "./utils";
+} from "./constant.js";
+import { nextTick } from "./utils.js";
 
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 
