@@ -53,7 +53,7 @@ overrides:
     parserOptions:
       parser: "@typescript-eslint/parser"
       project:
-        - "./tsconfig.json"
+        - "./tsconfig.eslint.json"
 
     rules:
       "@typescript-eslint/explicit-function-return-type":
