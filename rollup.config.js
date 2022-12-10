@@ -1,7 +1,6 @@
 import alias from "@rollup/plugin-alias";
-import typescript from "@rollup/plugin-typescript";
+import esbuild from "rollup-plugin-esbuild";
 import dts from "rollup-plugin-dts";
-import { terser } from "rollup-plugin-terser";
 
 export default [
   {
@@ -20,8 +19,11 @@ export default [
     ],
     plugins: [
       alias({ entries: { "@random": "./random/browser" } }),
-      typescript(),
-      terser(),
+      esbuild({
+        charset: "utf8",
+        minify: true,
+        target: "node14",
+      }),
     ],
     external: ["node:crypto"],
   },
@@ -41,8 +43,7 @@ export default [
     ],
     plugins: [
       alias({ entries: { "@random": "./random/node" } }),
-      typescript(),
-      terser(),
+      esbuild({ charset: "utf8", minify: true, target: "node14" }),
     ],
     external: ["node:crypto"],
   },
