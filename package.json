@@ -53,7 +53,7 @@
   "packageManager": "pnpm@7.18.2",
   "devDependencies": {
     "@rollup/plugin-alias": "4.0.2",
-    "@rollup/plugin-replace": "5.0.1",
+    "@rollup/plugin-replace": "5.0.2",
     "@types/node": "18.11.15",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
