@@ -42,32 +42,57 @@
   "files": [
     "dist"
   ],
+  "bugs": {
+    "url": "https://github.com/Mister-Hope/bcrypt-ts/issues"
+  },
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf dist",
+    "commit": "pnpm git-cz",
+    "changelog": "standard-version --skip.bump --skip.commit --skip.tag",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint --ext .js,.ts src",
     "lint:prettier": "prettier --check --write .",
     "test": "vitest --coverage"
   },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,ts,json,yaml,yml,md}": "prettier --write",
+    "*.wxss": "stylelint --fix",
+    "*.wxml": "prettier --parser html --write",
+    "*.wxs": "prettier --parser babel-flow --write",
+    "package.json": "sort-package-json"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
+  },
   "packageManager": "pnpm@7.18.2",
   "devDependencies": {
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
     "@rollup/plugin-alias": "4.0.2",
     "@rollup/plugin-replace": "5.0.2",
     "@types/node": "18.11.17",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
     "@vitest/coverage-c8": "0.26.0",
+    "commitizen": "4.2.6",
+    "cz-git": "1.4.1",
     "c8": "7.12.0",
     "esbuild": "0.16.9",
     "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.2",
+    "lint-staged": "13.1.0",
     "prettier": "2.8.1",
     "rimraf": "3.0.2",
     "rollup": "3.7.5",
     "rollup-plugin-dts": "5.0.0",
     "rollup-plugin-esbuild": "5.0.0",
+    "standard-version": "9.5.0",
     "tslib": "2.4.1",
     "typescript": "4.9.4",
     "vite": "4.0.2",

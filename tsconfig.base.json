@@ -15,9 +15,9 @@
     "importHelpers": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "lib": ["dom", "esnext"],
+    "lib": ["DOM", "ESNext"],
     "listEmittedFiles": false,
-    "module": "es2020",
+    "module": "ES2020",
     "moduleResolution": "NodeNext",
     "newLine": "lf",
     "noEmitOnError": true,
@@ -35,7 +35,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     // minimal node 14 support
-    "target": "es2020"
+    "target": "ES2020"
     // minimal node 16 support
     // "target": "es2021",
   }
