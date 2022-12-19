@@ -19,7 +19,7 @@ specifiers:
   rollup-plugin-esbuild: 5.0.0
   tslib: 2.4.1
   typescript: 4.9.4
-  vite: 4.0.1
+  vite: 4.0.2
   vitest: 0.25.7
 
 devDependencies:
@@ -41,7 +41,7 @@ devDependencies:
   rollup-plugin-esbuild: 5.0.0_ub2uo647j6ypqopbc2lqazj3zq
   tslib: 2.4.1
   typescript: 4.9.4
-  vite: 4.0.1_@types+node@18.11.15
+  vite: 4.0.2_@types+node@18.11.15
   vitest: 0.25.7
 
 packages:
@@ -1771,8 +1771,8 @@ packages:
       convert-source-map: 1.9.0
     dev: true
 
-  /vite/4.0.1_@types+node@18.11.15:
-    resolution: {integrity: sha512-kZQPzbDau35iWOhy3CpkrRC7It+HIHtulAzBhMqzGHKRf/4+vmh8rPDDdv98SWQrFWo6//3ozwsRmwQIPZsK9g==}
+  /vite/4.0.2_@types+node@18.11.15:
+    resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -1840,7 +1840,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 4.0.1_@types+node@18.11.15
+      vite: 4.0.2_@types+node@18.11.15
     transitivePeerDependencies:
       - less
       - sass
