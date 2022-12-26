@@ -68,7 +68,7 @@
       "path": "./node_modules/cz-git"
     }
   },
-  "packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@7.20.0",
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
     "@commitlint/config-conventional": "17.3.0",
