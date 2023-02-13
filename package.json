@@ -57,7 +57,7 @@
     "packages:update": "pnpm up",
     "test": "vitest --coverage"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*.{js,ts}": "eslint --fix",
     "*.{js,ts,json,yaml,yml,md}": "prettier --write",
     "*.wxss": "stylelint --fix",
@@ -70,34 +70,34 @@
       "path": "./node_modules/cz-git"
     }
   },
-  "packageManager": "pnpm@7.25.0",
+  "packageManager": "pnpm@7.27.0",
   "devDependencies": {
-    "@commitlint/cli": "17.4.2",
-    "@commitlint/config-conventional": "17.4.2",
+    "@commitlint/cli": "17.4.3",
+    "@commitlint/config-conventional": "17.4.3",
     "@rollup/plugin-alias": "4.0.3",
     "@rollup/plugin-replace": "5.0.2",
-    "@types/node": "18.11.18",
-    "@typescript-eslint/eslint-plugin": "5.49.0",
-    "@typescript-eslint/parser": "5.49.0",
-    "@vitest/coverage-c8": "0.28.2",
+    "@types/node": "18.13.0",
+    "@typescript-eslint/eslint-plugin": "5.51.0",
+    "@typescript-eslint/parser": "5.51.0",
+    "@vitest/coverage-c8": "0.28.5",
     "commitizen": "4.3.0",
     "cz-git": "1.4.1",
     "c8": "7.12.0",
-    "esbuild": "0.17.4",
-    "eslint": "8.32.0",
+    "esbuild": "0.17.8",
+    "eslint": "8.34.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
-    "lint-staged": "13.1.0",
-    "prettier": "2.8.3",
+    "nano-staged": "0.8.0",
+    "prettier": "2.8.4",
     "rimraf": "4.1.2",
-    "rollup": "3.10.1",
+    "rollup": "3.15.0",
     "rollup-plugin-dts": "5.1.1",
     "rollup-plugin-esbuild": "5.0.0",
     "standard-version": "9.5.0",
-    "tslib": "2.4.1",
-    "typescript": "4.9.4",
-    "vite": "4.0.4",
-    "vitest": "0.28.2"
+    "tslib": "2.5.0",
+    "typescript": "4.9.5",
+    "vite": "4.1.1",
+    "vitest": "0.28.5"
   }
 }
