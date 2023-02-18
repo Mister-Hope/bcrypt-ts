@@ -26,8 +26,8 @@ devDependencies:
     specifier: 0.28.5
     version: 0.28.5
   c8:
-    specifier: 7.12.0
-    version: 7.12.0
+    specifier: 7.13.0
+    version: 7.13.0
   commitizen:
     specifier: 4.3.0
     version: 4.3.0
@@ -1002,7 +1002,7 @@ packages:
   /@vitest/coverage-c8@0.28.5:
     resolution: {integrity: sha512-zCNyurjudoG0BAqAgknvlBhkV2V9ZwyYLWOAGtHSDhL/St49MJT+V2p1G0yPaoqBbKOTATVnP5H2p1XL15H75g==}
     dependencies:
-      c8: 7.12.0
+      c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
       vitest: 0.28.5
@@ -1214,8 +1214,8 @@ packages:
       ieee754: 1.2.1
     dev: true
 
-  /c8@7.12.0:
-    resolution: {integrity: sha512-CtgQrHOkyxr5koX1wEUmN/5cfDa2ckbHRA4Gy5LAL0zaCFtVWJS5++n+w4/sr2GWGerBxgTjpKeDclk/Qk6W/A==}
+  /c8@7.13.0:
+    resolution: {integrity: sha512-/NL4hQTv1gBL6J6ei80zu3IiTrmePDKXKXOTLpHvcIWZTVYQlDhVWjjWvkhICylE8EwwnMVzDZugCvdx0/DIIA==}
     engines: {node: '>=10.12.0'}
     hasBin: true
     dependencies:
