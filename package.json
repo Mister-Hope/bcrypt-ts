@@ -84,7 +84,7 @@
     "cz-git": "1.5.3",
     "c8": "7.13.0",
     "esbuild": "0.17.11",
-    "eslint": "8.35.0",
+    "eslint": "8.36.0",
     "eslint-config-prettier": "8.7.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
