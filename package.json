@@ -72,8 +72,8 @@
   },
   "packageManager": "pnpm@8.3.1",
   "devDependencies": {
-    "@commitlint/cli": "17.6.1",
-    "@commitlint/config-conventional": "17.6.1",
+    "@commitlint/cli": "17.6.3",
+    "@commitlint/config-conventional": "17.6.3",
     "@rollup/plugin-alias": "5.0.0",
     "@rollup/plugin-replace": "5.0.2",
     "@types/node": "18.16.3",
