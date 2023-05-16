@@ -8,7 +8,8 @@ import { encodeUTF16toUTF8 } from "./utfx.js";
 export const nextTick =
   typeof process !== "undefined" &&
   process &&
-  typeof process.nextTick === "function"
+  typeof process.nextTick === "function" &&
+  process.env.NEXT_RUNTIME !== "edge"
     ? typeof setImmediate === "function"
       ? setImmediate
       : // eslint-disable-next-line @typescript-eslint/unbound-method
