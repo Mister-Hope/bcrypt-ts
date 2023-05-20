@@ -71,8 +71,8 @@ devDependencies:
     specifier: 5.0.0
     version: 5.0.0(esbuild@0.17.19)(rollup@3.21.7)
   tslib:
-    specifier: 2.5.0
-    version: 2.5.0
+    specifier: 2.5.2
+    version: 2.5.2
   typescript:
     specifier: 5.0.4
     version: 5.0.4
@@ -3340,7 +3340,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.5.2
     dev: true
 
   /safe-buffer@5.1.2:
@@ -3648,8 +3648,8 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tslib@2.5.0:
-    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
+  /tslib@2.5.2:
+    resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==}
     dev: true
 
   /tsutils@3.21.0(typescript@5.0.4):
