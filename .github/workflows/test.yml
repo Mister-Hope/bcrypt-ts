@@ -19,6 +19,7 @@ jobs:
         node:
           - "16"
           - "18"
+          - "20"
 
     steps:
       - name: Checkout
@@ -27,7 +28,6 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
           run_install: true
 
       - name: Setup Node.js
