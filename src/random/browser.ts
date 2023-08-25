@@ -14,7 +14,7 @@ export const random = (length: number): number[] => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     (self["crypto"] || self["msCrypto"])["getRandomValues"](
-      (array = new Uint32Array(length))
+      (array = new Uint32Array(length)),
     );
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return

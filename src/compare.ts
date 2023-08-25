@@ -26,14 +26,14 @@ export const compareSync = (content: string, hash: string): boolean => {
 export const compare = (
   content: string,
   hash: string,
-  progressCallback?: (percent: number) => void
+  progressCallback?: (percent: number) => void,
 ): Promise<boolean> =>
   new Promise((resolve, reject) => {
     if (typeof content !== "string" || typeof hash !== "string") {
       nextTick(() =>
         reject(
-          new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`)
-        )
+          new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`),
+        ),
       );
 
       return;

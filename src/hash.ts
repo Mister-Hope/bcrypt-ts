@@ -20,7 +20,7 @@ function _hash(
   contentString: string,
   salt: string,
   sync: boolean,
-  progressCallback?: (progress: number) => void
+  progressCallback?: (progress: number) => void,
 ): Promise<string> | string {
   if (typeof contentString !== "string" || typeof salt !== "string") {
     const err = new Error("Invalid string / salt: Not a string");
@@ -104,12 +104,12 @@ function _hash(
         saltBytes,
         rounds,
         false,
-        progressCallback
+        progressCallback,
       ) as Promise<number[]>
     ).then((bytes) => finish(bytes));
 
   return finish(
-    crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[]
+    crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[],
   );
 }
 
@@ -122,12 +122,12 @@ function _hash(
  */
 export const hashSync = (
   contentString: string,
-  salt: string | number = GENSALT_DEFAULT_LOG2_ROUNDS
+  salt: string | number = GENSALT_DEFAULT_LOG2_ROUNDS,
 ): string => {
   if (typeof salt === "number") salt = genSaltSync(salt);
   if (typeof contentString !== "string" || typeof salt !== "string")
     throw Error(
-      "Illegal arguments: " + typeof contentString + ", " + typeof salt
+      "Illegal arguments: " + typeof contentString + ", " + typeof salt,
     );
 
   return _hash(contentString, salt, true) as string;
@@ -144,12 +144,12 @@ export const hashSync = (
 export const hash = function (
   contentString: string,
   salt: number | string,
-  progressCallback?: (progress: number) => void
+  progressCallback?: (progress: number) => void,
 ): Promise<string> {
   if (typeof contentString === "string" && typeof salt === "number")
     return genSalt(salt).then(
       (salt) =>
-        _hash(contentString, salt, false, progressCallback) as Promise<string>
+        _hash(contentString, salt, false, progressCallback) as Promise<string>,
     );
 
   if (typeof contentString === "string" && typeof salt === "string")
@@ -157,10 +157,10 @@ export const hash = function (
       contentString,
       salt,
       false,
-      progressCallback
+      progressCallback,
     ) as Promise<string>;
 
   return Promise.reject(
-    new Error(`Illegal arguments: ${typeof contentString}, ${typeof salt}`)
+    new Error(`Illegal arguments: ${typeof contentString}, ${typeof salt}`),
   );
 };

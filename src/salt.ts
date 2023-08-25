@@ -33,7 +33,7 @@ export const genSaltSync = (rounds = GENSALT_DEFAULT_LOG2_ROUNDS): string => {
  * @param rounds Number of rounds to use, defaults to 10 if omitted
  */
 export const genSalt = (
-  rounds = GENSALT_DEFAULT_LOG2_ROUNDS
+  rounds = GENSALT_DEFAULT_LOG2_ROUNDS,
 ): Promise<string> => {
   if (typeof rounds !== "number")
     throw Error("illegal arguments: " + typeof rounds);
@@ -46,6 +46,6 @@ export const genSalt = (
       } catch (err) {
         reject(err);
       }
-    })
+    }),
   );
 };

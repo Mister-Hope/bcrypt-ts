@@ -132,7 +132,7 @@ export const compareSync: (content: string, hash: string) => boolean;
 export const compare: (
   content: string,
   hash: string,
-  progressCallback?: ((percent: number) => void) | undefined
+  progressCallback?: ((percent: number) => void) | undefined,
 ) => Promise<boolean>;
 
 /**
@@ -144,7 +144,7 @@ export const compare: (
  */
 export const hashSync: (
   contentString: string,
-  salt?: string | number
+  salt?: string | number,
 ) => string;
 /**
  * Asynchronously generates a hash for the given string.
@@ -157,7 +157,7 @@ export const hashSync: (
 export const hash: (
   contentString: string,
   salt: number | string,
-  progressCallback?: ((progress: number) => void) | undefined
+  progressCallback?: ((progress: number) => void) | undefined,
 ) => Promise<string>;
 
 /**

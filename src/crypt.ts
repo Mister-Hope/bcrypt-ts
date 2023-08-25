@@ -14,7 +14,7 @@ const encipher = (
   lr: number[],
   off: number,
   P: Int32Array | number[],
-  S: Int32Array | number[]
+  S: Int32Array | number[],
 ): number[] => {
   // This is our bottleneck: 1714/1905 ticks / 90% - see profile.txt
   let n: number;
@@ -121,7 +121,7 @@ const encipher = (
 
 const streamtoWord = (
   data: number[],
-  offp: number
+  offp: number,
 ): { key: number; offp: number } => {
   let word = 0;
 
@@ -135,7 +135,7 @@ const streamtoWord = (
 const key = (
   key: number[],
   P: Int32Array | number[],
-  S: Int32Array | number[]
+  S: Int32Array | number[],
 ): void => {
   const pLength = P.length;
   const sLength = S.length;
@@ -163,7 +163,7 @@ const ekskey = (
   data: number[],
   key: number[],
   P: Int32Array | number[],
-  S: Int32Array | number[]
+  S: Int32Array | number[],
 ): void => {
   const pLength = P.length;
   const sLength = S.length;
@@ -215,7 +215,7 @@ export const crypt = (
   salt: number[],
   rounds: number,
   sync: boolean,
-  progressCallback?: (progress: number) => void
+  progressCallback?: (progress: number) => void,
 ): Promise<number[]> | number[] => {
   const cdata = C_ORIG.slice();
   const cLength = cdata.length;
@@ -231,7 +231,7 @@ export const crypt = (
 
   if (salt.length !== BCRYPT_SALT_LEN) {
     const err = new Error(
-      `Illegal salt length: ${salt.length} != ${BCRYPT_SALT_LEN}`
+      `Illegal salt length: ${salt.length} != ${BCRYPT_SALT_LEN}`,
     );
 
     if (sync === false) return Promise.reject(err);
@@ -292,7 +292,7 @@ export const crypt = (
       return new Promise((resolve) =>
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
-        })
+        }),
       );
   };
 

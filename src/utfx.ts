@@ -14,7 +14,7 @@ export const MAX_CODEPOINT = 0x10ffff;
  */
 export const encodeUTF8 = (
   src: number | (() => number | null),
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   let cp = null;
 
@@ -49,7 +49,7 @@ export const encodeUTF8 = (
  */
 export const decodeUTF8 = (
   src: () => number | null,
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   let a: number | null;
   let b: number | null;
@@ -97,7 +97,7 @@ export const decodeUTF8 = (
             ((c & 0x3f) << 6) |
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            (d & 0x3f)
+            (d & 0x3f),
         );
     else throw RangeError(`Illegal starting byte: ${a}`);
   }
@@ -112,7 +112,7 @@ export const decodeUTF8 = (
  */
 export const UTF16toUTF8 = (
   src: () => number | null,
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   let c1: number | null;
   let c2 = null;
@@ -144,7 +144,7 @@ export const UTF16toUTF8 = (
  */
 export const UTF8toUTF16 = (
   src: (() => number | null) | number,
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   let cp = null;
 
@@ -165,7 +165,7 @@ export const UTF8toUTF16 = (
  */
 export const encodeUTF16toUTF8 = (
   src: () => number | null,
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   UTF16toUTF8(src, function (cp) {
     encodeUTF8(cp, dst);
@@ -182,7 +182,7 @@ export const encodeUTF16toUTF8 = (
  */
 export const decodeUTF8toUTF16 = (
   src: () => number | null,
-  dst: (byte: number) => void
+  dst: (byte: number) => void,
 ): void => {
   decodeUTF8(src, (cp) => {
     UTF8toUTF16(cp, dst);

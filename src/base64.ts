@@ -8,7 +8,7 @@ import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
  */
 export const encodeBase64 = (
   byteArray: number[] | Buffer,
-  length: number
+  length: number,
 ): string => {
   if (length <= 0 || length > byteArray.length)
     throw Error(`Illegal len: ${length}`);
@@ -51,7 +51,7 @@ export const encodeBase64 = (
  */
 export const decodeBase64 = (
   contentString: string,
-  length: number
+  length: number,
 ): number[] => {
   if (length <= 0) throw Error(`Illegal len: ${length}`);
 
