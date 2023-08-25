@@ -35,9 +35,9 @@ In the browser, bcrypt.js relies on [Web Crypto API](http://www.w3.org/TR/WebCry
 
 - If you are using this package in pure Node.js environment, then you will probably use the node bundle.
 
-- If you are using bundler like webpack and vite, then you will probably use the client bundle.
+- If you are using bundler like webpack and vite, then you will probably use the browser bundle.
 
-- If you meet any issues that a incorrect bundle is used, you can use `bcrypt-ts/node` and `bcrypt-ts/client` to force the correct bundle.
+- If you meet any issues that a incorrect bundle is used, you can use `bcrypt-ts/node` and `bcrypt-ts/browser` to force the correct bundle.
 
 ## Usage - Sync
 
