@@ -6,6 +6,9 @@
     "bcrypt",
     "bcryptjs"
   ],
+  "bugs": {
+    "url": "https://github.com/Mister-Hope/bcrypt-ts/issues"
+  },
   "license": "MIT",
   "author": {
     "name": "Mr.Hope",
@@ -42,61 +45,55 @@
   "files": [
     "dist"
   ],
-  "bugs": {
-    "url": "https://github.com/Mister-Hope/bcrypt-ts/issues"
-  },
   "scripts": {
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "changelog": " commit-and-tag-version --skip.bump --skip.commit --skip.tag",
     "clean": "rimraf dist",
     "commit": "pnpm git-cz",
-    "changelog": " commit-and-tag-version --skip.bump --skip.commit --skip.tag",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint --fix --ext .js,.ts src",
     "lint:prettier": "prettier --check --write .",
     "packages:check-update": "pnpm dlx npm-check-updates -u --timeout 600000",
     "packages:update": "pnpm up",
+    "prepare": "husky install",
     "test": "vitest --coverage"
   },
   "nano-staged": {
     "*.{js,ts}": "eslint --fix",
-    "*.{js,ts,json,yaml,yml,md}": "prettier --write",
-    "*.wxss": "stylelint --fix",
-    "*.wxml": "prettier --parser html --write",
-    "*.wxs": "prettier --parser babel-flow --write",
-    "package.json": "sort-package-json"
+    "*.{js,ts,json,yml,md}": "prettier --write"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-git"
     }
   },
-  "packageManager": "pnpm@8.6.5",
   "devDependencies": {
-    "@commitlint/cli": "17.7.1",
+    "@commitlint/cli": "17.7.2",
     "@commitlint/config-conventional": "17.7.0",
-    "@rollup/plugin-alias": "5.0.0",
-    "@rollup/plugin-replace": "5.0.2",
-    "@types/node": "20.5.6",
-    "@typescript-eslint/eslint-plugin": "6.4.1",
-    "@typescript-eslint/parser": "6.4.1",
-    "@vitest/coverage-v8": "0.34.2",
-    "commit-and-tag-version": "11.2.3",
+    "@rollup/plugin-alias": "5.0.1",
+    "@rollup/plugin-replace": "5.0.3",
+    "@types/node": "20.8.4",
+    "@typescript-eslint/eslint-plugin": "6.7.5",
+    "@typescript-eslint/parser": "6.7.5",
+    "@vitest/coverage-v8": "0.34.6",
+    "commit-and-tag-version": "11.3.0",
     "commitizen": "4.3.0",
     "cz-git": "1.7.1",
-    "esbuild": "0.19.2",
-    "eslint": "8.47.0",
+    "esbuild": "0.19.4",
+    "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.0",
     "husky": "8.0.3",
     "nano-staged": "0.8.0",
-    "prettier": "3.0.2",
-    "rimraf": "5.0.1",
-    "rollup": "3.28.1",
-    "rollup-plugin-dts": "6.0.0",
-    "rollup-plugin-esbuild": "5.0.0",
+    "prettier": "3.0.3",
+    "rimraf": "5.0.5",
+    "rollup": "4.0.2",
+    "rollup-plugin-dts": "6.1.0",
+    "rollup-plugin-esbuild": "6.1.0",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
-    "vite": "4.4.9",
-    "vitest": "0.34.2"
-  }
+    "vite": "4.4.11",
+    "vitest": "0.34.6"
+  },
+  "packageManager": "pnpm@8.9.0"
 }
