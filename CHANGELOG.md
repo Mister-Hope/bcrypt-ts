@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v4.0.0...v4.0.1) (2023-10-10)
+
 ## [4.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v3.0.0...v4.0.0) (2023-06-29)
 
 ### ⚠ BREAKING CHANGES
