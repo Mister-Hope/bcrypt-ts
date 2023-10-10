@@ -1,5 +1,8 @@
 import { encodeBase64 } from "./base64.js";
-import { BCRYPT_SALT_LEN, GENSALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
+import {
+  BCRYPT_SALT_LEN,
+  GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
+} from "./constant.js";
 import { nextTick } from "./utils.js";
 import { random } from "@random";
 
@@ -10,7 +13,9 @@ import { random } from "@random";
  * @returns Resulting salt
  * @throws {Error} If a random fallback is required but not set
  */
-export const genSaltSync = (rounds = GENSALT_DEFAULT_LOG2_ROUNDS): string => {
+export const genSaltSync = (
+  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
+): string => {
   if (typeof rounds !== "number")
     throw Error("Illegal arguments: " + typeof rounds);
   if (rounds < 4) rounds = 4;
@@ -33,7 +38,7 @@ export const genSaltSync = (rounds = GENSALT_DEFAULT_LOG2_ROUNDS): string => {
  * @param rounds Number of rounds to use, defaults to 10 if omitted
  */
 export const genSalt = (
-  rounds = GENSALT_DEFAULT_LOG2_ROUNDS,
+  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): Promise<string> => {
   if (typeof rounds !== "number")
     throw Error("illegal arguments: " + typeof rounds);

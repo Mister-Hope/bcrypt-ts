@@ -1,6 +1,6 @@
 export const BCRYPT_SALT_LEN = 16;
 
-export const GENSALT_DEFAULT_LOG2_ROUNDS = 10;
+export const GENERATE_SALT_DEFAULT_LOG2_ROUNDS = 10;
 
 export const BLOWFISH_NUM_ROUNDS = 16;
 
@@ -10,7 +10,8 @@ export const BASE64_CODE =
   "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split("");
 
 const naturalNumber = Array.from({ length: 64 }, (_, i) => i);
-const fillNegative1 = (length: number) => Array<number>(length).fill(-1);
+const fillNegative1 = (length: number): number[] =>
+  Array<number>(length).fill(-1);
 
 export const BASE64_INDEX = [
   ...fillNegative1(46),

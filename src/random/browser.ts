@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    msCrypto?: Crypto;
+  }
+}
+
 /**
  * @private
  *
@@ -9,16 +15,12 @@
  */
 export const random = (length: number): number[] => {
   try {
-    let array: Uint32Array;
+    const { crypto, msCrypto } = window;
+    const array = new Uint32Array(length);
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    (self["crypto"] || self["msCrypto"])["getRandomValues"](
-      (array = new Uint32Array(length)),
-    );
+    (crypto || msCrypto)?.getRandomValues(array);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return Array.prototype.slice.call(array);
+    return Array.from(array);
   } catch (err) {
     throw Error("WebCryptoAPI is not available");
   }

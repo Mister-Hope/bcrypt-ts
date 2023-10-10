@@ -144,7 +144,7 @@ export const UTF16toUTF8 = (
  */
 export const UTF8toUTF16 = (
   src: (() => number | null) | number,
-  dst: (byte: number) => void,
+  dst: (byte: number | null) => void,
 ): void => {
   let cp = null;
 
@@ -182,7 +182,7 @@ export const encodeUTF16toUTF8 = (
  */
 export const decodeUTF8toUTF16 = (
   src: () => number | null,
-  dst: (byte: number) => void,
+  dst: (byte: number | null) => void,
 ): void => {
   decodeUTF8(src, (cp) => {
     UTF8toUTF16(cp, dst);

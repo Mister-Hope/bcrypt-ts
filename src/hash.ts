@@ -2,7 +2,7 @@ import { encodeBase64, decodeBase64 } from "./base64.js";
 import {
   BCRYPT_SALT_LEN,
   C_ORIG,
-  GENSALT_DEFAULT_LOG2_ROUNDS,
+  GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 } from "./constant.js";
 import { crypt } from "./crypt.js";
 import { genSalt, genSaltSync } from "./salt.js";
@@ -122,7 +122,7 @@ function _hash(
  */
 export const hashSync = (
   contentString: string,
-  salt: string | number = GENSALT_DEFAULT_LOG2_ROUNDS,
+  salt: string | number = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): string => {
   if (typeof salt === "number") salt = genSaltSync(salt);
   if (typeof contentString !== "string" || typeof salt !== "string")

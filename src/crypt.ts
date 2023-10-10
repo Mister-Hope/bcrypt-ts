@@ -119,7 +119,7 @@ const encipher = (
   return lr;
 };
 
-const streamtoWord = (
+const streamToWord = (
   data: number[],
   offp: number,
 ): { key: number; offp: number } => {
@@ -129,7 +129,7 @@ const streamtoWord = (
     (word = (word << 8) | (data[offp] & 0xff)),
       (offp = (offp + 1) % data.length);
 
-  return { key: word, offp: offp };
+  return { key: word, offp };
 };
 
 const key = (
@@ -147,7 +147,7 @@ const key = (
   };
 
   for (let i = 0; i < pLength; i++)
-    (sw = streamtoWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+    (sw = streamToWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
 
   for (let i = 0; i < pLength; i += 2)
     (lr = encipher(lr, 0, P, S)), (P[i] = lr[0]), (P[i + 1] = lr[1]);
@@ -159,7 +159,7 @@ const key = (
 /**
  * Expensive key schedule Blowfish.
  */
-const ekskey = (
+const expensiveKeyScheduleBlowFish = (
   data: number[],
   key: number[],
   P: Int32Array | number[],
@@ -175,15 +175,15 @@ const ekskey = (
   };
 
   for (let i = 0; i < pLength; i++)
-    (sw = streamtoWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+    (sw = streamToWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
 
   offp = 0;
 
   for (let i = 0; i < pLength; i += 2)
-    (sw = streamtoWord(data, offp)),
+    (sw = streamToWord(data, offp)),
       (offp = sw.offp),
       (lr[0] ^= sw.key),
-      (sw = streamtoWord(data, offp)),
+      (sw = streamToWord(data, offp)),
       (offp = sw.offp),
       (lr[1] ^= sw.key),
       (lr = encipher(lr, 0, P, S)),
@@ -191,10 +191,10 @@ const ekskey = (
       (P[i + 1] = lr[1]);
 
   for (let i = 0; i < sLength; i += 2)
-    (sw = streamtoWord(data, offp)),
+    (sw = streamToWord(data, offp)),
       (offp = sw.offp),
       (lr[0] ^= sw.key),
-      (sw = streamtoWord(data, offp)),
+      (sw = streamToWord(data, offp)),
       (offp = sw.offp),
       (lr[1] ^= sw.key),
       (lr = encipher(lr, 0, P, S)),
@@ -255,10 +255,10 @@ export const crypt = (
     S = S_ORIG.slice();
   }
 
-  ekskey(salt, bytes, P, S);
+  expensiveKeyScheduleBlowFish(salt, bytes, P, S);
 
   /**
-   * Calcualtes the next round.
+   * Calculates the next round.
    */
   const next = (): Promise<number[] | undefined> | number[] | void => {
     if (progressCallback) progressCallback(i / rounds);
