@@ -22,7 +22,7 @@ export default [
       esbuild({
         charset: "utf8",
         minify: true,
-        target: "node16",
+        target: "node18",
       }),
     ],
     external: ["node:crypto"],
@@ -43,7 +43,7 @@ export default [
     ],
     plugins: [
       alias({ entries: { "@random": "./random/node" } }),
-      esbuild({ charset: "utf8", minify: true, target: "node16" }),
+      esbuild({ charset: "utf8", minify: true, target: "node18" }),
     ],
     external: ["node:crypto"],
   },
