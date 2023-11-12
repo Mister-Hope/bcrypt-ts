@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v4.0.1...v5.0.0) (2023-11-12)
+
+### ⚠ BREAKING CHANGES
+
+- drop support for node16
+
+### Features
+
+- drop support for node16 ([784c037](https://github.com/Mister-Hope/bcrypt-ts/commit/784c0370b9d20ca67ad1ac3235105f989b8996a9))
+
 ## [4.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v4.0.0...v4.0.1) (2023-10-10)
 
 ## [4.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v3.0.0...v4.0.0) (2023-06-29)
