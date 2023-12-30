@@ -32,7 +32,7 @@ export const stringToBytes = (str: string): number[] => {
     () => (i >= str.length ? null : str.charCodeAt(i++)),
     (b: number) => {
       out.push(b);
-    }
+    },
   );
 
   return out;
