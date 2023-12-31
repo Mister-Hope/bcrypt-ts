@@ -54,8 +54,6 @@
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint --fix --ext .js,.ts src",
     "lint:prettier": "prettier --check --write .",
-    "packages:check-update": "pnpm dlx npm-check-updates -u --timeout 600000",
-    "packages:update": "pnpm up",
     "prepare": "husky install",
     "test": "vitest --coverage"
   },
