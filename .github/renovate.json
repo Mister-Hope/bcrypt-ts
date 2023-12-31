@@ -1,28 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:js-lib",
-    ":semanticPrefixChore",
-    ":prHourlyLimitNone",
-    ":prConcurrentLimitNone",
-    ":maintainLockFilesWeekly"
-  ],
-  "schedule": ["every weekend"],
+  "extends": ["config:base", ":prHourlyLimitNone", ":prConcurrentLimitNone"],
   "dependencyDashboard": true,
+  "schedule": ["every weekend"],
   "packageRules": [
-    // auto merge devDependencies update
     {
       "automerge": true,
       "matchDepTypes": ["devDependencies"]
     }
   ],
-  // update lock file per week
   "lockFileMaintenance": {
-    "commitMessageAction": "chore: update deps",
-    "extends": ["group:all"]
+    "enabled": true,
+    "commitMessageAction": "update lockfile",
+    "platformAutomerge": true,
+    "extends": ["group:allNonMajor", "schedule:weekly"]
   },
-
-  // Raise PR when vulnerability alerts are detected.
   "vulnerabilityAlerts": {
     "enabled": true
   }
