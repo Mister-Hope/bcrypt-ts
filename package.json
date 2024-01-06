@@ -90,7 +90,7 @@
     "nano-staged": "0.8.0",
     "prettier": "3.1.1",
     "rimraf": "5.0.5",
-    "rollup": "4.9.2",
+    "rollup": "4.9.3",
     "rollup-plugin-dts": "6.1.0",
     "rollup-plugin-esbuild": "6.1.0",
     "tslib": "2.6.2",
