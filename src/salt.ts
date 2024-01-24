@@ -4,7 +4,7 @@ import {
   GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 } from "./constant.js";
 import { nextTick } from "./utils.js";
-import { random } from "@random";
+import { random } from "random";
 
 /**
  * Synchronously generates a salt.
@@ -14,7 +14,7 @@ import { random } from "@random";
  * @throws {Error} If a random fallback is required but not set
  */
 export const genSaltSync = (
-  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
+  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS
 ): string => {
   if (typeof rounds !== "number")
     throw Error("Illegal arguments: " + typeof rounds);
@@ -38,7 +38,7 @@ export const genSaltSync = (
  * @param rounds Number of rounds to use, defaults to 10 if omitted
  */
 export const genSalt = (
-  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
+  rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS
 ): Promise<string> => {
   if (typeof rounds !== "number")
     throw Error("illegal arguments: " + typeof rounds);
@@ -51,6 +51,6 @@ export const genSalt = (
       } catch (err) {
         reject(err);
       }
-    }),
+    })
   );
 };

@@ -18,11 +18,11 @@ export default [
       },
     ],
     plugins: [
-      alias({ entries: { "@random": "./random/browser" } }),
+      alias({ entries: { random: "./random/browser" } }),
       esbuild({
         charset: "utf8",
         minify: true,
-        target: "node18",
+        target: ["chrome87", "firefox78", "edge88", "safari14"],
       }),
     ],
     external: ["node:crypto"],
@@ -42,7 +42,7 @@ export default [
       },
     ],
     plugins: [
-      alias({ entries: { "@random": "./random/node" } }),
+      alias({ entries: { random: "./random/node" } }),
       esbuild({ charset: "utf8", minify: true, target: "node18" }),
     ],
     external: ["node:crypto"],
