@@ -15,10 +15,17 @@ declare global {
  */
 export const random = (length: number): number[] => {
   try {
-    const { crypto, msCrypto } = window;
+    let _crypto: Crypto | undefined;
+
+    if (typeof window !== "undefined") {
+      _crypto = window.crypto ?? window.msCrypto;
+    } else {
+      _crypto = globalThis.crypto;
+    }
+    
     const array = new Uint32Array(length);
 
-    (crypto || msCrypto)?.getRandomValues(array);
+    _crypto?.getRandomValues(array);
 
     return Array.from(array);
   } catch (err) {
