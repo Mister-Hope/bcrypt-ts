@@ -75,7 +75,7 @@
     "@typescript-eslint/eslint-plugin": "7.6.0",
     "@typescript-eslint/parser": "7.6.0",
     "@vitest/coverage-v8": "1.5.0",
-    "commit-and-tag-version": "12.2.0",
+    "commit-and-tag-version": "12.4.0",
     "commitizen": "4.3.0",
     "cz-git": "1.9.1",
     "esbuild": "0.20.2",

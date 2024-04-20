@@ -30,8 +30,8 @@ devDependencies:
     specifier: 1.5.0
     version: 1.5.0(vitest@1.5.0)
   commit-and-tag-version:
-    specifier: 12.2.0
-    version: 12.2.0
+    specifier: 12.4.0
+    version: 12.4.0
   commitizen:
     specifier: 4.3.0
     version: 4.3.0(@types/node@20.12.7)(typescript@5.4.5)
@@ -1400,8 +1400,8 @@ packages:
       delayed-stream: 1.0.0
     dev: true
 
-  /commit-and-tag-version@12.2.0:
-    resolution: {integrity: sha512-t8kvDy8dVTCF/j2u7Elt/J3tzCPyh16ssK8ECpj44R6jJiCUJMhWwZ36L652iChvqz4BAem9XU7WyuMYHlmSvA==}
+  /commit-and-tag-version@12.4.0:
+    resolution: {integrity: sha512-8uZyuGmVPCyq2Bzg/1GkUCdbCTRPrx0bP2hCYyYHTRTruq960WgCf7hYwg2/UiqSrdoZMrRBsHK5eLYeanSTkA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -1419,6 +1419,7 @@ packages:
       jsdom: 23.2.0
       semver: 7.6.0
       w3c-xmlserializer: 5.0.0
+      yaml: 2.4.1
       yargs: 17.7.2
     transitivePeerDependencies:
       - bufferutil
@@ -4528,6 +4529,12 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: true
+
+  /yaml@2.4.1:
+    resolution: {integrity: sha512-pIXzoImaqmfOrL7teGUBt/T7ZDnyeGBWyXQBvOVhLkWLN37GXv8NMLK406UY6dS51JfcQHsmcW5cJ441bHg6Lg==}
+    engines: {node: '>= 14'}
+    hasBin: true
     dev: true
 
   /yargs-parser@20.2.9:
