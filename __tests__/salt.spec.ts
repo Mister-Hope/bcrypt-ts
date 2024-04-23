@@ -1,4 +1,5 @@
 import { expect, it } from "vitest";
+
 import { genSalt, genSaltSync } from "../src/index.js";
 
 it("Gen salt sync", () => {

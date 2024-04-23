@@ -1,8 +1,8 @@
 import {
   BCRYPT_SALT_LEN,
   BLOWFISH_NUM_ROUNDS,
-  MAX_EXECUTION_TIME,
   C_ORIG,
+  MAX_EXECUTION_TIME,
   P_ORIG,
   S_ORIG,
 } from "./constant.js";

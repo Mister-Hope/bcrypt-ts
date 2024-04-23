@@ -1,11 +1,12 @@
 import { expect, it } from "vitest";
+
 import {
   compare,
   compareSync,
-  hash,
-  hashSync,
   genSalt,
   genSaltSync,
+  hash,
+  hashSync,
 } from "../src/index.js";
 
 it("Compare sync", () => {

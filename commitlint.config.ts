@@ -1,8 +1,10 @@
-/** @type {import('cz-git').UserConfig} */
-module.exports = {
+import type { UserConfig } from "cz-git";
+
+export default {
   extends: ["@commitlint/config-conventional"],
+
   prompt: {
     allowCustomIssuePrefix: false,
     allowEmptyIssuePrefix: false,
   },
-};
+} as UserConfig;

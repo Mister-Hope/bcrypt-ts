@@ -22,7 +22,7 @@ export const random = (length: number): number[] => {
     } else {
       _crypto = globalThis.crypto;
     }
-    
+
     const array = new Uint32Array(length);
 
     _crypto?.getRandomValues(array);

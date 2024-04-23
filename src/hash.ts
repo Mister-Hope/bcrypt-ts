@@ -1,4 +1,4 @@
-import { encodeBase64, decodeBase64 } from "./base64.js";
+import { decodeBase64, encodeBase64 } from "./base64.js";
 import {
   BCRYPT_SALT_LEN,
   C_ORIG,
