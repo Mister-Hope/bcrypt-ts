@@ -27,8 +27,8 @@ importers:
         specifier: 1.5.2
         version: 1.5.2(vitest@1.5.2(@types/node@20.12.7)(jsdom@23.2.0))
       commit-and-tag-version:
-        specifier: 12.4.0
-        version: 12.4.0
+        specifier: 12.4.1
+        version: 12.4.1
       cz-git:
         specifier: 1.9.1
         version: 1.9.1
@@ -815,8 +815,8 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
-  commit-and-tag-version@12.4.0:
-    resolution: {integrity: sha512-8uZyuGmVPCyq2Bzg/1GkUCdbCTRPrx0bP2hCYyYHTRTruq960WgCf7hYwg2/UiqSrdoZMrRBsHK5eLYeanSTkA==}
+  commit-and-tag-version@12.4.1:
+    resolution: {integrity: sha512-+NAbDJ2KiXDvV45S8r6o1DWbeEXijxb+Vxp9dsogISuSeRZ5JOPiaQsHoDKhZ58FuBtmp6ITe/hpeFu2gT82xA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3490,7 +3490,7 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  commit-and-tag-version@12.4.0:
+  commit-and-tag-version@12.4.1:
     dependencies:
       chalk: 2.4.2
       conventional-changelog: 3.1.25
