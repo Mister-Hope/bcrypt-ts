@@ -76,7 +76,7 @@
     "@vitest/coverage-v8": "1.6.0",
     "commit-and-tag-version": "12.4.1",
     "cz-git": "1.9.1",
-    "esbuild": "0.20.2",
+    "esbuild": "0.21.1",
     "eslint": "8.57.0",
     "eslint-config-mister-hope": "0.0.10",
     "husky": "9.0.11",
