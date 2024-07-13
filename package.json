@@ -73,7 +73,7 @@
     "@rollup/plugin-alias": "5.1.0",
     "@rollup/plugin-replace": "5.0.7",
     "@types/node": "20.14.10",
-    "@vitest/coverage-v8": "1.6.0",
+    "@vitest/coverage-v8": "2.0.2",
     "commit-and-tag-version": "12.4.1",
     "cz-git": "1.9.3",
     "esbuild": "0.23.0",
@@ -88,7 +88,7 @@
     "rollup-plugin-esbuild": "6.1.1",
     "typescript": "5.5.3",
     "vite": "5.3.3",
-    "vitest": "1.6.0"
+    "vitest": "2.0.2"
   },
   "packageManager": "pnpm@9.4.0",
   "engines": {
