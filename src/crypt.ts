@@ -275,17 +275,17 @@ export const crypt = (
     } else {
       for (i = 0; i < 64; i++)
         for (j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
-      const ret: number[] = [];
+      const result: number[] = [];
 
       for (i = 0; i < cLength; i++)
-        ret.push(((cdata[i] >> 24) & 0xff) >>> 0),
-          ret.push(((cdata[i] >> 16) & 0xff) >>> 0),
-          ret.push(((cdata[i] >> 8) & 0xff) >>> 0),
-          ret.push((cdata[i] & 0xff) >>> 0);
+        result.push(((cdata[i] >> 24) & 0xff) >>> 0),
+          result.push(((cdata[i] >> 16) & 0xff) >>> 0),
+          result.push(((cdata[i] >> 8) & 0xff) >>> 0),
+          result.push((cdata[i] & 0xff) >>> 0);
 
-      if (sync === false) return Promise.resolve(ret);
+      if (sync === false) return Promise.resolve(result);
 
-      return ret;
+      return result;
     }
 
     if (sync === false)
