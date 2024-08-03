@@ -28,7 +28,7 @@ export const random = (length: number): number[] => {
     _crypto?.getRandomValues(array);
 
     return Array.from(array);
-  } catch (err) {
+  } catch {
     throw Error("WebCryptoAPI is not available");
   }
 };

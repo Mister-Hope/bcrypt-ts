@@ -42,8 +42,10 @@ function _hash(
     throw err;
   }
 
-  if (salt.charAt(2) === "$") (minor = String.fromCharCode(0)), (offset = 3);
-  else {
+  if (salt.charAt(2) === "$") {
+    minor = String.fromCharCode(0);
+    offset = 3;
+  } else {
     minor = salt.charAt(2);
     if (
       (minor !== "a" && minor !== "b" && minor !== "y") ||

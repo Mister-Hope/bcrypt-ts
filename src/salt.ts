@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unresolved
 import { random } from "random";
 
 import { encodeBase64 } from "./base64.js";
@@ -50,7 +51,7 @@ export const genSalt = (
       try {
         resolve(genSaltSync(rounds));
       } catch (err) {
-        reject(err);
+        reject(err as Error);
       }
     }),
   );

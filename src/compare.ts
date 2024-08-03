@@ -40,12 +40,14 @@ export const compare = (
     }
 
     if (hash.length !== 60) {
-      nextTick(() => reject(false));
+      nextTick(() =>
+        reject(new Error("Illegal hash: hash length should be 60")),
+      );
 
       return;
     }
 
     hashAsync(content, hash.substring(0, 29), progressCallback)
       .then((comp) => resolve(comp === hash))
-      .catch((err) => reject(err));
+      .catch((err: Error) => reject(err));
   });

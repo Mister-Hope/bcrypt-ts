@@ -125,9 +125,10 @@ const streamToWord = (
 ): { key: number; offp: number } => {
   let word = 0;
 
-  for (let i = 0; i < 4; ++i)
-    (word = (word << 8) | (data[offp] & 0xff)),
-      (offp = (offp + 1) % data.length);
+  for (let i = 0; i < 4; ++i) {
+    word = (word << 8) | (data[offp] & 0xff);
+    offp = (offp + 1) % data.length;
+  }
 
   return { key: word, offp };
 };
@@ -146,14 +147,23 @@ const key = (
     offp: number;
   };
 
-  for (let i = 0; i < pLength; i++)
-    (sw = streamToWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+  for (let i = 0; i < pLength; i++) {
+    sw = streamToWord(key, offp);
+    offp = sw.offp;
+    P[i] = P[i] ^ sw.key;
+  }
 
-  for (let i = 0; i < pLength; i += 2)
-    (lr = encipher(lr, 0, P, S)), (P[i] = lr[0]), (P[i + 1] = lr[1]);
+  for (let i = 0; i < pLength; i += 2) {
+    lr = encipher(lr, 0, P, S);
+    P[i] = lr[0];
+    P[i + 1] = lr[1];
+  }
 
-  for (let i = 0; i < sLength; i += 2)
-    (lr = encipher(lr, 0, P, S)), (S[i] = lr[0]), (S[i + 1] = lr[1]);
+  for (let i = 0; i < sLength; i += 2) {
+    lr = encipher(lr, 0, P, S);
+    S[i] = lr[0];
+    S[i + 1] = lr[1];
+  }
 };
 
 /**
@@ -174,36 +184,41 @@ const expensiveKeyScheduleBlowFish = (
     offp: number;
   };
 
-  for (let i = 0; i < pLength; i++)
-    (sw = streamToWord(key, offp)), (offp = sw.offp), (P[i] = P[i] ^ sw.key);
+  for (let i = 0; i < pLength; i++) {
+    sw = streamToWord(key, offp);
+    offp = sw.offp;
+    P[i] = P[i] ^ sw.key;
+  }
 
   offp = 0;
 
-  for (let i = 0; i < pLength; i += 2)
-    (sw = streamToWord(data, offp)),
-      (offp = sw.offp),
-      (lr[0] ^= sw.key),
-      (sw = streamToWord(data, offp)),
-      (offp = sw.offp),
-      (lr[1] ^= sw.key),
-      (lr = encipher(lr, 0, P, S)),
-      (P[i] = lr[0]),
-      (P[i + 1] = lr[1]);
+  for (let i = 0; i < pLength; i += 2) {
+    sw = streamToWord(data, offp);
+    offp = sw.offp;
+    lr[0] ^= sw.key;
+    sw = streamToWord(data, offp);
+    offp = sw.offp;
+    lr[1] ^= sw.key;
+    lr = encipher(lr, 0, P, S);
+    P[i] = lr[0];
+    P[i + 1] = lr[1];
+  }
 
-  for (let i = 0; i < sLength; i += 2)
-    (sw = streamToWord(data, offp)),
-      (offp = sw.offp),
-      (lr[0] ^= sw.key),
-      (sw = streamToWord(data, offp)),
-      (offp = sw.offp),
-      (lr[1] ^= sw.key),
-      (lr = encipher(lr, 0, P, S)),
-      (S[i] = lr[0]),
-      (S[i + 1] = lr[1]);
+  for (let i = 0; i < sLength; i += 2) {
+    sw = streamToWord(data, offp);
+    offp = sw.offp;
+    lr[0] ^= sw.key;
+    sw = streamToWord(data, offp);
+    offp = sw.offp;
+    lr[1] ^= sw.key;
+    lr = encipher(lr, 0, P, S);
+    S[i] = lr[0];
+    S[i + 1] = lr[1];
+  }
 };
 
 /**
- * Internaly crypts a string.
+ * Internally crypts a string.
  *
  * @param bytes Bytes to crypt
  * @param salt Salt bytes to use
@@ -277,11 +292,12 @@ export const crypt = (
         for (j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
       const result: number[] = [];
 
-      for (i = 0; i < cLength; i++)
-        result.push(((cdata[i] >> 24) & 0xff) >>> 0),
-          result.push(((cdata[i] >> 16) & 0xff) >>> 0),
-          result.push(((cdata[i] >> 8) & 0xff) >>> 0),
-          result.push((cdata[i] & 0xff) >>> 0);
+      for (i = 0; i < cLength; i++) {
+        result.push(((cdata[i] >> 24) & 0xff) >>> 0);
+        result.push(((cdata[i] >> 16) & 0xff) >>> 0);
+        result.push(((cdata[i] >> 8) & 0xff) >>> 0);
+        result.push((cdata[i] & 0xff) >>> 0);
+      }
 
       if (sync === false) return Promise.resolve(result);
 
@@ -300,7 +316,6 @@ export const crypt = (
   else {
     let res;
 
-    // eslint-disable-next-line no-constant-condition
     while (true)
       if (typeof (res = next()) !== "undefined") return (res as number[]) || [];
   }

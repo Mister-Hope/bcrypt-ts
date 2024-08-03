@@ -18,22 +18,26 @@ export const encodeUTF8 = (
 ): void => {
   let cp = null;
 
-  if (typeof nextByte === "number")
-    (cp = nextByte), (nextByte = (): null => null);
+  if (typeof nextByte === "number") {
+    cp = nextByte;
+    nextByte = (): null => null;
+  }
 
   while (cp !== null || (cp = nextByte()) !== null) {
     if (cp < 0x80) destination(cp & 0x7f);
-    else if (cp < 0x800)
-      destination(((cp >> 6) & 0x1f) | 0xc0), destination((cp & 0x3f) | 0x80);
-    else if (cp < 0x10000)
-      destination(((cp >> 12) & 0x0f) | 0xe0),
-        destination(((cp >> 6) & 0x3f) | 0x80),
-        destination((cp & 0x3f) | 0x80);
-    else
-      destination(((cp >> 18) & 0x07) | 0xf0),
-        destination(((cp >> 12) & 0x3f) | 0x80),
-        destination(((cp >> 6) & 0x3f) | 0x80),
-        destination((cp & 0x3f) | 0x80);
+    else if (cp < 0x800) {
+      destination(((cp >> 6) & 0x1f) | 0xc0);
+      destination((cp & 0x3f) | 0x80);
+    } else if (cp < 0x10000) {
+      destination(((cp >> 12) & 0x0f) | 0xe0);
+      destination(((cp >> 6) & 0x3f) | 0x80);
+      destination((cp & 0x3f) | 0x80);
+    } else {
+      destination(((cp >> 18) & 0x07) | 0xf0);
+      destination(((cp >> 12) & 0x3f) | 0x80);
+      destination(((cp >> 6) & 0x3f) | 0x80);
+      destination((cp & 0x3f) | 0x80);
+    }
     cp = null;
   }
 };
@@ -117,7 +121,6 @@ export const UTF16toUTF8 = (
   let c1: number | null;
   let c2 = null;
 
-  // eslint-disable-next-line no-constant-condition
   while (true) {
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     if ((c1 = c2 !== null ? c2 : nextByte()) === null) break;
@@ -149,15 +152,18 @@ export const UTF8toUTF16 = (
 ): void => {
   let codePoint = null;
 
-  if (typeof nextByte === "number")
-    (codePoint = nextByte), (nextByte = (): null => null);
+  if (typeof nextByte === "number") {
+    codePoint = nextByte;
+    nextByte = (): null => null;
+  }
 
   while (codePoint !== null || (codePoint = nextByte()) !== null) {
     if (codePoint <= 0xffff) destination(codePoint);
-    else
-      (codePoint -= 0x10000),
-        destination((codePoint >> 10) + 0xd800),
-        destination((codePoint % 0x400) + 0xdc00);
+    else {
+      codePoint -= 0x10000;
+      destination((codePoint >> 10) + 0xd800);
+      destination((codePoint % 0x400) + 0xdc00);
+    }
     codePoint = null;
   }
 };
