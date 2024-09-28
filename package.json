@@ -75,7 +75,7 @@
     "@types/node": "22.7.4",
     "@vitest/coverage-v8": "2.1.1",
     "commit-and-tag-version": "12.4.4",
-    "cz-git": "1.9.4",
+    "cz-git": "1.10.0",
     "esbuild": "0.24.0",
     "eslint": "9.11.1",
     "eslint-config-mister-hope": "0.2.3",
