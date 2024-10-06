@@ -30,8 +30,8 @@ importers:
         specifier: 12.4.4
         version: 12.4.4
       cz-git:
-        specifier: 1.10.0
-        version: 1.10.0
+        specifier: 1.10.1
+        version: 1.10.1
       esbuild:
         specifier: 0.24.0
         version: 0.24.0
@@ -1136,8 +1136,8 @@ packages:
     resolution: {integrity: sha512-8ZYiJ3A/3OkDd093CBT/0UKDWry7ak4BdPTFP2+QEP7cmhouyq/Up709ASSj2cK02BbZiMgk7kYjZNS4QP5qrQ==}
     engines: {node: '>=18'}
 
-  cz-git@1.10.0:
-    resolution: {integrity: sha512-WJidM6BwqJXPi2KUBzkUgZwZYh9U5VP5tJSIZ5G4+CDDv0lzLo8vrOrsWItE12f3xpAvlZTeQipreSczuaxFRA==}
+  cz-git@1.10.1:
+    resolution: {integrity: sha512-pBudDYUEqSOgt5cAlAk6BDs/h99lxfiii+1KCxfuVNOgcpn+yz7AejDjdBEJ+XDt7MOeAvcpYW3gi7C7il+IFA==}
     engines: {node: '>=v12.20.0'}
 
   dargs@7.0.0:
@@ -3911,7 +3911,7 @@ snapshots:
     dependencies:
       rrweb-cssom: 0.6.0
 
-  cz-git@1.10.0: {}
+  cz-git@1.10.1: {}
 
   dargs@7.0.0: {}
 
