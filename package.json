@@ -74,7 +74,7 @@
     "@rollup/plugin-replace": "6.0.1",
     "@types/node": "22.7.5",
     "@vitest/coverage-v8": "2.1.2",
-    "commit-and-tag-version": "12.4.4",
+    "commit-and-tag-version": "12.5.0",
     "cz-git": "1.10.1",
     "esbuild": "0.24.0",
     "eslint": "9.12.0",
