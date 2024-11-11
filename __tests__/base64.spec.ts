@@ -1,4 +1,5 @@
 import { expect, it } from "vitest";
+
 import { decodeBase64, encodeBase64 } from "../src/base64.js";
 import { BASE64_INDEX } from "../src/constant.js";
 

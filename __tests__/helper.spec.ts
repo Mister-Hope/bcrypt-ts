@@ -1,5 +1,6 @@
 import { expect, it } from "vitest";
-import { getSalt, genSaltSync, hashSync, getRounds } from "../src/index.js";
+
+import { genSaltSync, getRounds, getSalt, hashSync } from "../src/index.js";
 
 it("Get salt", () => {
   const hash1 = hashSync("hello", genSaltSync());

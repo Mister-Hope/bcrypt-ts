@@ -1,4 +1,4 @@
-import { encodeBase64, decodeBase64 } from "./base64.js";
+import { decodeBase64, encodeBase64 } from "./base64.js";
 import {
   BCRYPT_SALT_LEN,
   C_ORIG,
@@ -42,8 +42,10 @@ function _hash(
     throw err;
   }
 
-  if (salt.charAt(2) === "$") (minor = String.fromCharCode(0)), (offset = 3);
-  else {
+  if (salt.charAt(2) === "$") {
+    minor = String.fromCharCode(0);
+    offset = 3;
+  } else {
     minor = salt.charAt(2);
     if (
       (minor !== "a" && minor !== "b" && minor !== "y") ||

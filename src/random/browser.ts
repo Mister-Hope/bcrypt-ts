@@ -22,13 +22,13 @@ export const random = (length: number): number[] => {
     } else {
       _crypto = globalThis.crypto;
     }
-    
+
     const array = new Uint32Array(length);
 
     _crypto?.getRandomValues(array);
 
     return Array.from(array);
-  } catch (err) {
+  } catch {
     throw Error("WebCryptoAPI is not available");
   }
 };

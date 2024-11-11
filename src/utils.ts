@@ -23,17 +23,16 @@ export const nextTick =
  * @param str String
  * @returns UTF8 bytes
  */
-
 export const stringToBytes = (str: string): number[] => {
-  const out: number[] = [];
-  let i = 0;
+  let index = 0;
+  const bytes: number[] = [];
 
   encodeUTF16toUTF8(
-    () => (i >= str.length ? null : str.charCodeAt(i++)),
-    (b: number) => {
-      out.push(b);
+    () => (index < str.length ? str.charCodeAt(index++) : null),
+    (byte) => {
+      bytes.push(byte);
     },
   );
 
-  return out;
+  return bytes;
 };
