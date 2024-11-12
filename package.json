@@ -15,6 +15,10 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mister-Hope/bcrypt-ts.git"
+  },
   "type": "module",
   "exports": {
     ".": {
