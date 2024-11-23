@@ -83,7 +83,7 @@
     "esbuild": "0.24.0",
     "eslint": "9.14.0",
     "eslint-config-mister-hope": "0.3.0",
-    "husky": "9.1.6",
+    "husky": "9.1.7",
     "nano-staged": "0.8.0",
     "prettier": "3.3.3",
     "rimraf": "6.0.1",
