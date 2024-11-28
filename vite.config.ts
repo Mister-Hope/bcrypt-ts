@@ -8,4 +8,14 @@ export default defineConfig({
       random: path.resolve(__dirname, "src/random/node.ts"),
     },
   },
+  test: {
+    coverage: {
+      include: ["src/**/*.ts"],
+    },
+    include: ["**/*.spec.ts"],
+    reporters: ["junit"],
+    outputFile: {
+      junit: "coverage/test-report.junit.xml",
+    },
+  },
 });

@@ -1,5 +1,12 @@
 # bcrypt-ts
 
+[![npm](https://img.shields.io/npm/v/bcrypt-ts?color=%23ff00dd)](https://www.npmjs.com/package/bcrypt-ts)
+[![npm downloads](https://img.shields.io/npm/dw/bcrypt-ts)](https://www.npmjs.com/package/bcrypt-ts)
+[![types](https://img.shields.io/npm/types/bcrypt-ts)](https://mister-hope.github.io/bcrypt-ts/)
+
+[![Test](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml/badge.svg)](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml)
+[![DeepScan grade](https://deepscan.io/api/teams/15982/projects/28024/branches/898932/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15982&pid=28024&bid=898932) [![codecov](https://codecov.io/gh/Mister-Hope/bcrypt-ts/graph/badge.svg?token=oO5gZq2aHe)](https://codecov.io/gh/Mister-Hope/bcrypt-ts)
+
 Optimized bcrypt written in typescript. Working in both Node.js and browser.
 
 > Heavily inspired by [bcrypt.js](https://github.com/dcodeIO/bcrypt.js).

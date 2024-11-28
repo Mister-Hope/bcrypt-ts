@@ -1,8 +1,10 @@
+import { codecovRollupPlugin } from "@codecov/rollup-plugin";
 import alias from "@rollup/plugin-alias";
+import { defineConfig } from "rollup";
 import { dts } from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 
-export default [
+export default defineConfig([
   {
     input: "./src/index.ts",
     output: [
@@ -18,11 +20,18 @@ export default [
       },
     ],
     plugins: [
-      alias({ entries: { random: "./random/browser" } }),
+      (alias as unknown as typeof alias.default)({
+        entries: { random: "./random/browser" },
+      }),
       esbuild({
         charset: "utf8",
         minify: true,
         target: ["chrome87", "firefox78", "edge88", "safari14"],
+      }),
+      codecovRollupPlugin({
+        enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+        bundleName: "main",
+        uploadToken: process.env.CODECOV_TOKEN!,
       }),
     ],
     external: ["node:crypto"],
@@ -59,4 +68,4 @@ export default [
     plugins: [dts()],
     external: ["node:crypto"],
   },
-];
+]);
