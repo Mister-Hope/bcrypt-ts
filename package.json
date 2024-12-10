@@ -50,6 +50,7 @@
     "dist"
   ],
   "scripts": {
+    "bench": "vitest bench",
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
     "changelog": " commit-and-tag-version --skip.bump --skip.commit --skip.tag",
     "clean": "rimraf dist",
@@ -72,7 +73,7 @@
     }
   },
   "devDependencies": {
-    "@codecov/rollup-plugin": "1.5.1",
+    "@codecov/rollup-plugin": "1.6.0",
     "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.6.0",
     "@rollup/plugin-alias": "5.1.1",
@@ -82,7 +83,7 @@
     "commit-and-tag-version": "12.5.0",
     "cz-git": "1.11.0",
     "eslint": "9.16.0",
-    "eslint-config-mister-hope": "0.3.0",
+    "eslint-config-mister-hope": "0.4.0-beta.7",
     "husky": "9.1.7",
     "nano-staged": "0.8.0",
     "prettier": "3.4.2",

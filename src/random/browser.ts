@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    msCrypto?: Crypto;
-  }
-}
-
 /**
  * @private
  *
@@ -15,17 +9,12 @@ declare global {
  */
 export const random = (length: number): number[] => {
   try {
-    let _crypto: Crypto | undefined;
-
-    if (typeof window !== "undefined") {
-      _crypto = window.crypto ?? window.msCrypto;
-    } else {
-      _crypto = globalThis.crypto;
-    }
+    const crypto =
+      typeof window !== "undefined" ? window.crypto : globalThis.crypto;
 
     const array = new Uint32Array(length);
 
-    _crypto?.getRandomValues(array);
+    crypto.getRandomValues(array);
 
     return Array.from(array);
   } catch {

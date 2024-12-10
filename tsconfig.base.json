@@ -34,9 +34,8 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    // minimal node 14 support
-    "target": "ES2020"
-    // minimal node 16 support
-    // "target": "es2021",
+    "useUnknownInCatchVariables": true,
+    // minimal node 18 support
+    "target": "ES2022"
   }
 }

@@ -11,11 +11,11 @@ import { nextTick } from "./utils.js";
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 
 const encipher = (
-  lr: number[],
+  lr: Int32Array,
   off: number,
-  P: Int32Array | number[],
-  S: Int32Array | number[],
-): number[] => {
+  P: Int32Array,
+  S: Int32Array,
+): Int32Array => {
   // This is our bottleneck: 1714/1905 ticks / 90% - see profile.txt
   let n: number;
   let l = lr[off];
@@ -141,7 +141,7 @@ const key = (
   const pLength = P.length;
   const sLength = S.length;
   let offp = 0;
-  let lr = [0, 0];
+  let lr = new Int32Array([0, 0]);
   let sw: {
     key: number;
     offp: number;
@@ -232,14 +232,14 @@ export const crypt = (
   sync: boolean,
   progressCallback?: (progress: number) => void,
 ): Promise<number[]> | number[] => {
-  const cdata = C_ORIG.slice();
+  const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
 
   // Validate
   if (rounds < 4 || rounds > 31) {
     const err = new Error(`Illegal number of rounds (4-31): ${rounds}`);
 
-    if (sync === false) return Promise.reject(err);
+    if (!sync) return Promise.reject(err);
 
     throw err;
   }
@@ -249,62 +249,53 @@ export const crypt = (
       `Illegal salt length: ${salt.length} != ${BCRYPT_SALT_LEN}`,
     );
 
-    if (sync === false) return Promise.reject(err);
+    if (!sync) return Promise.reject(err);
 
     throw err;
   }
 
   rounds = (1 << rounds) >>> 0;
 
-  let P: Int32Array | number[];
-  let S: Int32Array | number[];
-  let i = 0;
-  let j: number;
-
-  //Use typed arrays when available - huge speedup!
-  if (Int32Array) {
-    P = new Int32Array(P_ORIG);
-    S = new Int32Array(S_ORIG);
-  } else {
-    P = P_ORIG.slice();
-    S = S_ORIG.slice();
-  }
+  const P = new Int32Array(P_ORIG);
+  const S = new Int32Array(S_ORIG);
 
   expensiveKeyScheduleBlowFish(salt, bytes, P, S);
+
+  let round = 0;
 
   /**
    * Calculates the next round.
    */
-  const next = (): Promise<number[] | undefined> | number[] | void => {
-    if (progressCallback) progressCallback(i / rounds);
+  const next = (): Promise<number[] | void> | number[] | void => {
+    if (progressCallback) progressCallback(round / rounds);
 
-    if (i < rounds) {
+    if (round < rounds) {
       const start = Date.now();
 
-      for (; i < rounds; ) {
-        i = i + 1;
+      while (round < rounds) {
+        round += 1;
         key(bytes, P, S);
         key(salt, P, S);
         if (Date.now() - start > MAX_EXECUTION_TIME) break;
       }
     } else {
-      for (i = 0; i < 64; i++)
-        for (j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
+      for (let i = 0; i < 64; i++)
+        for (let j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
       const result: number[] = [];
 
-      for (i = 0; i < cLength; i++) {
+      for (let i = 0; i < cLength; i++) {
         result.push(((cdata[i] >> 24) & 0xff) >>> 0);
         result.push(((cdata[i] >> 16) & 0xff) >>> 0);
         result.push(((cdata[i] >> 8) & 0xff) >>> 0);
         result.push((cdata[i] & 0xff) >>> 0);
       }
 
-      if (sync === false) return Promise.resolve(result);
+      if (!sync) return Promise.resolve(result);
 
       return result;
     }
 
-    if (sync === false)
+    if (!sync)
       return new Promise((resolve) =>
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
@@ -312,11 +303,13 @@ export const crypt = (
       );
   };
 
-  if (sync === false) return next() as Promise<number[]>;
-  else {
-    let res;
+  if (!sync) return next() as Promise<number[]>;
 
-    while (true)
-      if (typeof (res = next()) !== "undefined") return (res as number[]) || [];
-  }
+  let result;
+
+  do {
+    result = next() as number[] | undefined;
+  } while (!result);
+
+  return result;
 };

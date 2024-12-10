@@ -25,7 +25,7 @@ function _hash(
   if (typeof contentString !== "string" || typeof salt !== "string") {
     const err = new Error("Invalid string / salt: Not a string");
 
-    if (sync === false) return Promise.reject(err);
+    if (!sync) return Promise.reject(err);
 
     throw err;
   }
@@ -37,7 +37,7 @@ function _hash(
   if (salt.charAt(0) !== "$" || salt.charAt(1) !== "2") {
     const err = new Error("Invalid salt version: " + salt.substring(0, 2));
 
-    if (sync === false) return Promise.reject(err);
+    if (!sync) return Promise.reject(err);
 
     throw err;
   }
@@ -53,7 +53,7 @@ function _hash(
     ) {
       const err = Error("Invalid salt revision: " + salt.substring(2, 4));
 
-      if (sync === false) return Promise.reject(err);
+      if (!sync) return Promise.reject(err);
 
       throw err;
     }
@@ -64,7 +64,7 @@ function _hash(
   if (salt.charAt(offset + 2) > "$") {
     const err = new Error("Missing salt rounds");
 
-    if (sync === false) return Promise.reject(err);
+    if (!sync) return Promise.reject(err);
 
     throw err;
   }
@@ -99,7 +99,7 @@ function _hash(
   };
 
   // Sync
-  if (sync === false)
+  if (!sync)
     return (
       crypt(
         passwordBytes,

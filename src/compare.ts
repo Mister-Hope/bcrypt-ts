@@ -49,5 +49,5 @@ export const compare = (
 
     hashAsync(content, hash.substring(0, 29), progressCallback)
       .then((comp) => resolve(comp === hash))
-      .catch((err: Error) => reject(err));
+      .catch((err: unknown) => reject(err as Error));
   });
