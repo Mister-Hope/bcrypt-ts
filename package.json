@@ -82,7 +82,7 @@
     "@vitest/coverage-v8": "2.1.8",
     "commit-and-tag-version": "12.5.0",
     "cz-git": "1.11.0",
-    "eslint": "9.16.0",
+    "eslint": "9.17.0",
     "eslint-config-mister-hope": "0.4.0-beta.7",
     "husky": "9.1.7",
     "nano-staged": "0.8.0",
