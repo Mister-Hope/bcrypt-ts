@@ -39,8 +39,8 @@ importers:
         specifier: 9.17.0
         version: 9.17.0(jiti@1.21.6)
       eslint-config-mister-hope:
-        specifier: 0.4.0-beta.7
-        version: 0.4.0-beta.7(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(prettier@3.4.2)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))
+        specifier: 0.4.0
+        version: 0.4.0(eslint@9.17.0(jiti@1.21.6))(prettier@3.4.2)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -497,10 +497,6 @@ packages:
     resolution: {integrity: sha512-grOjVNN8P3hjJn/eIETF1wwd12DdnwFDoyceUJLYYdkpbwq3nLi+4fqrTAONx7XDALqlL220wC/RHSC/QTI/0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.16.0':
-    resolution: {integrity: sha512-tw2HxzQkrbeuvyj1tG2Yqq+0H9wGoI2IMk4EOsQeX+vmd75FtJAzf+gTA69WF+baUKRYQ3x2kbLE08js5OsTVg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@eslint/js@9.17.0':
     resolution: {integrity: sha512-Sxc4hqcs1kTu0iID3kcZDW3JHq2a77HO9P8CP6YEA/FpH3Ll8UXE2r/86Rz9YJLKme39S9vU5OWNjC6Xl0Cr3w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -835,8 +831,8 @@ packages:
       '@vitest/browser':
         optional: true
 
-  '@vitest/eslint-plugin@1.1.14':
-    resolution: {integrity: sha512-ej0cT5rUt7uvwxuu7Qxkm7fI+eaOq8vD34qGpuRoXCdvOybOlE5GDqtgvVCYbxLANkcRJfm5VDU1TnJmQRHi9g==}
+  '@vitest/eslint-plugin@1.1.16':
+    resolution: {integrity: sha512-xecwJYuAp11AFsd2aoSnTWO3Wckgu7rjBz1VOhvsDtZzI4s7z/WerAR4gxnEFy37scdsE8wSlP95/2ry6sLhSg==}
     peerDependencies:
       '@typescript-eslint/utils': '>= 8.0'
       eslint: '>= 8.57.0'
@@ -1276,11 +1272,11 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-mister-hope@0.4.0-beta.7:
-    resolution: {integrity: sha512-hae8+9WdejgfEe90No9yha7vvp5GEqn+t0XPYYtcOWU5Ds+S8GJRLIMBeHTTCTkpSz3ins25iTXH3Gi1fdcDtg==}
+  eslint-config-mister-hope@0.4.0:
+    resolution: {integrity: sha512-HaUYYDcJ39pHw3LsE7BXOtO6RuAL6Ud0KdACoTTVZnyx3YgXnQw5l5HKiEVrCrivs99cfxBNb9SUr5PO3N5fpQ==}
     peerDependencies:
-      eslint: ^9.15.0
-      eslint-plugin-vue: ^9.31.0
+      eslint: ^9.17.0
+      eslint-plugin-vue: ^9.32.0
       vue-eslint-parser: ^9.4.3
     peerDependenciesMeta:
       eslint-plugin-vue:
@@ -2944,8 +2940,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.16.0': {}
-
   '@eslint/js@9.17.0': {}
 
   '@eslint/object-schema@2.1.5': {}
@@ -3263,7 +3257,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/eslint-plugin@1.1.14(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))':
+  '@vitest/eslint-plugin@1.1.16(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))':
     dependencies:
       '@typescript-eslint/utils': 8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)
       eslint: 9.17.0(jiti@1.21.6)
@@ -3750,10 +3744,11 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-mister-hope@0.4.0-beta.7(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(prettier@3.4.2)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1)):
+  eslint-config-mister-hope@0.4.0(eslint@9.17.0(jiti@1.21.6))(prettier@3.4.2)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1)):
     dependencies:
-      '@eslint/js': 9.16.0
-      '@vitest/eslint-plugin': 1.1.14(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))
+      '@eslint/js': 9.17.0
+      '@typescript-eslint/utils': 8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)
+      '@vitest/eslint-plugin': 1.1.16(@typescript-eslint/utils@8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.2)(jsdom@25.0.1))
       eslint: 9.17.0(jiti@1.21.6)
       eslint-config-prettier: 9.1.0(eslint@9.17.0(jiti@1.21.6))
       eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import-x@4.5.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint@9.17.0(jiti@1.21.6))
@@ -3763,7 +3758,6 @@ snapshots:
       typescript-eslint: 8.18.0(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2)
     transitivePeerDependencies:
       - '@types/eslint'
-      - '@typescript-eslint/utils'
       - eslint-plugin-import
       - prettier
       - supports-color
