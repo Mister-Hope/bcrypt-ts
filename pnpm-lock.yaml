@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@codecov/rollup-plugin':
-        specifier: 1.6.0
-        version: 1.6.0(rollup@4.29.1)
+        specifier: 1.7.0
+        version: 1.7.0(rollup@4.29.1)
       '@commitlint/cli':
         specifier: 19.6.1
         version: 19.6.1(@types/node@22.10.5)(typescript@5.7.2)
@@ -114,12 +114,12 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@codecov/bundler-plugin-core@1.6.0':
-    resolution: {integrity: sha512-x2M5P1NUk5lNW5slKY3jSb6Hpuie7bKaolDyZ7oWBHvBgtAJOeU7VrutdVhaiYoiQonM65JI2UAIWtw6mup/Yw==}
+  '@codecov/bundler-plugin-core@1.7.0':
+    resolution: {integrity: sha512-QsLwtwfy9KEe0CjqNE2Z/SPiCMn4CHAJ9cqTosZCX9YMKPi/WyFivv0pYE7CXA8ntG0l4Xc9kr36DUCuNRW0LQ==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/rollup-plugin@1.6.0':
-    resolution: {integrity: sha512-jBDYutIiDviMtQLzLsZaOuyKUegINjcxaIsKlq0RzK1PUXmHP8noyFTJtyqqbVk8LnJQa/xVIpximvmR3zqp8A==}
+  '@codecov/rollup-plugin@1.7.0':
+    resolution: {integrity: sha512-P4so0kJJKtRBBO4Up+3FY9haeJg4pdyW/vBEqJ0ZRcSdChtBjy3b9NV/EBFoGftFECLx7x5WY2QgpS7ghvlzeQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       rollup: 3.x || 4.x
@@ -2641,7 +2641,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@codecov/bundler-plugin-core@1.6.0':
+  '@codecov/bundler-plugin-core@1.7.0':
     dependencies:
       '@actions/core': 1.11.1
       '@actions/github': 6.0.0
@@ -2650,9 +2650,9 @@ snapshots:
       unplugin: 1.16.0
       zod: 3.24.0
 
-  '@codecov/rollup-plugin@1.6.0(rollup@4.29.1)':
+  '@codecov/rollup-plugin@1.7.0(rollup@4.29.1)':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.6.0
+      '@codecov/bundler-plugin-core': 1.7.0
       rollup: 4.29.1
       unplugin: 1.16.0
 
