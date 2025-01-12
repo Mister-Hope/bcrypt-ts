@@ -83,7 +83,7 @@
     "commit-and-tag-version": "12.5.0",
     "cz-git": "1.11.0",
     "eslint": "9.18.0",
-    "eslint-config-mister-hope": "0.4.0",
+    "eslint-config-mister-hope": "0.4.1",
     "husky": "9.1.7",
     "nano-staged": "0.8.0",
     "prettier": "3.4.2",
