@@ -10,9 +10,11 @@ export default defineConfig({
   },
   test: {
     coverage: {
+      provider: "istanbul",
       include: ["src/**/*.ts"],
     },
     include: ["**/*.spec.ts"],
+
     ...(process.env.CODECOV_TOKEN
       ? {
           reporters: ["junit"],
