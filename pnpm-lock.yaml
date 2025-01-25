@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@codecov/rollup-plugin':
-        specifier: 1.7.0
-        version: 1.7.0(rollup@4.31.0)
+        specifier: 1.8.0
+        version: 1.8.0(rollup@4.31.0)
       '@commitlint/cli':
         specifier: 19.6.1
         version: 19.6.1(@types/node@22.10.10)(typescript@5.7.3)
@@ -156,12 +156,12 @@ packages:
     resolution: {integrity: sha512-L6mZmwFDK6Cjh1nRCLXpa6no13ZIioJDz7mdkzHv399pThrTa/k0nUlNaenOeh2kWu/iaOQYElEpKPUswUa9Vg==}
     engines: {node: '>=6.9.0'}
 
-  '@codecov/bundler-plugin-core@1.7.0':
-    resolution: {integrity: sha512-QsLwtwfy9KEe0CjqNE2Z/SPiCMn4CHAJ9cqTosZCX9YMKPi/WyFivv0pYE7CXA8ntG0l4Xc9kr36DUCuNRW0LQ==}
+  '@codecov/bundler-plugin-core@1.8.0':
+    resolution: {integrity: sha512-D1aeA8u3RHOkQVLImLHxW6zFdUrw5wgoeDzYrKZeDExGp5ePs4RpJxKwklg1N0e1JxRcAgKj+zZo/y3Q4nV+sA==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/rollup-plugin@1.7.0':
-    resolution: {integrity: sha512-P4so0kJJKtRBBO4Up+3FY9haeJg4pdyW/vBEqJ0ZRcSdChtBjy3b9NV/EBFoGftFECLx7x5WY2QgpS7ghvlzeQ==}
+  '@codecov/rollup-plugin@1.8.0':
+    resolution: {integrity: sha512-e6vbk7PlEqBbqJwk3cQdqEb2DVnK9tpSyhs1UYLh2kR4ADBLcKEtIq81DeCxANkC9hFRoTsTF/1+6pwdkGe6PA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       rollup: 3.x || 4.x
@@ -694,6 +694,10 @@ packages:
     resolution: {integrity: sha512-ul8rnCsUumNln5YWwz0ted2ZHFhzhRRnkpBZ+YRuHoRAlUji9KChpOUOndY7uykrPEPXVbHLlsdo6v5yXo/TXw==}
     cpu: [x64]
     os: [win32]
+
+  '@sentry/core@8.51.0':
+    resolution: {integrity: sha512-Go0KxCYLw+OBIlLSv5YsYX+x9NW43fNVcyB6rhkSp2Q5Zme3tAE6KtZFvyu4SO7G/903wisW5Q6qV6UuK/ee4A==}
+    engines: {node: '>=14.18'}
 
   '@types/conventional-commits-parser@5.0.1':
     resolution: {integrity: sha512-7uz5EHdzz2TqoMfV7ee61Egf5y6NkcO4FB/1iCCQnbeiI1F3xzv3vK5dBCXUCLQgGYS+mUeigK1iKQzvED+QnQ==}
@@ -2729,18 +2733,19 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@codecov/bundler-plugin-core@1.7.0':
+  '@codecov/bundler-plugin-core@1.8.0':
     dependencies:
       '@actions/core': 1.11.1
       '@actions/github': 6.0.0
+      '@sentry/core': 8.51.0
       chalk: 4.1.2
       semver: 7.6.3
       unplugin: 1.16.1
       zod: 3.24.1
 
-  '@codecov/rollup-plugin@1.7.0(rollup@4.31.0)':
+  '@codecov/rollup-plugin@1.8.0(rollup@4.31.0)':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.7.0
+      '@codecov/bundler-plugin-core': 1.8.0
       rollup: 4.31.0
       unplugin: 1.16.1
 
@@ -3188,6 +3193,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.31.0':
     optional: true
+
+  '@sentry/core@8.51.0': {}
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
