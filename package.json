@@ -74,8 +74,8 @@
   },
   "devDependencies": {
     "@codecov/rollup-plugin": "1.8.0",
-    "@commitlint/cli": "19.6.1",
-    "@commitlint/config-conventional": "19.6.0",
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
     "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-replace": "6.0.2",
     "@types/node": "22.13.0",
