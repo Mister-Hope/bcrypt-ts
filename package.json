@@ -86,7 +86,7 @@
     "eslint-config-mister-hope": "0.4.1",
     "husky": "9.1.7",
     "nano-staged": "0.8.0",
-    "prettier": "3.5.0",
+    "prettier": "3.5.1",
     "rimraf": "6.0.1",
     "rollup": "4.34.6",
     "rollup-plugin-dts": "6.1.1",
