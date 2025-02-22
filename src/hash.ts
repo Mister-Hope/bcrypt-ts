@@ -16,12 +16,12 @@ import { stringToBytes } from "./utils.js";
  * @param salt Salt to use, actually never null
  * @param progressCallback Callback called with the current progress
  */
-function _hash(
+const _hash = (
   contentString: string,
   salt: string,
   sync: boolean,
   progressCallback?: (progress: number) => void,
-): Promise<string> | string {
+): Promise<string> | string => {
   if (typeof contentString !== "string" || typeof salt !== "string") {
     const err = new Error("Invalid string / salt: Not a string");
 
@@ -113,7 +113,7 @@ function _hash(
   return finish(
     crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[],
   );
-}
+};
 
 /**
  * Synchronously generates a hash for the given string.

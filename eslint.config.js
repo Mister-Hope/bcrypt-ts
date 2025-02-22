@@ -1,9 +1,11 @@
 import { hope } from "eslint-config-mister-hope";
 
 export default hope({
-  ts: {
+  languageOptions: {
     parserOptions: {
-      projectService: true,
+      projectService: {
+        allowDefaultProject: ["eslint.config.js"],
+      },
     },
   },
 });
