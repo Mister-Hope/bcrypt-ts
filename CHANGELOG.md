@@ -1,6 +1,16 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+
+## [6.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v5.0.1...v6.0.0) (2025-02-23)
+
+### ⚠ BREAKING CHANGES
+
+- Generate 2b hashes
+
+### Features
+
+- Provide umd build
 
 ## [5.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v4.0.1...v5.0.0) (2023-11-12)
 

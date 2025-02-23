@@ -1,6 +1,6 @@
 {
   "name": "bcrypt-ts",
-  "version": "5.0.3",
+  "version": "6.0.0",
   "description": "bcrypt written in typescript",
   "keywords": [
     "bcrypt",
