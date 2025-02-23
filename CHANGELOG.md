@@ -18,15 +18,11 @@ All notable changes to this project will be documented in this file. See [commit
 
 ### ⚠ BREAKING CHANGES
 
-- drop node14
-
-### Features
-
 - drop node14 ([b421a0f](https://github.com/Mister-Hope/bcrypt-ts/commit/b421a0f3cedb7c3468b8b280db8435f0655440a4))
 
 ## [3.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v2.2.2...v3.0.0) (2022-11-04)
 
-### Features
+### ⚠ BREAKING CHANGES
 
 - remove buffer from type ([af52eb7](https://github.com/Mister-Hope/bcrypt-ts/commit/af52eb7b630c293494273e06eb0de84e6c3e4549))
 
@@ -44,7 +40,7 @@ All notable changes to this project will be documented in this file. See [commit
 
 ## [2.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v1.0.1...v2.0.0) (2022-08-26)
 
-### Features
+### ⚠ BREAKING CHANGES
 
 - migrate to esm ([408da02](https://github.com/Mister-Hope/bcrypt-ts/commit/408da023c8a3ecaa11f552d512397298d8970859))
 
