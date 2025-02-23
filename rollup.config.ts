@@ -18,6 +18,12 @@ export default defineConfig([
         format: "esm",
         sourcemap: true,
       },
+      {
+        file: "./dist/browser.umd.js",
+        format: "umd",
+        name: "bcrypt",
+        sourcemap: true,
+      },
     ],
     plugins: [
       (alias as unknown as typeof alias.default)({

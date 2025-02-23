@@ -1,5 +1,3 @@
-import { encodeUTF16toUTF8 } from "./utfx.js";
-
 /**
  * @private
  *
@@ -15,24 +13,5 @@ export const nextTick =
           process.nextTick
         : setTimeout;
 
-/**
- * @private
- *
- * Converts a JavaScript string to UTF8 bytes.
- *
- * @param str String
- * @returns UTF8 bytes
- */
-export const stringToBytes = (str: string): number[] => {
-  let index = 0;
-  const bytes: number[] = [];
-
-  encodeUTF16toUTF8(
-    () => (index < str.length ? str.charCodeAt(index++) : null),
-    (byte) => {
-      bytes.push(byte);
-    },
-  );
-
-  return bytes;
-};
+export const getIllegalArgumentsTypeError = (...args: unknown[]): Error =>
+  new Error(`Illegal arguments: ${args.map((arg) => typeof arg).join(", ")}`);

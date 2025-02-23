@@ -6,24 +6,24 @@ import {
 } from "./constant.js";
 import { crypt } from "./crypt.js";
 import { genSalt, genSaltSync } from "./salt.js";
-import { stringToBytes } from "./utils.js";
+import { convertToUFT8Bytes } from "./uft8.js";
 
 /**
  * Internally hashes a string.
  *
  * @private
- * @param contentString String to hash
+ * @param content String to hash
  * @param salt Salt to use, actually never null
  * @param progressCallback Callback called with the current progress
  */
 const _hash = (
-  contentString: string,
+  content: string,
   salt: string,
   sync: boolean,
   progressCallback?: (progress: number) => void,
 ): Promise<string> | string => {
-  if (typeof contentString !== "string" || typeof salt !== "string") {
-    const err = new Error("Invalid string / salt: Not a string");
+  if (typeof content !== "string" || typeof salt !== "string") {
+    const err = new Error("Invalid content / salt: Not a string");
 
     if (!sync) return Promise.reject(err);
 
@@ -74,9 +74,9 @@ const _hash = (
     rounds = r1 + r2,
     realSalt = salt.substring(offset + 3, offset + 25);
 
-  contentString += minor >= "a" ? "\x00" : "";
+  content += minor >= "a" ? "\x00" : "";
 
-  const passwordBytes = stringToBytes(contentString),
+  const passwordBytes = convertToUFT8Bytes(content),
     saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
 
   /**

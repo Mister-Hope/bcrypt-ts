@@ -11,7 +11,7 @@ export const encodeBase64 = (
   length: number,
 ): string => {
   if (length <= 0 || length > byteArray.length)
-    throw Error(`Illegal len: ${length}`);
+    throw Error(`Illegal length: ${length}`);
 
   let off = 0;
   let c1: number;
@@ -53,7 +53,7 @@ export const decodeBase64 = (
   contentString: string,
   length: number,
 ): number[] => {
-  if (length <= 0) throw Error(`Illegal len: ${length}`);
+  if (length <= 0) throw Error(`Illegal length: ${length}`);
 
   const stringLength = contentString.length;
   let off = 0;

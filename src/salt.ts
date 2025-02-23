@@ -6,7 +6,7 @@ import {
   BCRYPT_SALT_LEN,
   GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 } from "./constant.js";
-import { nextTick } from "./utils.js";
+import { getIllegalArgumentsTypeError, nextTick } from "./utils.js";
 
 /**
  * Synchronously generates a salt.
@@ -18,14 +18,14 @@ import { nextTick } from "./utils.js";
 export const genSaltSync = (
   rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): string => {
-  if (typeof rounds !== "number")
-    throw Error("Illegal arguments: " + typeof rounds);
+  if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
+
   if (rounds < 4) rounds = 4;
   else if (rounds > 31) rounds = 31;
 
   const salt = [];
 
-  salt.push("$2a$");
+  salt.push("$2b$");
   if (rounds < 10) salt.push("0");
   salt.push(rounds.toString());
   salt.push("$");
@@ -42,8 +42,7 @@ export const genSaltSync = (
 export const genSalt = (
   rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): Promise<string> => {
-  if (typeof rounds !== "number")
-    throw Error("illegal arguments: " + typeof rounds);
+  if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
 
   return new Promise((resolve, reject) =>
     nextTick(() => {

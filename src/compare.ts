@@ -1,5 +1,5 @@
 import { hash as hashAsync, hashSync } from "./hash.js";
-import { nextTick } from "./utils.js";
+import { getIllegalArgumentsTypeError, nextTick } from "./utils.js";
 
 /**
  * Synchronously tests a string against a hash.
@@ -9,7 +9,8 @@ import { nextTick } from "./utils.js";
  */
 export const compareSync = (content: string, hash: string): boolean => {
   if (typeof content !== "string" || typeof hash !== "string")
-    throw Error("Illegal arguments: " + typeof content + ", " + typeof hash);
+    throw getIllegalArgumentsTypeError(content, hash);
+
   if (hash.length !== 60) return false;
 
   return hashSync(content, hash.substring(0, hash.length - 31)) === hash;
@@ -40,9 +41,7 @@ export const compare = (
     }
 
     if (hash.length !== 60) {
-      nextTick(() =>
-        reject(new Error("Illegal hash: hash length should be 60")),
-      );
+      nextTick(() => resolve(false));
 
       return;
     }

@@ -11,11 +11,11 @@ import { nextTick } from "./utils.js";
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 
 const encipher = (
-  lr: Int32Array,
+  lr: Int32Array<ArrayBuffer>,
   off: number,
-  P: Int32Array,
-  S: Int32Array,
-): Int32Array => {
+  P: Int32Array<ArrayBuffer>,
+  S: Int32Array<ArrayBuffer>,
+): Int32Array<ArrayBuffer> => {
   // This is our bottleneck: 1714/1905 ticks / 90% - see profile.txt
   let n: number;
   let l = lr[off];
@@ -135,8 +135,8 @@ const streamToWord = (
 
 const key = (
   key: number[],
-  P: Int32Array | number[],
-  S: Int32Array | number[],
+  P: Int32Array<ArrayBuffer>,
+  S: Int32Array<ArrayBuffer>,
 ): void => {
   const pLength = P.length;
   const sLength = S.length;
@@ -172,13 +172,13 @@ const key = (
 const expensiveKeyScheduleBlowFish = (
   data: number[],
   key: number[],
-  P: Int32Array | number[],
-  S: Int32Array | number[],
+  P: Int32Array<ArrayBuffer>,
+  S: Int32Array<ArrayBuffer>,
 ): void => {
   const pLength = P.length;
   const sLength = S.length;
   let offp = 0;
-  let lr = [0, 0];
+  let lr = new Int32Array([0, 0]);
   let sw: {
     key: number;
     offp: number;

@@ -9,4 +9,7 @@ import { randomBytes } from "node:crypto";
  * @returns Random bytes
  * @throws {Error} If no random implementation is available
  */
-export const random = (length: number): Buffer => randomBytes(length);
+export const random = (length: number): Buffer | Uint8Array<ArrayBuffer> =>
+  typeof crypto === "undefined"
+    ? randomBytes(length)
+    : crypto.getRandomValues(new Uint8Array(length));

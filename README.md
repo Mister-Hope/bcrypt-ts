@@ -7,9 +7,14 @@
 [![Test](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml/badge.svg)](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/15982/projects/28024/branches/898932/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15982&pid=28024&bid=898932) [![codecov](https://codecov.io/gh/Mister-Hope/bcrypt-ts/graph/badge.svg?token=oO5gZq2aHe)](https://codecov.io/gh/Mister-Hope/bcrypt-ts)
 
-Optimized bcrypt written in typescript. Working in both Node.js and browser.
+Optimized bcrypt in TypeSCript with zero dependencies. Compatible to the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on Node.js and also working in the browser.
 
-> Heavily inspired by [bcrypt.js](https://github.com/dcodeIO/bcrypt.js).
+## Why bcrypt-ts instead of bycrypt.js
+
+- Bcrypt-ts is fully written in TypeScript
+- Bcrypt-ts provide dual ESM/cjs mode for both node and browser env, and you can directly
+- Minified output
+- Tree shakable
 
 ## Security considerations
 
@@ -17,20 +22,35 @@ Besides incorporating a salt to protect against rainbow table attacks, bcrypt is
 iteration count can be increased to make it slower, so it remains resistant to brute-force search attacks even with
 increasing computation power. ([see](http://en.wikipedia.org/wiki/Bcrypt))
 
-While bcrypt-ts is compatible to the C++ bcrypt binding, it is providing pure JavaScript and thus slower about 30%, effectively reducing the number of iterations that can be processed in an equal time span.
+While bcrypt-ts is compatible to the C++ bcrypt binding, it is built by pure JavaScript and thus slower ([about 30%](https://github.com/dcodeIO/bcrypt.js/wiki/Benchmark)), effectively reducing the number of iterations that can be processed in an equal time span.
 
-The maximum input length is 72 bytes (note that UTF8 encoded characters use up to 4 bytes) and the length of generated
-hashes is 60 characters.
+The maximum input length is 72 bytes (note that UTF-8 encoded characters use up to 4 bytes) and the length of generated
+hashes is 60 characters. Note that maximum input length is not implicitly checked by the library for compatibility with
+the C++ binding on Node.js, but should be checked with `truncates(password)` where necessary.
 
-## Highlights
-
-- 0 dependencies, with ONLY 8KB Gzip size
-- Written in typescript
-- Provide tree-shakable ES module
-
-## Usage
+## Install
 
 ### Node.js
+
+Install the package:
+
+```bash
+npm install bcrypt-ts
+```
+
+### CDN
+
+jsDelivr:
+
+- `https://cdn.jsdelivr.net/npm/bcrypt-ts/dist/browser.mjs` (ESM)
+- `https://cdn.jsdelivr.net/npm/bcrypt-ts/dist/browser.umd.js` (UMD)
+
+unpkg:
+
+- `https://unpkg.com/bcrypt-ts/dist/browser.mjs` (ESM)
+- `https://unpkg.com/n/bcrypt-ts/dist/browser.umd.js` (UMD)
+
+## Usage
 
 On Node.js, the inbuilt [crypto module](http://nodejs.org/api/crypto.html)'s randomBytes interface is used to obtain secure random numbers.
 
@@ -46,77 +66,80 @@ In the browser, bcrypt.js relies on [Web Crypto API](http://www.w3.org/TR/WebCry
 
 - If you meet any issues that a incorrect bundle is used, you can use `bcrypt-ts/node` and `bcrypt-ts/browser` to force the correct bundle.
 
-## Usage - Sync
+### Usage - Sync
 
 To hash a password:
 
-```js
+```ts
 import { genSaltSync, hashSync } from "bcrypt-ts";
 
 const salt = genSaltSync(10);
-const hash = hashSync("B4c0//", salt);
-// Store hash in your password DB.
+const result = hashSync("B4c0//", salt);
+// Store hash in your password DB
 ```
 
 To check a password:
 
-```js
+```ts
 import { compareSync } from "bcrypt-ts";
 
-// Load hash from your password DB.
+// Load hash from your password DB
+const hash = "xxx";
+
 compareSync("B4c0//", hash); // true
 compareSync("not_bacon", hash); // false
 ```
 
 Auto-gen a salt and hash at the same time:
 
-```js
+```ts
 import { hashSync } from "bcrypt-ts";
 
-const hash = hashSync("bacon", 8);
+const result = hashSync("bacon", 8);
 ```
 
-## Usage - Async
+### Usage - Async
 
 To hash a password:
 
-```js
+```ts
 import { genSalt, hash } from "bcrypt-ts";
 
-genSalt(10)
-  .then((salt) => hash("B4c0//", salt))
-  .then((hash) => {
-    // Store hash in your password DB.
-  });
+const salt = await genSalt(10);
+const result = await hash("B4c0//", salt);
+// Store hash in your password DB
 ```
 
 To check a password:
 
-```js
+```ts
 import { compare } from "bcrypt-ts";
 
-// Load hash from your password DB.
+// Load hash from your password DB
 const hash = "xxxxxx";
 
-compare("B4c0//", hash).then((result) => {
-  // result is `true`
-});
-compare("not_bacon", hash).then((result) => {
-  // result is `false`
-});
+await bcrypt.compare("B4c0//", hash); // true
+await bcrypt.compare("not_bacon", hash); // false
 ```
 
 Auto-gen a salt and hash:
 
-```js
+```ts
 import { hash } from "bcrypt-ts";
 
-hash("bacon").then((hash) => {
-  // do something with hash
-});
+const result = await bcrypt.hash("B4c0//", 10);
+// Store hash in your password DB
 ```
 
-**Note:** Under the hood, asynchronisation splits a crypto operation into small chunks. After the completion of a chunk, the execution of the next chunk is placed on the back of [JS event loop queue](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop), thus efficiently sharing the computational resources with the other operations in the queue.
+**Note:** Under the hood, asynchronous APIs split an operation into small chunks. After the completion of a chunk, the execution of the next chunk is placed on the back of the [JS event queue](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop), efficiently yielding for other computation to execute.
+
+### Usage - Command Line
+
+```
+
+Usage: bcrypt <input> [rounds|salt]
+
+```
 
 ## API
 
@@ -200,6 +223,9 @@ export const genSaltSync: (rounds?: number) => string;
 export const genSalt: (rounds?: number) => Promise<string>;
 ```
 
-## License
+## Credits
 
-New-BSD / MIT ([see](https://github.com/Mister-Hope/bcrypt-ts/blob/main/LICENSE))
+- Based on [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
+
+  - Based on work started by Shane Girish at [bcrypt-nodejs](https://github.com/shaneGirish/bcrypt-nodejs)
+    - Based on [javascript-bcrypt](http://code.google.com/p/javascript-bcrypt/) (New BSD-licensed).
