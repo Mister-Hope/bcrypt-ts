@@ -9,15 +9,15 @@
   "bugs": {
     "url": "https://github.com/Mister-Hope/bcrypt-ts/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mister-Hope/bcrypt-ts.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Mr.Hope",
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Mister-Hope/bcrypt-ts.git"
   },
   "type": "module",
   "exports": {
@@ -52,9 +52,7 @@
   "scripts": {
     "bench": "vitest bench",
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "changelog": " commit-and-tag-version --skip.bump --skip.commit --skip.tag",
     "clean": "rimraf dist",
-    "commit": "pnpm git-cz",
     "dev": "rollup -c rollup.config.ts --configPlugin esbuild -w",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint --fix .",
@@ -63,14 +61,14 @@
     "prepublish": "pnpm clean && pnpm build",
     "test": "vitest --coverage"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "nano-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "*.{js,ts}": "eslint --fix"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-git"
-    }
   },
   "devDependencies": {
     "@codecov/rollup-plugin": "1.9.0",
@@ -80,8 +78,6 @@
     "@rollup/plugin-replace": "6.0.2",
     "@types/node": "22.13.5",
     "@vitest/coverage-istanbul": "3.0.6",
-    "commit-and-tag-version": "12.5.0",
-    "cz-git": "1.11.0",
     "eslint": "9.21.0",
     "eslint-config-mister-hope": "0.7.5",
     "husky": "9.1.7",
@@ -95,12 +91,12 @@
     "vitest": "3.0.6"
   },
   "packageManager": "pnpm@10.4.1",
+  "engines": {
+    "node": ">=18"
+  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
     ]
-  },
-  "engines": {
-    "node": ">=18"
   }
 }
