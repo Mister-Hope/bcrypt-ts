@@ -90,7 +90,7 @@
     "typescript": "5.8.2",
     "vitest": "3.0.8"
   },
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.6.1",
   "engines": {
     "node": ">=18"
   },
