@@ -7,12 +7,12 @@
 [![Test](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml/badge.svg)](https://github.com/Mister-Hope/bcrypt-ts/actions/workflows/test.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/15982/projects/28024/branches/898932/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=15982&pid=28024&bid=898932) [![codecov](https://codecov.io/gh/Mister-Hope/bcrypt-ts/graph/badge.svg?token=oO5gZq2aHe)](https://codecov.io/gh/Mister-Hope/bcrypt-ts)
 
-Optimized bcrypt in TypeSCript with zero dependencies. Compatible to the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on Node.js and also working in the browser.
+Optimized bcrypt in TypeScript with zero dependencies. Compatible to the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on Node.js and also working in the browser.
 
-## Why bcrypt-ts instead of bycrypt.js
+## Why bcrypt-ts instead of bcrypt.js
 
-- Bcrypt-ts is fully written in TypeScript
-- Bcrypt-ts provide dual ESM/cjs mode for both node and browser env, and you can directly
+- bcrypt-ts is fully written in TypeScript
+- bcrypt-ts provides dual ESM/cjs mode for both Node.js and browser environments
 - Minified output
 - Tree shakable
 
@@ -22,7 +22,7 @@ Besides incorporating a salt to protect against rainbow table attacks, bcrypt is
 iteration count can be increased to make it slower, so it remains resistant to brute-force search attacks even with
 increasing computation power. ([see](http://en.wikipedia.org/wiki/Bcrypt))
 
-While bcrypt-ts is compatible to the C++ bcrypt binding, it is built by pure JavaScript and thus slower ([about 30%](https://github.com/dcodeIO/bcrypt.js/wiki/Benchmark)), effectively reducing the number of iterations that can be processed in an equal time span.
+While bcrypt-ts is compatible with the C++ bcrypt binding, it is built in pure JavaScript and thus slower ([about 30%](https://github.com/dcodeIO/bcrypt.js/wiki/Benchmark)), effectively reducing the number of iterations that can be processed in an equal time span.
 
 The maximum input length is 72 bytes (note that UTF-8 encoded characters use up to 4 bytes) and the length of generated
 hashes is 60 characters. Note that maximum input length is not implicitly checked by the library for compatibility with
@@ -61,10 +61,8 @@ In the browser, bcrypt.js relies on [Web Crypto API](http://www.w3.org/TR/WebCry
 ### How to choose between them
 
 - If you are using this package in pure Node.js environment, then you will probably use the node bundle.
-
-- If you are using bundler like webpack and vite, then you will probably use the browser bundle.
-
-- If you meet any issues that a incorrect bundle is used, you can use `bcrypt-ts/node` and `bcrypt-ts/browser` to force the correct bundle.
+- If you are using bundler like webpack or Vite, then you will probably use the browser bundle.
+- If you meet any issues where an incorrect bundle is used, you can import from `bcrypt-ts/node` and `bcrypt-ts/browser` to manually select the bundle.
 
 ### Usage - Sync
 
@@ -118,8 +116,8 @@ import { compare } from "bcrypt-ts";
 // Load hash from your password DB
 const hash = "xxxxxx";
 
-await bcrypt.compare("B4c0//", hash); // true
-await bcrypt.compare("not_bacon", hash); // false
+await compare("B4c0//", hash); // true
+await compare("not_bacon", hash); // false
 ```
 
 Auto-gen a salt and hash:
@@ -127,7 +125,7 @@ Auto-gen a salt and hash:
 ```ts
 import { hash } from "bcrypt-ts";
 
-const result = await bcrypt.hash("B4c0//", 10);
+const result = await hash("B4c0//", 10);
 // Store hash in your password DB
 ```
 
