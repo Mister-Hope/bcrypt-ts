@@ -58,7 +58,7 @@ export default defineConfig([
     ],
     plugins: [
       alias({ entries: { random: "./random/node" } }),
-      esbuild({ charset: "utf8", minify: true, target: "node18" }),
+      esbuild({ charset: "utf8", minify: true, target: "node20" }),
     ],
     external: ["node:crypto"],
   },
