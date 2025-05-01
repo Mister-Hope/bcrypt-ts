@@ -32,7 +32,7 @@ export default defineConfig([
       esbuild({
         charset: "utf8",
         minify: true,
-        target: ["chrome87", "firefox78", "edge88", "safari14"],
+        target: ["es2020", "edge88", "firefox78", "chrome87", "safari14"],
       }),
       codecovRollupPlugin({
         enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
