@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v6.0.0...v7.0.0) (2025-05-01)
+
+### ⚠ BREAKING CHANGES
+
+- Drop support for Node.js 18
+
 ## [6.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v5.0.1...v6.0.0) (2025-02-23)
 
 ### ⚠ BREAKING CHANGES
