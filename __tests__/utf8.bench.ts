@@ -2,6 +2,8 @@ import { bench, describe } from "vitest";
 
 import { convertToUFT8Bytes, oldConvertToUFT8Bytes } from "../src/uft8.js";
 
+const samplePassword = "ajsoifmn1-931nf!&(r3qba7(@";
+
 const loremShort = `\
 Lorem ipsum odor amet, consectetuer adipiscing elit. Fames ex vivamus ut eros consectetur quam? Condimentum tristique bibendum orci; eleifend habitasse felis. Platea libero conubia at risus nisi. Taciti turpis pharetra magnis duis parturient. Odio commodo sollicitudin vel risus viverra arcu nisi. Molestie mauris facilisi metus dolor fringilla et est duis. Sollicitudin enim torquent fusce adipiscing luctus elit. Taciti ultricies sodales augue conubia lacus fusce. Venenatis condimentum montes lectus curae varius odio pulvinar.
 `;
@@ -19,51 +21,75 @@ Aliquet curae fames vel; purus dolor maecenas. Fermentum sagittis nulla ornare b
 `;
 
 describe("convertToUFT8Bytes", () => {
-  bench(
-    "TextEncoder lorem",
-    () => {
-      convertToUFT8Bytes(loremShort);
-    },
-    { iterations: 10 },
-  );
+  describe("hello", () => {
+    bench(
+      "TextEncoder",
+      () => {
+        convertToUFT8Bytes("hello");
+      },
+      { iterations: 10 },
+    );
 
-  bench(
-    "original lorem",
-    () => {
-      oldConvertToUFT8Bytes(loremShort);
-    },
-    { iterations: 10 },
-  );
+    bench(
+      "original",
+      () => {
+        oldConvertToUFT8Bytes("hello");
+      },
+      { iterations: 10 },
+    );
+  });
 
-  bench(
-    "TextEncoder lorem long",
-    () => {
-      convertToUFT8Bytes(loremLong);
-    },
-    { iterations: 10 },
-  );
+  describe("samplePassword", () => {
+    bench(
+      "TextEncoder",
+      () => {
+        convertToUFT8Bytes(samplePassword);
+      },
+      { iterations: 10 },
+    );
 
-  bench(
-    "original lorem long",
-    () => {
-      oldConvertToUFT8Bytes(loremLong);
-    },
-    { iterations: 10 },
-  );
+    bench(
+      "original",
+      () => {
+        oldConvertToUFT8Bytes(samplePassword);
+      },
+      { iterations: 10 },
+    );
+  });
 
-  bench(
-    "TextEncoder hello",
-    () => {
-      convertToUFT8Bytes("hello");
-    },
-    { iterations: 10 },
-  );
+  describe("lorem", () => {
+    bench(
+      "TextEncoder",
+      () => {
+        convertToUFT8Bytes(loremShort);
+      },
+      { iterations: 10 },
+    );
 
-  bench(
-    "original hello",
-    () => {
-      oldConvertToUFT8Bytes("hello");
-    },
-    { iterations: 10 },
-  );
+    bench(
+      "original",
+      () => {
+        oldConvertToUFT8Bytes(loremShort);
+      },
+      { iterations: 10 },
+    );
+  });
+
+  describe("lorem long", () => {
+    bench(
+      "TextEncoder",
+      () => {
+        convertToUFT8Bytes(loremLong);
+      },
+      { iterations: 10 },
+    );
+
+    bench(
+      "original",
+      () => {
+        oldConvertToUFT8Bytes(loremLong);
+      },
+      { iterations: 10 },
+    );
+  });
 });
