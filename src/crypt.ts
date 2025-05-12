@@ -120,7 +120,7 @@ const encipher = (
 };
 
 const streamToWord = (
-  data: number[],
+  data: Uint8Array | number[],
   offp: number,
 ): { key: number; offp: number } => {
   let word = 0;
@@ -134,7 +134,7 @@ const streamToWord = (
 };
 
 const key = (
-  key: number[],
+  key: Uint8Array | number[],
   P: Int32Array<ArrayBuffer>,
   S: Int32Array<ArrayBuffer>,
 ): void => {
@@ -171,7 +171,7 @@ const key = (
  */
 const expensiveKeyScheduleBlowFish = (
   data: number[],
-  key: number[],
+  key: Uint8Array,
   P: Int32Array<ArrayBuffer>,
   S: Int32Array<ArrayBuffer>,
 ): void => {
@@ -226,7 +226,7 @@ const expensiveKeyScheduleBlowFish = (
  * @param progressCallback Callback called with the current progress
  */
 export const crypt = (
-  bytes: number[],
+  bytes: Uint8Array,
   salt: number[],
   rounds: number,
   sync: boolean,

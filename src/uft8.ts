@@ -1,3 +1,5 @@
+const encoder = new TextEncoder();
+
 /** Calculates the byte length of a string encoded as UTF8. */
 export const getUTF8ByteLength = (content: string): number => {
   let length = 0,
@@ -20,7 +22,11 @@ export const getUTF8ByteLength = (content: string): number => {
 };
 
 /** Converts a string to an array of UTF8 bytes. */
-export const convertToUFT8Bytes = (content: string): number[] => {
+export const convertToUFT8Bytes = (content: string): Uint8Array =>
+  encoder.encode(content);
+
+/** Converts a string to an array of UTF8 bytes. */
+export const oldConvertToUFT8Bytes = (content: string): number[] => {
   let offset = 0,
     c1,
     c2;
