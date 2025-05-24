@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@codecov/rollup-plugin':
-        specifier: 1.9.0
-        version: 1.9.0(rollup@4.41.0)
+        specifier: 1.9.1
+        version: 1.9.1(rollup@4.41.0)
       '@commitlint/cli':
         specifier: 19.8.1
         version: 19.8.1(@types/node@22.15.18)(typescript@5.8.3)
@@ -150,12 +150,12 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@codecov/bundler-plugin-core@1.9.0':
-    resolution: {integrity: sha512-UB0I5haL0gnF4ei46wxNo7ptCHqFAh3PnmcLLeXRb2zV7HeobOF8WRjOW/PwrXAphPS/6bL7PDUmh3ruVObGtg==}
+  '@codecov/bundler-plugin-core@1.9.1':
+    resolution: {integrity: sha512-dt3ic7gMswz4p/qdkYPVJwXlLiLsz55rBBn2I7mr0HTG8pCoLRqnANJIwo5WrqGBZgPyVSMPBqBra6VxLWfDyA==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/rollup-plugin@1.9.0':
-    resolution: {integrity: sha512-3cFPZ2uoAYsxI/RI8KytPk95GgTM3+J8VKbhhrMgwvZbekcSa+8/5nSItmq3g57swEF6MERUm0UXmlLi9THq2g==}
+  '@codecov/rollup-plugin@1.9.1':
+    resolution: {integrity: sha512-osRI84VBvm8kL0/7w6FLTHsooYGkGbXp1KiVM8d3cH488bvR+E3au+09KxaLQtNNjcZXDGW5m8071EJLN7olAw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       rollup: 3.x || 4.x
@@ -2376,7 +2376,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@codecov/bundler-plugin-core@1.9.0':
+  '@codecov/bundler-plugin-core@1.9.1':
     dependencies:
       '@actions/core': 1.11.1
       '@actions/github': 6.0.0
@@ -2385,9 +2385,9 @@ snapshots:
       unplugin: 1.16.1
       zod: 3.24.3
 
-  '@codecov/rollup-plugin@1.9.0(rollup@4.41.0)':
+  '@codecov/rollup-plugin@1.9.1(rollup@4.41.0)':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.9.0
+      '@codecov/bundler-plugin-core': 1.9.1
       rollup: 4.41.0
       unplugin: 1.16.1
 
