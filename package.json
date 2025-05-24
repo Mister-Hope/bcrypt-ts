@@ -71,7 +71,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "devDependencies": {
-    "@codecov/rollup-plugin": "1.9.0",
+    "@codecov/rollup-plugin": "1.9.1",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@rollup/plugin-alias": "5.1.1",
