@@ -1,12 +1,12 @@
-// eslint-disable-next-line import-x/no-unresolved
-import { random } from "random";
+import { nextTick } from "@nextTick";
+import { random } from "@random";
 
 import { encodeBase64 } from "./base64.js";
 import {
   BCRYPT_SALT_LEN,
   GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 } from "./constant.js";
-import { getIllegalArgumentsTypeError, nextTick } from "./utils.js";
+import { getIllegalArgumentsTypeError } from "./utils.js";
 
 /**
  * Synchronously generates a salt.

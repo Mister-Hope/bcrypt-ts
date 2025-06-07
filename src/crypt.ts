@@ -1,3 +1,5 @@
+import { nextTick } from "@nextTick";
+
 import {
   BCRYPT_SALT_LEN,
   BLOWFISH_NUM_ROUNDS,
@@ -6,7 +8,6 @@ import {
   P_ORIG,
   S_ORIG,
 } from "./constant.js";
-import { nextTick } from "./utils.js";
 
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 

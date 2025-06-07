@@ -9,15 +9,12 @@
  */
 export const random = (length: number): number[] => {
   try {
-    const crypto =
-      typeof window !== "undefined" ? window.crypto : globalThis.crypto;
-
     const array = new Uint32Array(length);
 
-    crypto.getRandomValues(array);
+    globalThis.crypto.getRandomValues(array);
 
     return Array.from(array);
   } catch {
-    throw Error("WebCryptoAPI is not available");
+    throw Error("WebCryptoAPI / globalThis is not available");
   }
 };

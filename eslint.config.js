@@ -8,4 +8,9 @@ export default hope({
       },
     },
   },
+  tsImport: {
+    rules: {
+      "import-x/no-unresolved": ["error", { ignore: ["^@"] }],
+    },
+  },
 });

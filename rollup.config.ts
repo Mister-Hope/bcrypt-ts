@@ -27,8 +27,9 @@ export default defineConfig([
     ],
     plugins: [
       (alias as unknown as typeof alias.default)({
-        entries: { random: "./random/browser" },
+        entries: { nextTick: "./nextTick/browser", random: "./random/browser" },
       }),
+
       esbuild({
         charset: "utf8",
         minify: true,
@@ -57,7 +58,9 @@ export default defineConfig([
       },
     ],
     plugins: [
-      alias({ entries: { random: "./random/node" } }),
+      (alias as unknown as typeof alias.default)({
+        entries: { nextTick: "./nextTick/node", random: "./random/node" },
+      }),
       esbuild({ charset: "utf8", minify: true, target: "node20" }),
     ],
     external: ["node:crypto"],

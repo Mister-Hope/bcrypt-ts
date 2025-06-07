@@ -1,5 +1,7 @@
+import { nextTick } from "@nextTick";
+
 import { hash as hashAsync, hashSync } from "./hash.js";
-import { getIllegalArgumentsTypeError, nextTick } from "./utils.js";
+import { getIllegalArgumentsTypeError } from "./utils.js";
 
 /**
  * Synchronously tests a string against a hash.
