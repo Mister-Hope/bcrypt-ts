@@ -1,7 +1,6 @@
 import { nextTick } from "nextTick";
 
 import {
-  BCRYPT_SALT_LEN,
   BLOWFISH_NUM_ROUNDS,
   C_ORIG,
   MAX_EXECUTION_TIME,
@@ -235,25 +234,6 @@ export const crypt = (
 ): Promise<number[]> | number[] => {
   const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
-
-  // Validate
-  if (rounds < 4 || rounds > 31) {
-    const err = new Error(`Illegal number of rounds (4-31): ${rounds}`);
-
-    if (!sync) return Promise.reject(err);
-
-    throw err;
-  }
-
-  if (salt.length !== BCRYPT_SALT_LEN) {
-    const err = new Error(
-      `Illegal salt length: ${salt.length} != ${BCRYPT_SALT_LEN}`,
-    );
-
-    if (!sync) return Promise.reject(err);
-
-    throw err;
-  }
 
   rounds = (1 << rounds) >>> 0;
 

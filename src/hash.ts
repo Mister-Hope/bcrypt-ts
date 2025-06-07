@@ -13,7 +13,7 @@ import { convertToUFT8Bytes } from "./uft8.js";
  *
  * @private
  * @param content String to hash
- * @param salt Salt to use, actually never null
+ * @param salt Salt to use
  * @param progressCallback Callback called with the current progress
  */
 const _hash = (
@@ -60,8 +60,11 @@ const _hash = (
     offset = 4;
   }
 
+  const roundText = salt.substring(offset, offset + 2);
+  const rounds = /\d\d/.test(roundText) ? Number(roundText) : null;
+
   // Extract number of rounds
-  if (salt.charAt(offset + 2) > "$") {
+  if (rounds === null) {
     const err = new Error("Missing salt rounds");
 
     if (!sync) return Promise.reject(err);
@@ -69,34 +72,38 @@ const _hash = (
     throw err;
   }
 
-  const r1 = parseInt(salt.substring(offset, offset + 1), 10) * 10,
-    r2 = parseInt(salt.substring(offset + 1, offset + 2), 10),
-    rounds = r1 + r2,
-    realSalt = salt.substring(offset + 3, offset + 25);
+  if (rounds < 4 || rounds > 31) {
+    const err = new Error(`Illegal number of rounds (4-31): ${rounds}`);
+
+    if (!sync) return Promise.reject(err);
+
+    throw err;
+  }
+
+  const realSalt = salt.substring(offset + 3, offset + 25);
 
   content += minor >= "a" ? "\x00" : "";
 
   const passwordBytes = convertToUFT8Bytes(content),
     saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
 
+  if (saltBytes.length !== BCRYPT_SALT_LEN) {
+    const err = new Error(`Illegal salt: ${realSalt}`);
+
+    if (!sync) return Promise.reject(err);
+
+    throw err;
+  }
+
   /**
    * Finishes hashing.
    * @param bytes Byte array
    */
-  const finish = (bytes: number[]): string => {
-    const res = [];
-
-    res.push("$2");
-    if (minor >= "a") res.push(minor);
-    res.push("$");
-    if (rounds < 10) res.push("0");
-    res.push(rounds.toString());
-    res.push("$");
-    res.push(encodeBase64(saltBytes, saltBytes.length));
-    res.push(encodeBase64(bytes, C_ORIG.length * 4 - 1));
-
-    return res.join("");
-  };
+  const finish = (bytes: number[]): string =>
+    `$2${minor >= "a" ? minor : ""}$${rounds < 10 ? "0" : ""}${rounds}$${encodeBase64(
+      saltBytes,
+      BCRYPT_SALT_LEN,
+    )}${encodeBase64(bytes, C_ORIG.length * 4 - 1)}`;
 
   // Sync
   if (!sync)

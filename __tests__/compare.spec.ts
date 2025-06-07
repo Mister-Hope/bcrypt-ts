@@ -37,10 +37,16 @@ describe("compare", () => {
     );
   });
 
-  it("should resolve false for invalid hash length", async () => {
+  it("should resolve false for invalid hash", async () => {
     await expect(compare("hello", "invalid")).resolves.toBe(false);
-    await expect(compare("hello", "short")).resolves.toBe(false);
-    await expect(compare("hello", "a".repeat(59))).resolves.toBe(false);
+  });
+
+  it("should throw error with invalid salt", async () => {
+    const invalidHash = "$2b$10$" + "@".repeat(22) + "x".repeat(31);
+
+    await expect(compare("hello", invalidHash)).rejects.toThrow(
+      "Illegal salt: @@@@@@@@@@@@@@@@@@@@@@",
+    );
   });
 });
 
@@ -75,9 +81,15 @@ describe("compareSync", () => {
     );
   });
 
-  it("should return false for invalid hash length", () => {
+  it("should resolve false for invalid hash", () => {
     expect(compareSync("hello", "invalid")).toBe(false);
-    expect(compareSync("hello", "short")).toBe(false);
-    expect(compareSync("hello", "a".repeat(59))).toBe(false);
+  });
+
+  it("should throw error with invalid salt", () => {
+    const invalidHash = "$2b$10$" + "@".repeat(22) + "x".repeat(31);
+
+    expect(() => compareSync("hello", invalidHash)).toThrow(
+      "Illegal salt: @@@@@@@@@@@@@@@@@@@@@@",
+    );
   });
 });

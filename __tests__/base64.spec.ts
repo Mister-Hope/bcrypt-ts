@@ -30,9 +30,49 @@ describe("decodeBase64", () => {
     ]);
   });
 
+  it("should throw error for invalid length", () => {
+    expect(() => decodeBase64("test", 0)).toThrow("Illegal length: 0");
+    expect(() => decodeBase64("test", -1)).toThrow("Illegal length: -1");
+  });
+
   it("should handle invalid characters gracefully", () => {
     const result = decodeBase64("invalid@char", 5);
 
     expect(result.length).toBeLessThanOrEqual(5);
+  });
+
+  it("should handle early break on invalid c1 or c2", () => {
+    // Test with string containing invalid characters at start
+    const result = decodeBase64("@invalid", 5);
+
+    expect(result.length).toBe(0);
+  });
+
+  it("should handle early break on invalid c3", () => {
+    // Test with valid start but invalid c3
+    const result = decodeBase64("..@", 5);
+
+    expect(result.length).toBe(1);
+  });
+
+  it("should handle early break on invalid c4", () => {
+    // Test with valid start but invalid c4 to trigger c4 === -1 case
+    const result = decodeBase64("...@", 5);
+
+    expect(result.length).toBe(3);
+  });
+
+  it("should handle length limit reached", () => {
+    // Test case where length limit is reached
+    const result = decodeBase64("..CA.uOD/eaGAOmJB.yMBv.", 3);
+
+    expect(result.length).toBe(3);
+  });
+
+  it("should handle string length limit reached", () => {
+    // Test case where off >= stringLength
+    const result = decodeBase64("..", 5);
+
+    expect(result.length).toBe(1);
   });
 });
