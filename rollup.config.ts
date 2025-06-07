@@ -40,7 +40,7 @@ export default defineConfig([
       }),
       codecovRollupPlugin({
         enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-        bundleName: "main",
+        bundleName: "browser",
         uploadToken: process.env.CODECOV_TOKEN,
       }),
     ],
@@ -65,6 +65,11 @@ export default defineConfig([
         entries: { nextTick: "./nextTick/node", random: "./random/node" },
       }),
       esbuild({ charset: "utf8", minify: true, target: "node20" }),
+      codecovRollupPlugin({
+        enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+        bundleName: "node",
+        uploadToken: process.env.CODECOV_TOKEN,
+      }),
     ],
     external: ["node:crypto"],
   },
