@@ -1,5 +1,5 @@
-import { nextTick } from "@nextTick";
-import { random } from "@random";
+import { nextTick } from "nextTick";
+import { random } from "random";
 
 import { encodeBase64 } from "./base64.js";
 import {
@@ -20,18 +20,9 @@ export const genSaltSync = (
 ): string => {
   if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
 
-  if (rounds < 4) rounds = 4;
-  else if (rounds > 31) rounds = 31;
+  rounds = rounds < 4 ? 4 : rounds > 31 ? 31 : rounds;
 
-  const salt = [];
-
-  salt.push("$2b$");
-  if (rounds < 10) salt.push("0");
-  salt.push(rounds.toString());
-  salt.push("$");
-  salt.push(encodeBase64(random(BCRYPT_SALT_LEN), BCRYPT_SALT_LEN)); // May throw
-
-  return salt.join("");
+  return `$2b$${rounds < 10 ? "0" : ""}${rounds}$${encodeBase64(random(BCRYPT_SALT_LEN), BCRYPT_SALT_LEN)}`;
 };
 
 /**
@@ -41,12 +32,9 @@ export const genSaltSync = (
  */
 export const genSalt = (
   rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
-): Promise<string> => {
-  if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
-
-  return new Promise((resolve, reject) =>
+): Promise<string> =>
+  new Promise((resolve, reject) =>
     nextTick(() => {
-      // Pretty thin, but salting is fast enough
       try {
         resolve(genSaltSync(rounds));
       } catch (err) {
@@ -54,4 +42,3 @@ export const genSalt = (
       }
     }),
   );
-};

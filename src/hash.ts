@@ -23,7 +23,7 @@ const _hash = (
   progressCallback?: (progress: number) => void,
 ): Promise<string> | string => {
   if (typeof content !== "string" || typeof salt !== "string") {
-    const err = new Error("Invalid content / salt: Not a string");
+    const err = new Error("Invalid content / salt: not a string");
 
     if (!sync) return Promise.reject(err);
 
@@ -125,15 +125,12 @@ const _hash = (
 export const hashSync = (
   contentString: string,
   salt: string | number = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
-): string => {
-  if (typeof salt === "number") salt = genSaltSync(salt);
-  if (typeof contentString !== "string" || typeof salt !== "string")
-    throw Error(
-      "Illegal arguments: " + typeof contentString + ", " + typeof salt,
-    );
-
-  return _hash(contentString, salt, true) as string;
-};
+): string =>
+  _hash(
+    contentString,
+    typeof salt === "number" ? genSaltSync(salt) : salt,
+    true,
+  ) as string;
 
 /**
  * Asynchronously generates a hash for the given string.
@@ -143,26 +140,14 @@ export const hashSync = (
  * @param progressCallback Callback successively called with the percentage of rounds completed
  *  (0.0 - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
  */
-export const hash = function (
+export const hash = async (
   contentString: string,
   salt: number | string,
   progressCallback?: (progress: number) => void,
-): Promise<string> {
-  if (typeof contentString === "string" && typeof salt === "number")
-    return genSalt(salt).then(
-      (salt) =>
-        _hash(contentString, salt, false, progressCallback) as Promise<string>,
-    );
-
-  if (typeof contentString === "string" && typeof salt === "string")
-    return _hash(
-      contentString,
-      salt,
-      false,
-      progressCallback,
-    ) as Promise<string>;
-
-  return Promise.reject(
-    new Error(`Illegal arguments: ${typeof contentString}, ${typeof salt}`),
-  );
-};
+): Promise<string> =>
+  _hash(
+    contentString,
+    typeof salt === "number" ? await genSalt(salt) : salt,
+    false,
+    progressCallback,
+  ) as Promise<string>;

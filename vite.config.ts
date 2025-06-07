@@ -5,10 +5,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      "@nextTick": path.resolve(__dirname, "src/nextTick/node.ts"),
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      "@random": path.resolve(__dirname, "src/random/node.ts"),
+      nextTick: path.resolve(__dirname, "src/nextTick/node.ts"),
+      random: path.resolve(__dirname, "src/random/node.ts"),
     },
   },
   test: {

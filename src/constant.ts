@@ -9,20 +9,14 @@ export const MAX_EXECUTION_TIME = 100;
 export const BASE64_CODE =
   "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split("");
 
-const naturalNumber = Array.from({ length: 64 }, (_, i) => i);
-const fillNegative1 = (length: number): number[] =>
-  Array<number>(length).fill(-1);
-
 export const BASE64_INDEX = [
-  ...fillNegative1(46),
-  0,
-  1,
-  ...naturalNumber.slice(54, 64),
-  ...fillNegative1(7),
-  ...naturalNumber.slice(2, 28),
-  ...fillNegative1(6),
-  ...naturalNumber.slice(28, 54),
-  ...fillNegative1(5),
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+  -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
+  -1, -1, -1, -1, -1, -1, -1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, -1, -1, -1, -1, -1, -1, 28,
+  29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
+  48, 49, 50, 51, 52, 53, -1, -1, -1, -1, -1,
 ];
 
 export const P_ORIG = [

@@ -1,4 +1,4 @@
-import { nextTick } from "@nextTick";
+import { nextTick } from "nextTick";
 
 import { hash as hashAsync, hashSync } from "./hash.js";
 import { getIllegalArgumentsTypeError } from "./utils.js";
@@ -15,7 +15,7 @@ export const compareSync = (content: string, hash: string): boolean => {
 
   if (hash.length !== 60) return false;
 
-  return hashSync(content, hash.substring(0, hash.length - 31)) === hash;
+  return hashSync(content, hash.substring(0, 29)) === hash;
 };
 
 /**

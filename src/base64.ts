@@ -72,7 +72,7 @@ export const decodeBase64 = (
     code = contentString.charCodeAt(off++);
     c2 = code < BASE64_INDEX.length ? BASE64_INDEX[code] : -1;
 
-    if (c1 == -1 || c2 == -1) break;
+    if (c1 === -1 || c2 === -1) break;
 
     o = (c1 << 2) >>> 0;
     o |= (c2 & 0x30) >> 4;
@@ -82,7 +82,7 @@ export const decodeBase64 = (
 
     code = contentString.charCodeAt(off++);
     c3 = code < BASE64_INDEX.length ? BASE64_INDEX[code] : -1;
-    if (c3 == -1) break;
+    if (c3 === -1) break;
     o = ((c2 & 0x0f) << 4) >>> 0;
     o |= (c3 & 0x3c) >> 2;
     result.push(String.fromCharCode(o));

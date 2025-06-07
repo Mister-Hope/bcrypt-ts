@@ -27,7 +27,10 @@ export default defineConfig([
     ],
     plugins: [
       (alias as unknown as typeof alias.default)({
-        entries: { nextTick: "./nextTick/browser", random: "./random/browser" },
+        entries: {
+          nextTick: "./nextTick/browser",
+          random: "./random/browser",
+        },
       }),
 
       esbuild({

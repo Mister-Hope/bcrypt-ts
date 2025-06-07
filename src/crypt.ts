@@ -1,4 +1,4 @@
-import { nextTick } from "@nextTick";
+import { nextTick } from "nextTick";
 
 import {
   BCRYPT_SALT_LEN,
@@ -151,7 +151,7 @@ const key = (
   for (let i = 0; i < pLength; i++) {
     sw = streamToWord(key, offp);
     offp = sw.offp;
-    P[i] = P[i] ^ sw.key;
+    P[i] ^= sw.key;
   }
 
   for (let i = 0; i < pLength; i += 2) {
@@ -188,7 +188,7 @@ const expensiveKeyScheduleBlowFish = (
   for (let i = 0; i < pLength; i++) {
     sw = streamToWord(key, offp);
     offp = sw.offp;
-    P[i] = P[i] ^ sw.key;
+    P[i] ^= sw.key;
   }
 
   offp = 0;
@@ -285,10 +285,10 @@ export const crypt = (
       const result: number[] = [];
 
       for (let i = 0; i < cLength; i++) {
-        result.push(((cdata[i] >> 24) & 0xff) >>> 0);
-        result.push(((cdata[i] >> 16) & 0xff) >>> 0);
-        result.push(((cdata[i] >> 8) & 0xff) >>> 0);
-        result.push((cdata[i] & 0xff) >>> 0);
+        result.push((cdata[i] >> 24) & 0xff);
+        result.push((cdata[i] >> 16) & 0xff);
+        result.push((cdata[i] >> 8) & 0xff);
+        result.push(cdata[i] & 0xff);
       }
 
       if (!sync) return Promise.resolve(result);
