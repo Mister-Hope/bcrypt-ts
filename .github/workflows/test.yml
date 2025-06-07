@@ -33,10 +33,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - name: Install project
+      - name: Install Deps
         run: pnpm install --frozen-lockfile
 
-      - name: Build project
+      - name: Build project and upload bundle
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           NODE_OPTIONS: --max_old_space_size=8192
@@ -45,19 +45,20 @@ jobs:
       - name: Linter test
         run: pnpm lint
 
-      - name: Unit test
+      - name: Unit test and save results
         env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           NODE_OPTIONS: --max_old_space_size=8192
-        run: pnpm test
+        run: pnpm run test
 
       - name: Upload coverage
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == '22' }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 22 }}
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == '22' }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 22 }}
         uses: codecov/test-results-action@v1
         with:
           file: ./coverage/test-report.junit.xml
