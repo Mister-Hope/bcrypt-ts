@@ -1,5 +1,3 @@
-import { randomBytes } from "node:crypto";
-
 /**
  * @private
  *
@@ -10,6 +8,4 @@ import { randomBytes } from "node:crypto";
  * @throws {Error} If no random implementation is available
  */
 export const random = (length: number): Buffer | Uint8Array<ArrayBuffer> =>
-  typeof crypto === "undefined"
-    ? randomBytes(length)
-    : crypto.getRandomValues(new Uint8Array(length));
+  globalThis.crypto.getRandomValues(new Uint8Array(length));
