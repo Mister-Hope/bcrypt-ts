@@ -78,7 +78,7 @@
     "@rollup/plugin-replace": "6.0.2",
     "@types/node": "22.17.1",
     "@vitest/coverage-istanbul": "3.2.4",
-    "eslint": "9.32.0",
+    "eslint": "9.33.0",
     "eslint-config-mister-hope": "0.9.6",
     "husky": "9.1.7",
     "nano-staged": "0.8.0",
