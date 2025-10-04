@@ -87,7 +87,7 @@
     "rollup": "4.52.4",
     "rollup-plugin-dts": "6.2.3",
     "rollup-plugin-esbuild": "6.2.1",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "vitest": "3.2.4"
   },
   "packageManager": "pnpm@10.17.0",
