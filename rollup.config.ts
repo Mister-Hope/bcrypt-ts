@@ -26,7 +26,7 @@ export default defineConfig([
       },
     ],
     plugins: [
-      (alias as unknown as typeof alias.default)({
+      alias({
         entries: {
           nextTick: "./nextTick/browser",
           random: "./random/browser",
@@ -61,7 +61,7 @@ export default defineConfig([
       },
     ],
     plugins: [
-      (alias as unknown as typeof alias.default)({
+      alias({
         entries: { nextTick: "./nextTick/node", random: "./random/node" },
       }),
       esbuild({ charset: "utf8", minify: true, target: "node20" }),
