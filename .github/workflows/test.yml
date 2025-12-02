@@ -2,12 +2,12 @@ name: Test
 
 on:
   push:
-    branches:
-      - main
-      - work
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
 
 jobs:
   linter-and-unit:
@@ -39,7 +39,6 @@ jobs:
       - name: Build project and upload bundle
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-          NODE_OPTIONS: --max_old_space_size=8192
         run: pnpm run build
 
       - name: Linter test
@@ -52,13 +51,13 @@ jobs:
         run: pnpm run test
 
       - name: Upload coverage
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 22 }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 24 }}
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 22 }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && matrix.node-version == 24 }}
         uses: codecov/test-results-action@v1
         with:
           file: ./coverage/test-report.junit.xml
