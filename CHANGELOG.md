@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v7.0.0...v8.0.0) (2025-05-01)
+
+### ⚠ BREAKING CHANGES
+
+- Drop cjs and umd builds
+
+### Features
+
+- use `scheduler.postTask` if possible ([6b2e2c5](https://github.com/Mister-Hope/bcrypt-ts/commit/6b2e2c576012d494e10c6479cd7d76e863930d47))
+
 ## [7.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v6.0.0...v7.0.0) (2025-05-01)
 
 ### ⚠ BREAKING CHANGES
