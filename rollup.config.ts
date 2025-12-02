@@ -9,19 +9,8 @@ export default defineConfig([
     input: "./src/index.ts",
     output: [
       {
-        file: "./dist/browser.cjs",
-        format: "cjs",
-        sourcemap: true,
-      },
-      {
-        file: "./dist/browser.mjs",
+        file: "./dist/browser.js",
         format: "esm",
-        sourcemap: true,
-      },
-      {
-        file: "./dist/browser.umd.js",
-        format: "umd",
-        name: "bcrypt",
         sourcemap: true,
       },
     ],
@@ -50,12 +39,7 @@ export default defineConfig([
     input: "./src/index.ts",
     output: [
       {
-        file: "./dist/node.cjs",
-        format: "cjs",
-        sourcemap: true,
-      },
-      {
-        file: "./dist/node.mjs",
+        file: "./dist/node.js",
         format: "esm",
         sourcemap: true,
       },
@@ -77,10 +61,8 @@ export default defineConfig([
   {
     input: "./src/index.ts",
     output: [
-      { file: "./dist/browser.d.cts", format: "esm" },
-      { file: "./dist/browser.d.mts", format: "esm" },
-      { file: "./dist/node.d.cts", format: "esm" },
-      { file: "./dist/node.d.mts", format: "esm" },
+      { file: "./dist/browser.d.ts", format: "esm" },
+      { file: "./dist/node.d.ts", format: "esm" },
     ],
     plugins: [dts()],
     external: ["node:crypto"],

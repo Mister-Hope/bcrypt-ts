@@ -224,6 +224,5 @@ export const genSalt: (rounds?: number) => Promise<string>;
 ## Credits
 
 - Based on [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
-
   - Based on work started by Shane Girish at [bcrypt-nodejs](https://github.com/shaneGirish/bcrypt-nodejs)
     - Based on [javascript-bcrypt](http://code.google.com/p/javascript-bcrypt/) (New BSD-licensed).
