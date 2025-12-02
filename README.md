@@ -11,10 +11,10 @@ Optimized bcrypt in TypeScript with zero dependencies. Compatible to the C++ [bc
 
 ## Why bcrypt-ts instead of bcrypt.js
 
-- bcrypt-ts is fully written in TypeScript
-- bcrypt-ts provides dual ESM/cjs mode for both Node.js and browser environments
+- Fully written in TypeScript
+- Provides separate ESM modules for Node.js and browser environments
 - Minified output
-- Tree shakable
+- Better tree-shaking
 
 ## Security considerations
 
