@@ -82,7 +82,7 @@
     "typescript": "5.9.3",
     "vitest": "4.0.17"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.28.1",
   "engines": {
     "node": ">=20"
   },
