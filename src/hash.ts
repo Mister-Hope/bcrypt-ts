@@ -1,9 +1,7 @@
+/* oxlint-disable unicorn/prefer-code-point */
+
 import { decodeBase64, encodeBase64 } from "./base64.js";
-import {
-  BCRYPT_SALT_LEN,
-  C_ORIG,
-  GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
-} from "./constant.js";
+import { BCRYPT_SALT_LEN, C_ORIG, GENERATE_SALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
 import { crypt } from "./crypt.js";
 import { genSalt, genSaltSync } from "./salt.js";
 import { convertToUFT8Bytes } from "./uft8.js";
@@ -16,6 +14,7 @@ import { convertToUFT8Bytes } from "./uft8.js";
  * @param salt Salt to use
  * @param progressCallback Callback called with the current progress
  */
+// oxlint-disable-next-line max-statements
 const _hash = (
   content: string,
   salt: string,
@@ -35,7 +34,7 @@ const _hash = (
   let offset: number;
 
   if (salt.charAt(0) !== "$" || salt.charAt(1) !== "2") {
-    const err = new Error("Invalid salt version: " + salt.substring(0, 2));
+    const err = new Error(`Invalid salt version: ${salt.slice(0, 2)}`);
 
     if (!sync) return Promise.reject(err);
 
@@ -47,11 +46,8 @@ const _hash = (
     offset = 3;
   } else {
     minor = salt.charAt(2);
-    if (
-      (minor !== "a" && minor !== "b" && minor !== "y") ||
-      salt.charAt(3) !== "$"
-    ) {
-      const err = Error("Invalid salt revision: " + salt.substring(2, 4));
+    if ((minor !== "a" && minor !== "b" && minor !== "y") || salt.charAt(3) !== "$") {
+      const err = new Error(`Invalid salt revision: ${salt.slice(2, 4)}`);
 
       if (!sync) return Promise.reject(err);
 
@@ -60,7 +56,7 @@ const _hash = (
     offset = 4;
   }
 
-  const roundText = salt.substring(offset, offset + 2);
+  const roundText = salt.slice(offset, offset + 2);
   const rounds = /\d\d/.test(roundText) ? Number(roundText) : null;
 
   // Extract number of rounds
@@ -80,9 +76,9 @@ const _hash = (
     throw err;
   }
 
-  const realSalt = salt.substring(offset + 3, offset + 25);
+  const realSalt = salt.slice(offset + 3, offset + 25);
 
-  content += minor >= "a" ? "\x00" : "";
+  content += minor >= "a" ? "\u0000" : "";
 
   const passwordBytes = convertToUFT8Bytes(content),
     saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
@@ -108,18 +104,10 @@ const _hash = (
   // Sync
   if (!sync)
     return (
-      crypt(
-        passwordBytes,
-        saltBytes,
-        rounds,
-        false,
-        progressCallback,
-      ) as Promise<number[]>
+      crypt(passwordBytes, saltBytes, rounds, false, progressCallback) as Promise<number[]>
     ).then((bytes) => finish(bytes));
 
-  return finish(
-    crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[],
-  );
+  return finish(crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[]);
 };
 
 /**
@@ -133,11 +121,7 @@ export const hashSync = (
   contentString: string,
   salt: string | number = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): string =>
-  _hash(
-    contentString,
-    typeof salt === "number" ? genSaltSync(salt) : salt,
-    true,
-  ) as string;
+  _hash(contentString, typeof salt === "number" ? genSaltSync(salt) : salt, true) as string;
 
 /**
  * Asynchronously generates a hash for the given string.

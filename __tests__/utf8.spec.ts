@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { convertToUFT8Bytes, getUTF8ByteLength } from "../src/uft8.js";
 
-describe("getUTF8ByteLength", () => {
+describe(getUTF8ByteLength, () => {
   it("should handle ASCII characters", () => {
     expect(getUTF8ByteLength("hello")).toBe(5);
     expect(getUTF8ByteLength("")).toBe(0);
@@ -24,7 +24,7 @@ describe("getUTF8ByteLength", () => {
   });
 });
 
-describe("convertToUFT8Bytes", () => {
+describe(convertToUFT8Bytes, () => {
   it("should handle ASCII characters", () => {
     const result = convertToUFT8Bytes("hello");
 

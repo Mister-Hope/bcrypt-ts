@@ -15,7 +15,7 @@ export const compareSync = (content: string, hash: string): boolean => {
 
   if (hash.length !== 60) return false;
 
-  return hashSync(content, hash.substring(0, 29)) === hash;
+  return hashSync(content, hash.slice(0, 29)) === hash;
 };
 
 /**
@@ -33,11 +33,7 @@ export const compare = (
 ): Promise<boolean> =>
   new Promise((resolve, reject) => {
     if (typeof content !== "string" || typeof hash !== "string") {
-      nextTick(() =>
-        reject(
-          new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`),
-        ),
-      );
+      nextTick(() => reject(new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`)));
 
       return;
     }
@@ -48,7 +44,7 @@ export const compare = (
       return;
     }
 
-    hashAsync(content, hash.substring(0, 29), progressCallback)
+    hashAsync(content, hash.slice(0, 29), progressCallback)
       .then((comp) => resolve(comp === hash))
       .catch((err: unknown) => reject(err as Error));
   });

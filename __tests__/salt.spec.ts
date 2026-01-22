@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { genSalt, genSaltSync } from "../src/index.js";
 
-describe("genSalt", () => {
+describe(genSalt, () => {
   it("should generate valid salt", async () => {
     const salt = await genSalt(10);
 
@@ -12,13 +12,9 @@ describe("genSalt", () => {
 
   it("should throw error for invalid argument types", async () => {
     // @ts-expect-error: error type check
-    await expect(() => genSalt("invalid")).rejects.toThrow(
-      "Illegal arguments: string",
-    );
+    await expect(() => genSalt("invalid")).rejects.toThrow("Illegal arguments: string");
     // @ts-expect-error: error type check
-    await expect(() => genSalt(null)).rejects.toThrow(
-      "Illegal arguments: object",
-    );
+    await expect(() => genSalt(null)).rejects.toThrow("Illegal arguments: object");
   });
 
   it("should handle boundary rounds", async () => {
@@ -29,7 +25,7 @@ describe("genSalt", () => {
   });
 });
 
-describe("genSaltSync", () => {
+describe(genSaltSync, () => {
   it("should generate valid salt", () => {
     const salt = genSaltSync(10);
 

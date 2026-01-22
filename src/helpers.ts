@@ -24,10 +24,9 @@ export const getRounds = (hash: string): number => {
 export const getSalt = (hash: string): string => {
   if (typeof hash !== "string") throw getIllegalArgumentsTypeError(hash);
 
-  if (hash.length !== 60)
-    throw new Error(`Illegal hash length: ${hash.length} != 60`);
+  if (hash.length !== 60) throw new Error(`Illegal hash length: ${hash.length} != 60`);
 
-  return hash.substring(0, 29);
+  return hash.slice(0, 29);
 };
 
 /**

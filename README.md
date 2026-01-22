@@ -170,10 +170,7 @@ export const compare: (
  * @param salt Salt length to generate or salt to use, default to 10
  * @returns Resulting hash
  */
-export const hashSync: (
-  contentString: string,
-  salt?: string | number,
-) => string;
+export const hashSync: (contentString: string, salt?: string | number) => string;
 /**
  * Asynchronously generates a hash for the given string.
  *
