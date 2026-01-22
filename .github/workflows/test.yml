@@ -37,11 +37,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build project and upload bundle
+        if: ${{ !cancelled() && matrix.node-version == 24 }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: pnpm run build
 
       - name: Linter test
+        if: ${{ !cancelled() && matrix.node-version == 24 }}
         run: pnpm lint
 
       - name: Unit test and save results
