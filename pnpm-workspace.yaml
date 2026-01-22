@@ -1,0 +1,8 @@
+overrides:
+  vite@7: npm:rolldown-vite@7
+
+packageExtensions:
+  "@codecov/rollup-plugin":
+    peerDependenciesMeta:
+      rollup:
+        optional: true

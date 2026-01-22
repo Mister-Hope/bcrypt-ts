@@ -43,9 +43,9 @@
   },
   "scripts": {
     "bench": "vitest bench",
-    "build": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "build": "tsdown",
     "clean": "rimraf dist",
-    "dev": "rollup -c rollup.config.ts --configPlugin esbuild -w",
+    "dev": "tsdown -w",
     "lint": "pnpm oxlint --fix && pnpm oxfmt",
     "prepare": "husky",
     "prepublish": "pnpm clean && pnpm build",
@@ -79,11 +79,5 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.28.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "unrs-resolver"
-    ]
-  }
+  "packageManager": "pnpm@10.28.1"
 }
