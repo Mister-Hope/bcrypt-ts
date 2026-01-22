@@ -157,6 +157,11 @@ const key = (key: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffe
 
 /**
  * Expensive key schedule Blowfish.
+ *
+ * @param data Data bytes
+ * @param key Key bytes
+ * @param P P-array
+ * @param S S-boxes
  */
 const expensiveKeyScheduleBlowFish = (
   data: number[],
@@ -213,6 +218,9 @@ const expensiveKeyScheduleBlowFish = (
  * @param salt Salt bytes to use
  * @param rounds Number of rounds
  * @param progressCallback Callback called with the current progress
+ * @param sync Whether to run synchronously
+ *
+ * @returns Crypted bytes
  */
 // oxlint-disable-next-line max-params
 export const crypt = (
@@ -237,6 +245,8 @@ export const crypt = (
 
   /**
    * Calculates the next round.
+   *
+   * @returns Next round or result
    */
   const next = (): Promise<number[] | void> | number[] | void => {
     if (progressCallback) progressCallback(round / rounds);
@@ -251,8 +261,9 @@ export const crypt = (
         if (Date.now() - start > MAX_EXECUTION_TIME) break;
       }
     } else {
-      for (let i = 0; i < 64; i++)
+      for (let i = 0; i < 64; i++) {
         for (let j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
+      }
       const result: number[] = [];
 
       for (let i = 0; i < cLength; i++) {
@@ -267,13 +278,14 @@ export const crypt = (
       return result;
     }
 
-    if (!sync)
+    if (!sync) {
       return new Promise((resolve) =>
         // oxlint-disable-next-line no-promise-executor-return
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
         }),
       );
+    }
   };
 
   if (!sync) return next() as Promise<number[]>;

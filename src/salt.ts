@@ -24,6 +24,7 @@ export const genSaltSync = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): string 
  * Asynchronously generates a salt.
  *
  * @param rounds Number of rounds to use, defaults to 10 if omitted
+ * @returns Promise resolving to the resulting salt
  */
 export const genSalt = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): Promise<string> =>
   new Promise((resolve, reject) =>

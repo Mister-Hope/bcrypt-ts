@@ -1,4 +1,4 @@
-/* oxlint-disable unicorn/prefer-code-point */
+// oxlint-disable unicorn/prefer-code-point
 
 import { decodeBase64, encodeBase64 } from "./base64.js";
 import { BCRYPT_SALT_LEN, C_ORIG, GENERATE_SALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
@@ -12,6 +12,9 @@ import { convertToUFT8Bytes } from "./uft8.js";
  * @param content String to hash
  * @param salt Salt to use
  * @param progressCallback Callback called with the current progress
+ * @param sync Whether to run synchronously
+ *
+ * @returns Resulting hash
  */
 // oxlint-disable-next-line max-statements
 const _hash = (
@@ -93,6 +96,8 @@ const _hash = (
   /**
    * Finishes hashing.
    * @param bytes Byte array
+   *
+   * @returns Resulting hash
    */
   const finish = (bytes: number[]): string =>
     `$2${minor >= "a" ? minor : ""}$${rounds < 10 ? "0" : ""}${rounds}$${encodeBase64(
@@ -101,10 +106,11 @@ const _hash = (
     )}${encodeBase64(bytes, C_ORIG.length * 4 - 1)}`;
 
   // Sync
-  if (!sync)
+  if (!sync) {
     return (
       crypt(passwordBytes, saltBytes, rounds, false, progressCallback) as Promise<number[]>
     ).then((bytes) => finish(bytes));
+  }
 
   return finish(crypt(passwordBytes, saltBytes, rounds, true, progressCallback) as number[]);
 };
@@ -129,6 +135,8 @@ export const hashSync = (
  * @param salt Salt length to generate or salt to use
  * @param progressCallback Callback successively called with the percentage of rounds completed
  *  (0.0 - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
+ *
+ * @returns Promise resolving to the resulting hash
  */
 export const hash = async (
   contentString: string,

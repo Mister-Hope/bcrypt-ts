@@ -1,6 +1,11 @@
-/* oxlint-disable unicorn/prefer-code-point */
+// oxlint-disable unicorn/prefer-code-point
 
-/** Calculates the byte length of a string encoded as UTF8. */
+/**
+ * Calculates the byte length of a string encoded as UTF8.
+ *
+ * @param content String to measure
+ * @returns Byte length
+ */
 export const getUTF8ByteLength = (content: string): number => {
   let charCodePoint = 0;
   let length = 0;
@@ -21,7 +26,12 @@ export const getUTF8ByteLength = (content: string): number => {
   return length;
 };
 
-/** Converts a string to an array of UTF8 bytes. */
+/**
+ * Converts a string to an array of UTF8 bytes.
+ *
+ * @param content String to convert
+ * @returns Byte array
+ */
 export const convertToUFT8Bytes = (content: string): number[] => {
   let offset = 0;
   let c1;

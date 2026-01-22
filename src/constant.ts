@@ -1,3 +1,5 @@
+// oxlint-disable no-magic-numbers
+
 export const BCRYPT_SALT_LEN = 16;
 
 export const GENERATE_SALT_DEFAULT_LOG2_ROUNDS = 10;
