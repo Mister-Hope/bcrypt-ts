@@ -24,7 +24,7 @@
   ],
   "type": "module",
   "browser": "./dist/browser.js",
-  "types": "./dist/node.d.mts",
+  "types": "./dist/node.d.ts",
   "exports": {
     ".": {
       "types": "./dist/node.d.ts",
