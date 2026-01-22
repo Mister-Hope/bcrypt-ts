@@ -23,7 +23,7 @@
     "dist"
   ],
   "type": "module",
-  "browser": "./dist/browser.mjs",
+  "browser": "./dist/browser.js",
   "types": "./dist/node.d.mts",
   "exports": {
     ".": {
