@@ -15,7 +15,6 @@ export default defineConfig({
       include: ["src/**/*.ts"],
       exclude: ["src/**/browser.ts"],
     },
-    include: ["**/*.spec.ts"],
 
     ...(process.env.CODECOV_TOKEN
       ? {
