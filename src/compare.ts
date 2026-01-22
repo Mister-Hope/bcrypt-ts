@@ -8,14 +8,17 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
  *
  * @param content String to compare
  * @param hash Hash to test against
+ *
+ * @returns `true` if the string matches the hash, `false` otherwise
  */
 export const compareSync = (content: string, hash: string): boolean => {
-  if (typeof content !== "string" || typeof hash !== "string")
+  if (typeof content !== "string" || typeof hash !== "string") {
     throw getIllegalArgumentsTypeError(content, hash);
+  }
 
   if (hash.length !== 60) return false;
 
-  return hashSync(content, hash.substring(0, 29)) === hash;
+  return hashSync(content, hash.slice(0, 29)) === hash;
 };
 
 /**
@@ -25,6 +28,8 @@ export const compareSync = (content: string, hash: string): boolean => {
  * @param hash Data to be compared to
  * @param progressCallback Callback successively called with the percentage of rounds completed
  *  (0.0 - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
+ *
+ * @returns Promise resolving to `true` if the data matches the hash, `false` otherwise
  */
 export const compare = (
   content: string,
@@ -33,11 +38,7 @@ export const compare = (
 ): Promise<boolean> =>
   new Promise((resolve, reject) => {
     if (typeof content !== "string" || typeof hash !== "string") {
-      nextTick(() =>
-        reject(
-          new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`),
-        ),
-      );
+      nextTick(() => reject(new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`)));
 
       return;
     }
@@ -48,7 +49,8 @@ export const compare = (
       return;
     }
 
-    hashAsync(content, hash.substring(0, 29), progressCallback)
+    hashAsync(content, hash.slice(0, 29), progressCallback)
       .then((comp) => resolve(comp === hash))
+      // oxlint-disable-next-line promise/prefer-await-to-callbacks
       .catch((err: unknown) => reject(err as Error));
   });

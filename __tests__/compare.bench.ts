@@ -14,7 +14,7 @@ Eget ultricies potenti aptent augue eget quisque erat habitasse feugiat. Commodo
 Aliquet curae fames vel; purus dolor maecenas. Fermentum sagittis nulla ornare bibendum justo pellentesque lacinia, sem eleifend. Justo eleifend etiam suspendisse sagittis; fames ipsum. Sodales cras mus non metus sapien parturient maximus adipiscing blandit. Praesent amet risus; auctor molestie eros morbi. Torquent pulvinar sodales; a nisi cursus tempus. Dignissim ipsum placerat nisl litora auctor.
 `;
 
-describe("compare", async () => {
+describe(compare, async () => {
   const hellow5Hash = await hash("hello", 5);
   const hellow10Hash = await hash("hello", 10);
   const lorenHash = await hash(lorem, 5);
@@ -44,7 +44,7 @@ describe("compare", async () => {
   );
 });
 
-describe("compareSync", () => {
+describe(compareSync, () => {
   const hellow5Hash = hashSync("hello", 5);
   const hellow10Hash = hashSync("hello", 10);
   const lorenHash = hashSync(lorem, 5);

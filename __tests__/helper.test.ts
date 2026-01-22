@@ -1,14 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  genSaltSync,
-  getRounds,
-  getSalt,
-  hashSync,
-  truncates,
-} from "../src/index.js";
+import { genSaltSync, getRounds, getSalt, hashSync, truncates } from "../src/index.js";
 
-describe("getSalt", () => {
+describe(getSalt, () => {
   it("should work", () => {
     const hash1 = hashSync("hello", genSaltSync());
     const salt = getSalt(hash1);
@@ -30,7 +24,7 @@ describe("getSalt", () => {
   });
 });
 
-describe("getRounds", () => {
+describe(getRounds, () => {
   it("should work", () => {
     const hash1 = hashSync("hello", genSaltSync());
 
@@ -45,11 +39,11 @@ describe("getRounds", () => {
   });
 });
 
-describe("truncates", () => {
+describe(truncates, () => {
   it("should work", () => {
-    expect(truncates("hello")).toBe(false);
-    expect(truncates("a".repeat(72))).toBe(false);
-    expect(truncates("a".repeat(73))).toBe(true);
+    expect(truncates("hello")).toBeFalsy();
+    expect(truncates("a".repeat(72))).toBeFalsy();
+    expect(truncates("a".repeat(73))).toBeTruthy();
   });
 
   it("should throw error for invalid argument types", () => {

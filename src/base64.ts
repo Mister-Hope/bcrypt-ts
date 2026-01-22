@@ -1,3 +1,4 @@
+// oxlint-disable unicorn/prefer-code-point unicorn/prefer-math-trunc
 import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
 
 /**
@@ -5,13 +6,11 @@ import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
  *
  * @param byteArray Byte array
  * @param length Maximum input length
+ *
+ * @returns Encoded string
  */
-export const encodeBase64 = (
-  byteArray: number[] | Buffer,
-  length: number,
-): string => {
-  if (length <= 0 || length > byteArray.length)
-    throw Error(`Illegal length: ${length}`);
+export const encodeBase64 = (byteArray: number[] | Buffer, length: number): string => {
+  if (length <= 0 || length > byteArray.length) throw new Error(`Illegal length: ${length}`);
 
   let off = 0;
   let c1: number;
@@ -48,12 +47,12 @@ export const encodeBase64 = (
  *
  * @param contentString String to decode
  * @param length Maximum output length
+ *
+ * @returns Decoded bytes
  */
-export const decodeBase64 = (
-  contentString: string,
-  length: number,
-): number[] => {
-  if (length <= 0) throw Error(`Illegal length: ${length}`);
+// oxlint-disable-next-line max-statements
+export const decodeBase64 = (contentString: string, length: number): number[] => {
+  if (length <= 0) throw new Error(`Illegal length: ${length}`);
 
   const stringLength = contentString.length;
   let off = 0;

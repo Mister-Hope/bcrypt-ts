@@ -1,6 +1,4 @@
 /**
- * @private
- *
  * Generates cryptographically secure random bytes.
  *
  * @param length Bytes length
@@ -13,8 +11,8 @@ export const random = (length: number): number[] => {
 
     globalThis.crypto.getRandomValues(array);
 
-    return Array.from(array);
+    return [...array];
   } catch {
-    throw Error("WebCryptoAPI / globalThis is not available");
+    throw new Error("WebCryptoAPI / globalThis is not available");
   }
 };

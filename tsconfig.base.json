@@ -5,7 +5,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": false,
-    "baseUrl": "./",
     "checkJs": false,
     "diagnostics": false,
     "downlevelIteration": false,

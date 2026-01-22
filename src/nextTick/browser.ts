@@ -5,10 +5,7 @@ interface SchedulerPostTaskOptions {
 }
 
 interface Scheduler {
-  postTask<T>(
-    callback: () => T | Promise<T>,
-    options?: SchedulerPostTaskOptions,
-  ): Promise<T>;
+  postTask<T>(callback: () => T | Promise<T>, options?: SchedulerPostTaskOptions): Promise<T>;
 
   yield?(): Promise<void>;
 }
@@ -18,8 +15,6 @@ declare global {
 }
 
 /**
- * @private
- *
  * Continues with the callback on the next tick.
  */
 export const nextTick: (callback: () => void) => unknown =

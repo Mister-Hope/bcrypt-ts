@@ -9,17 +9,22 @@
   "bugs": {
     "url": "https://github.com/Mister-Hope/bcrypt-ts/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Mister-Hope/bcrypt-ts.git"
-  },
   "license": "MIT",
   "author": {
     "name": "Mr.Hope",
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mister-Hope/bcrypt-ts.git"
+  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "browser": "./dist/browser.js",
+  "types": "./dist/node.d.ts",
   "exports": {
     ".": {
       "types": "./dist/node.d.ts",
@@ -36,60 +41,43 @@
       "default": "./dist/node.js"
     }
   },
-  "browser": "./dist/browser.mjs",
-  "types": "./dist/node.d.mts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "bench": "vitest bench",
-    "build": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "build": "tsdown",
     "clean": "rimraf dist",
-    "dev": "rollup -c rollup.config.ts --configPlugin esbuild -w",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier",
-    "lint:eslint": "eslint --fix .",
-    "lint:prettier": "prettier --check --write .",
+    "dev": "tsdown -w",
+    "lint": "pnpm oxlint --fix && pnpm oxfmt",
     "prepare": "husky",
     "prepublish": "pnpm clean && pnpm build",
     "test": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@codecov/rollup-plugin": "1.9.1",
+    "@commitlint/cli": "20.3.1",
+    "@commitlint/config-conventional": "20.3.1",
+    "@types/node": "25.0.9",
+    "@vitest/coverage-istanbul": "4.0.17",
+    "husky": "9.1.7",
+    "nano-staged": "0.9.0",
+    "oxfmt": "0.26.0",
+    "oxlint": "1.41.0",
+    "oxlint-tsgolint": "0.11.1",
+    "rimraf": "6.1.2",
+    "tsdown": "0.20.0-beta.4",
+    "typescript": "5.9.3",
+    "vitest": "4.0.17"
+  },
+  "nano-staged": {
+    "**/*": "oxfmt --no-error-on-unmatched-pattern",
+    "*.{js,ts}": "oxlint --fix"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
-  "nano-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.{js,ts}": "eslint --fix"
-  },
-  "devDependencies": {
-    "@codecov/rollup-plugin": "1.9.1",
-    "@commitlint/cli": "20.3.1",
-    "@commitlint/config-conventional": "20.3.1",
-    "@rollup/plugin-alias": "6.0.0",
-    "@rollup/plugin-replace": "6.0.3",
-    "@types/node": "24.10.9",
-    "@vitest/coverage-istanbul": "4.0.17",
-    "eslint": "9.39.2",
-    "eslint-config-mister-hope": "0.9.6",
-    "husky": "9.1.7",
-    "nano-staged": "0.9.0",
-    "prettier": "3.8.0",
-    "rimraf": "6.1.2",
-    "rollup": "4.55.1",
-    "rollup-plugin-dts": "6.3.0",
-    "rollup-plugin-esbuild": "6.2.1",
-    "typescript": "5.9.3",
-    "vitest": "4.0.17"
-  },
-  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": ">=20"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "unrs-resolver"
-    ]
-  }
+  "packageManager": "pnpm@10.28.1"
 }

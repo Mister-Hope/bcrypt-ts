@@ -1,15 +1,11 @@
+// oxlint-disable prefer-destructuring
 import { nextTick } from "nextTick";
 
-import {
-  BLOWFISH_NUM_ROUNDS,
-  C_ORIG,
-  MAX_EXECUTION_TIME,
-  P_ORIG,
-  S_ORIG,
-} from "./constant.js";
+import { BLOWFISH_NUM_ROUNDS, C_ORIG, MAX_EXECUTION_TIME, P_ORIG, S_ORIG } from "./constant.js";
 
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 
+// oxlint-disable-next-line max-statements
 const encipher = (
   lr: Int32Array<ArrayBuffer>,
   off: number,
@@ -119,10 +115,7 @@ const encipher = (
   return lr;
 };
 
-const streamToWord = (
-  data: number[],
-  offp: number,
-): { key: number; offp: number } => {
+const streamToWord = (data: number[], offp: number): { key: number; offp: number } => {
   let word = 0;
 
   for (let i = 0; i < 4; ++i) {
@@ -133,11 +126,7 @@ const streamToWord = (
   return { key: word, offp };
 };
 
-const key = (
-  key: number[],
-  P: Int32Array<ArrayBuffer>,
-  S: Int32Array<ArrayBuffer>,
-): void => {
+const key = (key: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffer>): void => {
   const pLength = P.length;
   const sLength = S.length;
   let offp = 0;
@@ -149,7 +138,7 @@ const key = (
 
   for (let i = 0; i < pLength; i++) {
     sw = streamToWord(key, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     P[i] ^= sw.key;
   }
 
@@ -168,6 +157,11 @@ const key = (
 
 /**
  * Expensive key schedule Blowfish.
+ *
+ * @param data Data bytes
+ * @param key Key bytes
+ * @param P P-array
+ * @param S S-boxes
  */
 const expensiveKeyScheduleBlowFish = (
   data: number[],
@@ -186,7 +180,7 @@ const expensiveKeyScheduleBlowFish = (
 
   for (let i = 0; i < pLength; i++) {
     sw = streamToWord(key, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     P[i] ^= sw.key;
   }
 
@@ -194,10 +188,10 @@ const expensiveKeyScheduleBlowFish = (
 
   for (let i = 0; i < pLength; i += 2) {
     sw = streamToWord(data, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     lr[0] ^= sw.key;
     sw = streamToWord(data, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     lr[1] ^= sw.key;
     lr = encipher(lr, 0, P, S);
     P[i] = lr[0];
@@ -206,10 +200,10 @@ const expensiveKeyScheduleBlowFish = (
 
   for (let i = 0; i < sLength; i += 2) {
     sw = streamToWord(data, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     lr[0] ^= sw.key;
     sw = streamToWord(data, offp);
-    offp = sw.offp;
+    ({ offp } = sw);
     lr[1] ^= sw.key;
     lr = encipher(lr, 0, P, S);
     S[i] = lr[0];
@@ -224,7 +218,11 @@ const expensiveKeyScheduleBlowFish = (
  * @param salt Salt bytes to use
  * @param rounds Number of rounds
  * @param progressCallback Callback called with the current progress
+ * @param sync Whether to run synchronously
+ *
+ * @returns Crypted bytes
  */
+// oxlint-disable-next-line max-params
 export const crypt = (
   bytes: number[],
   salt: number[],
@@ -235,6 +233,7 @@ export const crypt = (
   const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
 
+  // oxlint-disable-next-line unicorn/prefer-math-trunc
   rounds = (1 << rounds) >>> 0;
 
   const P = new Int32Array(P_ORIG);
@@ -246,6 +245,8 @@ export const crypt = (
 
   /**
    * Calculates the next round.
+   *
+   * @returns Next round or result
    */
   const next = (): Promise<number[] | void> | number[] | void => {
     if (progressCallback) progressCallback(round / rounds);
@@ -260,8 +261,9 @@ export const crypt = (
         if (Date.now() - start > MAX_EXECUTION_TIME) break;
       }
     } else {
-      for (let i = 0; i < 64; i++)
+      for (let i = 0; i < 64; i++) {
         for (let j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
+      }
       const result: number[] = [];
 
       for (let i = 0; i < cLength; i++) {
@@ -276,12 +278,14 @@ export const crypt = (
       return result;
     }
 
-    if (!sync)
+    if (!sync) {
       return new Promise((resolve) =>
+        // oxlint-disable-next-line no-promise-executor-return
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
         }),
       );
+    }
   };
 
   if (!sync) return next() as Promise<number[]>;

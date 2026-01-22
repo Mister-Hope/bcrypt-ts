@@ -14,7 +14,7 @@ Eget ultricies potenti aptent augue eget quisque erat habitasse feugiat. Commodo
 Aliquet curae fames vel; purus dolor maecenas. Fermentum sagittis nulla ornare bibendum justo pellentesque lacinia, sem eleifend. Justo eleifend etiam suspendisse sagittis; fames ipsum. Sodales cras mus non metus sapien parturient maximus adipiscing blandit. Praesent amet risus; auctor molestie eros morbi. Torquent pulvinar sodales; a nisi cursus tempus. Dignissim ipsum placerat nisl litora auctor.
 `;
 
-describe("hash", () => {
+describe(hash, () => {
   bench(
     "hash hello 5",
     async () => {
@@ -40,7 +40,7 @@ describe("hash", () => {
   );
 });
 
-describe("hashSync", () => {
+describe(hashSync, () => {
   bench(
     "hashSync hello 5",
     () => {
