@@ -40,10 +40,13 @@
     "import/no-unassigned-import": ["error", { "allow": ["**/*.css", "**/*.scss"] }],
     // named export is preferred in our codebase
     "import/prefer-default-export": "off",
+
+    "jsdoc/check-tag-names": ["error", { "typed": true }],
     "jsdoc/require-param": "off",
     "jsdoc/require-param-type": "off",
     "jsdoc/require-returns": "off",
     "jsdoc/require-returns-type": "off",
+
     "promise/always-return": "off",
     "promise/avoid-new": "off",
     "promise/prefer-await-to-then": "off",

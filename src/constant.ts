@@ -6,9 +6,7 @@ export const BLOWFISH_NUM_ROUNDS = 16;
 
 export const MAX_EXECUTION_TIME = 100;
 
-export const BASE64_CODE = "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split(
-  "",
-);
+export const BASE64_CODE = [..."./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"];
 
 export const BASE64_INDEX = [
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2012 Nevins Bartolomeo <nevins.bartolomeo@gmail.com>
  * Copyright (c) 2012 Shane Girish <shaneGirish@gmail.com>
  * Copyright (c) 2014 Daniel Wirtz <dcode@dcode.io>
@@ -26,7 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
+/*
  * @license bcrypt.js (c) 2013 Daniel Wirtz <dcode@dcode.io>
  * Released under the Apache License, Version 2.0
  * see: https://github.com/dcodeIO/bcrypt.js for details

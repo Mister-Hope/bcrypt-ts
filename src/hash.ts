@@ -9,7 +9,6 @@ import { convertToUFT8Bytes } from "./uft8.js";
 /**
  * Internally hashes a string.
  *
- * @private
  * @param content String to hash
  * @param salt Salt to use
  * @param progressCallback Callback called with the current progress

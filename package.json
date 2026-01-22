@@ -46,8 +46,7 @@
     "build": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf dist",
     "dev": "rollup -c rollup.config.ts --configPlugin esbuild -w",
-    "lint": "pnpm lint:eslint && pnpm oxfmt",
-    "lint:eslint": "eslint --fix .",
+    "lint": "pnpm oxlint --fix && pnpm oxfmt",
     "prepare": "husky",
     "prepublish": "pnpm clean && pnpm build",
     "test": "vitest --coverage"
@@ -56,29 +55,21 @@
     "@codecov/rollup-plugin": "1.9.1",
     "@commitlint/cli": "20.3.1",
     "@commitlint/config-conventional": "20.3.1",
-    "@rollup/plugin-alias": "6.0.0",
-    "@rollup/plugin-replace": "6.0.3",
     "@types/node": "25.0.9",
     "@vitest/coverage-istanbul": "4.0.17",
-    "eslint": "9.39.2",
-    "eslint-config-mister-hope": "0.9.6",
     "husky": "9.1.7",
     "nano-staged": "0.9.0",
     "oxfmt": "0.26.0",
     "oxlint": "1.41.0",
     "oxlint-tsgolint": "0.11.1",
-    "prettier": "3.8.1",
     "rimraf": "6.1.2",
-    "rollup": "4.55.3",
-    "rollup-plugin-dts": "6.3.0",
-    "rollup-plugin-esbuild": "6.2.1",
     "tsdown": "0.20.0-beta.4",
     "typescript": "5.9.3",
     "vitest": "4.0.17"
   },
   "nano-staged": {
     "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{js,ts}": "eslint --fix"
+    "*.{js,ts}": "oxlint --fix"
   },
   "commitlint": {
     "extends": [

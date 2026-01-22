@@ -46,5 +46,6 @@ export const compare = (
 
     hashAsync(content, hash.slice(0, 29), progressCallback)
       .then((comp) => resolve(comp === hash))
+      // oxlint-disable-next-line promise/prefer-await-to-callbacks
       .catch((err: unknown) => reject(err as Error));
   });

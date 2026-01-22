@@ -27,6 +27,7 @@ export const genSaltSync = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): string 
  */
 export const genSalt = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): Promise<string> =>
   new Promise((resolve, reject) =>
+    // oxlint-disable-next-line no-promise-executor-return
     nextTick(() => {
       try {
         resolve(genSaltSync(rounds));

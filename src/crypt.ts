@@ -269,6 +269,7 @@ export const crypt = (
 
     if (!sync)
       return new Promise((resolve) =>
+        // oxlint-disable-next-line no-promise-executor-return
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
         }),
