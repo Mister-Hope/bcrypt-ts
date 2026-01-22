@@ -37,7 +37,8 @@ export const convertToUFT8Bytes = (content: string): number[] => {
   let c1;
   let c2;
 
-  const buffer = Array.from<number>({ length: getUTF8ByteLength(content) });
+  // oxlint-disable-next-line unicorn/no-new-array
+  const buffer = new Array<number>(getUTF8ByteLength(content));
 
   for (let i = 0, k = content.length; i < k; ++i) {
     c1 = content.charCodeAt(i);
