@@ -6,8 +6,7 @@
     "suspicious": "warn",
     "pedantic": "warn",
     "perf": "warn",
-    "style": "warn",
-    "restriction": "off"
+    "style": "warn"
   },
   "plugins": ["import", "unicorn", "oxc", "promise", "jsdoc", "vitest", "node"],
   "rules": {
@@ -88,7 +87,6 @@
 
     "catch-error-name": ["warn", { "name": "err" }],
     "curly": ["warn", "multi-line"],
-    "id-length": "off",
     "max-dependencies": ["warn", { "ignoreTypeImports": true, "max": 15 }],
     "max-lines": ["warn", { "max": 500, "skipBlankLines": true, "skipComments": true }],
     "max-lines-per-function": [
@@ -96,7 +94,10 @@
       { "max": 100, "skipBlankLines": true, "skipComments": true }
     ],
     "max-params": ["warn", 4],
-    "max-statements": ["warn", { "max": 30 }]
+    "max-statements": ["warn", { "max": 30 }],
+
+    // per project settings
+    "id-length": "off"
   },
   "overrides": [
     {
