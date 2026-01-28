@@ -1,4 +1,7 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["coverage/", "dist/", "node_modules/", "pnpm-lock.yaml"]
+  "ignorePatterns": ["coverage/", "dist/"],
+  "experimentalSortPackageJson": {
+    "sortScripts": true
+  }
 }
