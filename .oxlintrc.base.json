@@ -8,6 +8,7 @@
     "style": "warn"
   },
   "rules": {
+    // oxlint core rules
     // we should not enforce capitalized comments
     "capitalized-comments": "off",
     // function names can be omitted if the name can be inferred from the context
@@ -39,7 +40,7 @@
     "sort-keys": "off",
 
     // import plugin rules
-
+    // exports shall be at their declaration location
     "import/exports-last": "off",
     // usually we just export vue components as default export without naming it
     "import/no-anonymous-default-export": "off",
@@ -51,7 +52,6 @@
     "import/prefer-default-export": "off",
 
     // jsdoc plugin rules
-
     // duplicated typescript related jsdoc shall be warned
     "jsdoc/check-tag-names": ["warn", { "typed": true }],
     // we do not require types in jsdoc since we use TypeScript
@@ -84,6 +84,11 @@
     // support starts with chrome71, firefox68. safari12.1, node12
     // leaving it to warn for edge cases
     "unicorn/prefer-global-this": "warn",
+
+    // typescript plugin rules
+    // disable unsafe type assertion checks
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/strict-boolean-expressions": ["warn", { "allowNullableString": true }],
 
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],

@@ -46,7 +46,8 @@
     "build": "tsdown",
     "clean": "rimraf dist",
     "dev": "tsdown -w",
-    "lint": "pnpm oxlint --fix && pnpm oxfmt",
+    "lint": "oxlint --type-aware . --fix && oxfmt",
+    "lint:check": "oxlint --type-aware . && oxfmt --check",
     "prepare": "husky",
     "prepublish": "pnpm clean && pnpm build",
     "test": "vitest --coverage"

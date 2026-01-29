@@ -1,5 +1,3 @@
-// oxlint-disable no-magic-numbers
-
 export const BCRYPT_SALT_LEN = 16;
 
 export const GENERATE_SALT_DEFAULT_LOG2_ROUNDS = 10;
@@ -8,6 +6,7 @@ export const BLOWFISH_NUM_ROUNDS = 16;
 
 export const MAX_EXECUTION_TIME = 100;
 
+// oxlint-disable-next-line typescript/no-misused-spread
 export const BASE64_CODE = [..."./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"];
 
 export const BASE64_INDEX = [
