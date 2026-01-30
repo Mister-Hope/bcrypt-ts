@@ -46,8 +46,8 @@
     "build": "tsdown",
     "clean": "rimraf dist",
     "dev": "tsdown -w",
-    "lint": "oxlint --type-aware . --fix && oxfmt",
-    "lint:check": "oxlint --type-aware . && oxfmt --check",
+    "lint": "oxlint --fix --type-aware --type-check --report-unused-disable-directives --deny-warnings && oxfmt",
+    "lint:check": "oxlint --type-aware --type-check --report-unused-disable-directives --deny-warnings && oxfmt --check",
     "prepare": "husky",
     "prepublish": "pnpm clean && pnpm build",
     "test": "vitest --coverage"
@@ -56,13 +56,13 @@
     "@codecov/rollup-plugin": "1.9.1",
     "@commitlint/cli": "20.3.1",
     "@commitlint/config-conventional": "20.3.1",
-    "@types/node": "25.0.10",
+    "@types/node": "25.1.0",
     "@vitest/coverage-istanbul": "4.0.18",
     "husky": "9.1.7",
     "nano-staged": "0.9.0",
-    "oxfmt": "0.26.0",
-    "oxlint": "1.41.0",
-    "oxlint-tsgolint": "0.11.1",
+    "oxfmt": "0.27.0",
+    "oxlint": "1.42.0",
+    "oxlint-tsgolint": "0.11.3",
     "rimraf": "6.1.2",
     "tsdown": "0.20.1",
     "typescript": "5.9.3",
@@ -70,7 +70,7 @@
   },
   "nano-staged": {
     "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{js,ts}": "oxlint --fix"
+    "*.{js,ts}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives"
   },
   "commitlint": {
     "extends": [
@@ -80,5 +80,5 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.28.1"
+  "packageManager": "pnpm@10.28.2"
 }

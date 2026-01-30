@@ -1,9 +1,10 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./.oxlintrc.base.json"],
-  "ignorePatterns": ["coverage/**", "dist/**"],
+  "ignorePatterns": ["coverage/", "dist/"],
   "plugins": ["typescript", "oxc", "jsdoc", "import", "promise", "unicorn", "node"],
   "rules": {
-    "id-length": "off"
+    "id-length": "off",
+    "no-bitwise": "off"
   }
 }

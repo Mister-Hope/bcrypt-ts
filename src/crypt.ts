@@ -120,6 +120,7 @@ const streamToWord = (data: number[], offp: number): { key: number; offp: number
 
   for (let i = 0; i < 4; ++i) {
     word = (word << 8) | (data[offp] & 0xff);
+    // oxlint-disable-next-line no-param-reassign
     offp = (offp + 1) % data.length;
   }
 
@@ -233,7 +234,7 @@ export const crypt = (
   const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
 
-  // oxlint-disable-next-line unicorn/prefer-math-trunc
+  // oxlint-disable-next-line no-param-reassign, unicorn/prefer-math-trunc
   rounds = (1 << rounds) >>> 0;
 
   const P = new Int32Array(P_ORIG);

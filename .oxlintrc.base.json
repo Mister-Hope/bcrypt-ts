@@ -5,18 +5,22 @@
     "suspicious": "warn",
     "pedantic": "warn",
     "perf": "warn",
-    "style": "warn"
+    "style": "warn",
+    "restriction": "warn"
   },
   "rules": {
     // oxlint core rules
     // we should not enforce capitalized comments
     "capitalized-comments": "off",
+    "complexity": ["warn", { "variant": "modified" }],
     // function names can be omitted if the name can be inferred from the context
     "func-names": ["warn", "as-needed"],
     // prefer to export declarations instead of exporting at the end
     "group-exports": "off",
     // this rule is too restrictive
     "init-declarations": "off",
+    // re-export is needed in many cases
+    "no-barrel-file": "off",
     // allow continue in complicated loops
     "no-continue": "off",
     // warn about console usage but allow it
@@ -25,13 +29,19 @@
     "no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
     // inline comments shall be allowed
     "no-inline-comments": "off",
+    // magic numbers shall be allowed in some cases
     "no-magic-numbers": "off",
     // allow nested ternary for better readability in some cases
     "no-nested-ternary": "off",
     // allow null usage
     "no-null": "off",
+    // NOTE: this rule currently do not allow to forbid change with read operations, a single expression like `a++;` shall be allowed with loops
+    // "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+    "no-plusplus": "off",
     // ternary operator shall be allowed for simple expressions
     "no-ternary": "off",
+    // we use void operator to mark those promise that shall not be awaited
+    "no-void": "off",
     // normally we do not enforce numeric separator usage
     "numeric-separators-style": "off",
     // we prefer to sort imports with its pkg name
@@ -44,6 +54,8 @@
     "import/exports-last": "off",
     // usually we just export vue components as default export without naming it
     "import/no-anonymous-default-export": "off",
+    // config file may use default export
+    "import/no-default-export": "off",
     // a rule that shall not be enabled anyway
     "import/no-named-export": "off",
     // allow importing stylesheets
@@ -65,6 +77,62 @@
     // we prefer async/await syntax
     "promise/prefer-await-to-then": "off",
 
+    // oxc plugin rules
+    // our environment supports object rest/spread properties
+    "oxc/no-rest-spread-properties": "off",
+    // optional chaining is widely supported in our target environments
+    "oxc/no-optional-chaining": "off",
+    // async/await is widely supported in our target environments
+    "oxc/no-async-await": "off",
+
+    // typescript plugin rules
+    // disable unsafe type assertion checks
+    "typescript/no-unsafe-type-assertion": "off",
+    // enforce naming conventions
+    // NOTE: not implemented yet by the moment: https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules
+    "typescript/naming-convention": [
+      "warn",
+      [
+        { "selector": "default", "format": ["camelCase"] },
+        {
+          "selector": "variable",
+          "filter": { "regex": "^__(?:dirname|filename)$", "match": true },
+          "format": null
+        },
+        {
+          "selector": "variable",
+          "filter": { "regex": "^(?:_{0,2})[A-Z][A-z0-9]*(?:_[A-Z][A-z0-9]*)*$", "match": true },
+          "format": null
+        },
+        {
+          "selector": ["variable"],
+          "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+          "leadingUnderscore": "allow"
+        },
+        {
+          "selector": ["parameter"],
+          "format": ["camelCase", "PascalCase"],
+          "leadingUnderscore": "allow"
+        },
+        {
+          "selector": ["property"],
+          "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+          "leadingUnderscore": "allow",
+          "trailingUnderscore": "allow"
+        },
+        { "selector": "import", "format": ["PascalCase", "camelCase"] },
+        { "selector": "typeLike", "format": ["PascalCase"] },
+        { "selector": "enumMember", "format": ["PascalCase"] }
+      ]
+    ],
+    // allow non-null assertions in some cases
+    "typescript/strict-boolean-expressions": [
+      "warn",
+      { "allowNullableString": true, "allowNullableBoolean": true }
+    ],
+    // missing async with await will be reported by typescript itself
+    "typescript/promise-function-async": "off",
+
     // unicorn plugin rules
     // filename should not be enforced strictly, e.g. Vue SFC files shall be PascalCased
     // we shall expect a project level setting
@@ -75,6 +143,8 @@
     // toSorted can introduce memory overhead
     // in some chained calls it is better to use reverse as the "sorted" array is also a temp variable.
     "unicorn/no-array-sort": "off",
+    // Array.forEach has its use cases
+    "unicorn/no-array-for-each": "off",
     // conflicts with oxfmt code style
     "unicorn/no-nested-ternary": "off",
     // conflicts with oxfmt code style
@@ -84,11 +154,6 @@
     // support starts with chrome71, firefox68. safari12.1, node12
     // leaving it to warn for edge cases
     "unicorn/prefer-global-this": "warn",
-
-    // typescript plugin rules
-    // disable unsafe type assertion checks
-    "typescript/no-unsafe-type-assertion": "off",
-    "typescript/strict-boolean-expressions": ["warn", { "allowNullableString": true }],
 
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],
@@ -124,12 +189,31 @@
   },
   "overrides": [
     {
-      "files": ["*.bench.ts", "*.test.ts"],
+      "files": ["scripts/**/*.{js,ts}", "*.config.{js,ts}"],
+      "rules": {
+        // config files shall be allowed to access process.env
+        "node/no-process-env": "off"
+      }
+    },
+    {
+      "files": ["*.d.ts"],
+      "rules": {
+        // to extend existing modules, import/export must not appear in declaration files at top level
+        "import/unambiguous": "off",
+        // we need `export {}` to convert a file to a module
+        "unicorn/require-module-specifiers": "off"
+      }
+    },
+    {
+      "files": ["*.bench.{js,ts}", "*.test.{js,ts}"],
       "plugins": ["vitest"],
       "rules": {
         "max-lines-per-function": "off",
         "max-lines": "off",
+        "no-empty-function": "off",
+        "no-undefined": "off",
         "typescript/ban-ts-comment": "off",
+        "typescript/no-non-null-assertion": "off",
         "typescript/prefer-ts-expect-error": "off",
         "vitest/prefer-called-once": "off",
         "unicorn/consistent-function-scoping": "off"

@@ -1,4 +1,4 @@
-// oxlint-disable unicorn/prefer-code-point unicorn/prefer-math-trunc
+// oxlint-disable unicorn/prefer-code-point, unicorn/prefer-math-trunc
 import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
 
 /**

@@ -15,7 +15,7 @@ export default defineConfig([
     dts: true,
     plugins: [
       codecovRollupPlugin({
-        enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+        enableBundleAnalysis: Boolean(process.env.CODECOV_TOKEN),
         bundleName: "node",
         uploadToken: process.env.CODECOV_TOKEN,
       }),
@@ -38,7 +38,7 @@ export default defineConfig([
     dts: true,
     plugins: [
       codecovRollupPlugin({
-        enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+        enableBundleAnalysis: Boolean(process.env.CODECOV_TOKEN),
         bundleName: "browser",
         uploadToken: process.env.CODECOV_TOKEN,
       }),

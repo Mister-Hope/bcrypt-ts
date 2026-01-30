@@ -16,7 +16,7 @@ import { convertToUFT8Bytes } from "./uft8.js";
  *
  * @returns Resulting hash
  */
-// oxlint-disable-next-line max-statements
+// oxlint-disable-next-line complexity, max-statements
 const _hash = (
   content: string,
   salt: string,
@@ -80,6 +80,7 @@ const _hash = (
 
   const realSalt = salt.slice(offset + 3, offset + 25);
 
+  // oxlint-disable-next-line no-param-reassign
   content += minor >= "a" ? "\u0000" : "";
 
   const passwordBytes = convertToUFT8Bytes(content),
