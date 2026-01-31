@@ -1,0 +1,58 @@
+name: Unit Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  linter-and-unit:
+    name: Unit test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - 20
+          - 22
+          - 24
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Unit test and save results
+        env:
+          TEST_REPORT: ${{ matrix.node-version == 24  && 'true' || '' }}
+        run: pnpm run test
+
+      - name: Upload test results
+        if: ${{ !cancelled() && matrix.node-version == 24 }}
+        uses: codecov/codecov-action@v5
+        with:
+          use_oidc: true
+          files: ./coverage/test-report.junit.xml
+          report_type: test_results
+
+      - name: Upload coverage
+        if: ${{ !cancelled() && matrix.node-version == 24 }}
+        uses: codecov/codecov-action@v5
+        with:
+          use_oidc: true

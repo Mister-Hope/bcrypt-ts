@@ -43,9 +43,9 @@
   },
   "scripts": {
     "bench": "vitest bench",
-    "build": "tsdown",
+    "build": "tsdown --config-loader unrun",
     "clean": "rimraf dist",
-    "dev": "tsdown -w",
+    "dev": "tsdown --config-loader unrun -w",
     "lint": "oxlint --fix --type-aware --type-check --report-unused-disable-directives --deny-warnings && oxfmt",
     "lint:check": "oxlint --type-aware --type-check --report-unused-disable-directives --deny-warnings && oxfmt --check",
     "prepare": "husky",

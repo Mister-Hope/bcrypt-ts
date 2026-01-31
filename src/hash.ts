@@ -62,7 +62,7 @@ const _hash = (
   const rounds = /\d\d/.test(roundText) ? Number(roundText) : null;
 
   // Extract number of rounds
-  if (rounds === null) {
+  if (rounds == null) {
     const err = new Error("Missing salt rounds");
 
     if (!sync) return Promise.reject(err);

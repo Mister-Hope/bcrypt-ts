@@ -1,0 +1,38 @@
+name: Build and Linter Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  linter-and-unit:
+    name: Linter test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        env:
+          BUNDLE_ANALYSIS: true
+        run: pnpm run build
+
+      - name: Linter test
+        run: |
+          pnpm run lint:check
