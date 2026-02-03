@@ -57,7 +57,6 @@ export const compare = (
       .then((comp) => {
         resolve(comp === hash);
       })
-      // oxlint-disable-next-line promise/prefer-await-to-callbacks
       .catch((err: unknown) => {
         reject(err as Error);
       });

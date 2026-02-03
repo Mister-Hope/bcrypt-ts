@@ -1,5 +1,3 @@
-// oxlint-disable unicorn/prefer-code-point
-
 /**
  * Calculates the byte length of a string encoded as UTF8.
  *

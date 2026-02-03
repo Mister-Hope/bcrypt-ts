@@ -1,11 +1,9 @@
-// oxlint-disable prefer-destructuring
 import { nextTick } from "nextTick";
 
 import { BLOWFISH_NUM_ROUNDS, C_ORIG, MAX_EXECUTION_TIME, P_ORIG, S_ORIG } from "./constant.js";
 
 // A base64 implementation for the bcrypt algorithm. This is partly non-standard.
 
-// oxlint-disable-next-line max-statements
 const encipher = (
   lr: Int32Array<ArrayBuffer>,
   off: number,
@@ -120,7 +118,6 @@ const streamToWord = (data: number[], offp: number): { key: number; offp: number
 
   for (let i = 0; i < 4; ++i) {
     word = (word << 8) | (data[offp] & 0xff);
-    // oxlint-disable-next-line no-param-reassign
     offp = (offp + 1) % data.length;
   }
 
@@ -223,7 +220,6 @@ const expensiveKeyScheduleBlowFish = (
  *
  * @returns Crypted bytes
  */
-// oxlint-disable-next-line max-params
 export const crypt = (
   bytes: number[],
   salt: number[],
@@ -234,7 +230,6 @@ export const crypt = (
   const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
 
-  // oxlint-disable-next-line no-param-reassign, unicorn/prefer-math-trunc
   rounds = (1 << rounds) >>> 0;
 
   const P = new Int32Array(P_ORIG);
@@ -281,7 +276,6 @@ export const crypt = (
 
     if (!sync) {
       return new Promise((resolve) =>
-        // oxlint-disable-next-line no-promise-executor-return
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
         }),

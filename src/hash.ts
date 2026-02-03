@@ -1,5 +1,3 @@
-// oxlint-disable unicorn/prefer-code-point
-
 import { decodeBase64, encodeBase64 } from "./base64.js";
 import { BCRYPT_SALT_LEN, C_ORIG, GENERATE_SALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
 import { crypt } from "./crypt.js";
@@ -16,7 +14,6 @@ import { convertToUFT8Bytes } from "./uft8.js";
  *
  * @returns Resulting hash
  */
-// oxlint-disable-next-line complexity, max-statements
 const _hash = (
   content: string,
   salt: string,
@@ -80,7 +77,6 @@ const _hash = (
 
   const realSalt = salt.slice(offset + 3, offset + 25);
 
-  // oxlint-disable-next-line no-param-reassign
   content += minor >= "a" ? "\u0000" : "";
 
   const passwordBytes = convertToUFT8Bytes(content),

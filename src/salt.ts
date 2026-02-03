@@ -15,7 +15,6 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
 export const genSaltSync = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): string => {
   if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
 
-  // oxlint-disable-next-line no-param-reassign, unicorn/prefer-math-min-max
   rounds = rounds < 4 ? 4 : rounds > 31 ? 31 : rounds;
 
   return `$2b$${rounds < 10 ? "0" : ""}${rounds}$${encodeBase64(random(BCRYPT_SALT_LEN), BCRYPT_SALT_LEN)}`;
@@ -29,7 +28,6 @@ export const genSaltSync = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): string 
  */
 export const genSalt = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): Promise<string> =>
   new Promise((resolve, reject) =>
-    // oxlint-disable-next-line no-promise-executor-return
     nextTick(() => {
       try {
         resolve(genSaltSync(rounds));

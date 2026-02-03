@@ -1,4 +1,3 @@
-// oxlint-disable unicorn/prefer-code-point, unicorn/prefer-math-trunc
 import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
 
 /**
@@ -50,7 +49,6 @@ export const encodeBase64 = (byteArray: number[] | Buffer, length: number): stri
  *
  * @returns Decoded bytes
  */
-// oxlint-disable-next-line max-statements
 export const decodeBase64 = (contentString: string, length: number): number[] => {
   if (length <= 0) throw new Error(`Illegal length: ${length}`);
 
