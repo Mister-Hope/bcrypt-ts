@@ -9,8 +9,8 @@ permissions:
   id-token: write
 
 jobs:
-  linter-and-unit:
-    name: Linter test
+  build-and-linter:
+    name: Build and Linter test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

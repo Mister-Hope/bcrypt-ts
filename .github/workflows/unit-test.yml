@@ -41,7 +41,7 @@ jobs:
       - name: Unit test and save results
         env:
           TEST_REPORT: ${{ matrix.node-version == 24  && 'true' || '' }}
-        run: pnpm run test
+        run: pnpm test
 
       - name: Upload test results
         if: ${{ !cancelled() && matrix.node-version == 24 }}
