@@ -1,5 +1,4 @@
 // oxlint-disable unicorn/prefer-code-point
-
 import { decodeBase64, encodeBase64 } from "./base64.js";
 import { BCRYPT_SALT_LEN, C_ORIG, GENERATE_SALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
 import { crypt } from "./crypt.js";

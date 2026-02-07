@@ -41,6 +41,18 @@ describe(decodeBase64, () => {
     expect(result.length).toBeLessThanOrEqual(5);
   });
 
+  it("should handle characters with code >= BASE64_INDEX.length", () => {
+    // \u0080 has code 128, which is >= BASE64_INDEX.length (128)
+    const result1 = decodeBase64("\u0080\u0080\u0080\u0080", 5);
+    expect(result1.length).toBe(0);
+
+    const result2 = decodeBase64("..\u0080\u0080", 5);
+    expect(result2.length).toBe(1);
+
+    const result3 = decodeBase64("...\u0080", 5);
+    expect(result3.length).toBe(3);
+  });
+
   it("should handle early break on invalid c1 or c2", () => {
     // Test with string containing invalid characters at start
     const result = decodeBase64("@invalid", 5);

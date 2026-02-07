@@ -10,10 +10,10 @@ describe(compare, () => {
     const $2ySalt = salt2.replace(/\$2b\$/, "$2y$");
     const hash2 = await hash("world", $2ySalt);
 
-    expect(await compare("hello", hash1)).toBeTruthy();
-    expect(await compare("hello", hash2)).toBeFalsy();
-    expect(await compare("world", hash1)).toBeFalsy();
-    expect(await compare("world", hash2)).toBeTruthy();
+    expect(await compare("hello", hash1)).toBe(true);
+    expect(await compare("hello", hash2)).toBe(false);
+    expect(await compare("world", hash1)).toBe(false);
+    expect(await compare("world", hash2)).toBe(true);
   });
 
   it("should reject with error for invalid argument types", async () => {
@@ -26,7 +26,7 @@ describe(compare, () => {
   });
 
   it("should resolve false for invalid hash", async () => {
-    await expect(compare("hello", "invalid")).resolves.toBeFalsy();
+    await expect(compare("hello", "invalid")).resolves.toBe(false);
   });
 
   it("should throw error with invalid salt", async () => {
@@ -46,12 +46,12 @@ describe(compareSync, () => {
     const hash2 = hashSync("world", salt2);
 
     expect(hash1.slice(0, 4)).toBe("$2b$");
-    expect(compareSync("hello", hash1)).toBeTruthy();
-    expect(compareSync("hello", hash2)).toBeFalsy();
+    expect(compareSync("hello", hash1)).toBe(true);
+    expect(compareSync("hello", hash2)).toBe(false);
 
     expect(hash2.slice(0, 4)).toBe("$2y$");
-    expect(compareSync("world", hash1)).toBeFalsy();
-    expect(compareSync("world", hash2)).toBeTruthy();
+    expect(compareSync("world", hash1)).toBe(false);
+    expect(compareSync("world", hash2)).toBe(true);
   });
 
   it("should throw error for invalid argument types", () => {
@@ -64,7 +64,7 @@ describe(compareSync, () => {
   });
 
   it("should resolve false for invalid hash", () => {
-    expect(compareSync("hello", "invalid")).toBeFalsy();
+    expect(compareSync("hello", "invalid")).toBe(false);
   });
 
   it("should throw error with invalid salt", () => {

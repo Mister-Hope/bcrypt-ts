@@ -9,11 +9,11 @@ describe(nextTick, () => {
 
       nextTick(() => {
         executed = true;
-        expect(executed).toBeTruthy();
+        expect(executed).toBe(true);
         resolve();
       });
 
-      expect(executed).toBeFalsy();
+      expect(executed).toBe(false);
     }));
 
   it("should use setImmediate in Node.js", () => {

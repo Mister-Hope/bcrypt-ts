@@ -280,12 +280,11 @@ export const crypt = (
     }
 
     if (!sync) {
-      return new Promise((resolve) =>
-        // oxlint-disable-next-line no-promise-executor-return
+      return new Promise((resolve) => {
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
-        }),
-      );
+        });
+      });
     }
   };
 
