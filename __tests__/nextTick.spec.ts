@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, expectTypeOf, it } from "vitest";
 
 import { nextTick } from "../src/nextTick/node.js";
 
@@ -18,6 +18,6 @@ describe(nextTick, () => {
 
   it("should use setImmediate in Node.js", () => {
     // Test that nextTick is using the correct function
-    expect(typeof nextTick).toBe("function");
+    expectTypeOf(nextTick).toBeFunction();
   });
 });

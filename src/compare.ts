@@ -12,9 +12,8 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
  * @returns `true` if the string matches the hash, `false` otherwise
  */
 export const compareSync = (content: string, hash: string): boolean => {
-  if (typeof content !== "string" || typeof hash !== "string") {
+  if (typeof content !== "string" || typeof hash !== "string")
     throw getIllegalArgumentsTypeError(content, hash);
-  }
 
   if (hash.length !== 60) return false;
 

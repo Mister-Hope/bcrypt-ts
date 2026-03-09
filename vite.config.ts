@@ -5,7 +5,9 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
+      // oxlint-disable-next-line unicorn/prefer-module
       nextTick: path.resolve(__dirname, "src/nextTick/node.ts"),
+      // oxlint-disable-next-line unicorn/prefer-module
       random: path.resolve(__dirname, "src/random/node.ts"),
     },
   },

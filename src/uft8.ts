@@ -11,15 +11,19 @@ export const getUTF8ByteLength = (content: string): number => {
 
   for (let i = 0; i < content.length; ++i) {
     charCodePoint = content.charCodeAt(i);
-    if (charCodePoint < 128) length += 1;
-    else if (charCodePoint < 2048) length += 2;
-    else if (
+    if (charCodePoint < 128) {
+      length += 1;
+    } else if (charCodePoint < 2048) {
+      length += 2;
+    } else if (
       (charCodePoint & 0xfc00) === 0xd800 &&
       (content.charCodeAt(i + 1) & 0xfc00) === 0xdc00
     ) {
       i++;
       length += 4;
-    } else length += 3;
+    } else {
+      length += 3;
+    }
   }
 
   return length;
