@@ -54,8 +54,8 @@
   },
   "devDependencies": {
     "@codecov/rollup-plugin": "1.9.1",
-    "@commitlint/cli": "20.4.4",
-    "@commitlint/config-conventional": "20.4.4",
+    "@commitlint/cli": "20.5.0",
+    "@commitlint/config-conventional": "20.5.0",
     "@mr-hope/tsconfig": "0.0.2",
     "@types/node": "25.5.0",
     "@vitest/coverage-istanbul": "4.1.0",
