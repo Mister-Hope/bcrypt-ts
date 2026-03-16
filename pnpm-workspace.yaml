@@ -1,5 +1,7 @@
 overrides:
-  vite@7: npm:rolldown-vite@7
+  # FIXME: avoid outdated dependencies introducing vulnerable undici
+  "@codecov/bundler-plugin-core@1>@actions/core": npm:@actions/core@2
+  "@codecov/bundler-plugin-core@1>@actions/github": npm:@actions/github@8
 
 packageExtensions:
   "@codecov/rollup-plugin":

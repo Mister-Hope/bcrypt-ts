@@ -1,4 +1,4 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "@mr-hope/tsconfig/bundler.json",
   "include": ["**/*.ts"]
 }

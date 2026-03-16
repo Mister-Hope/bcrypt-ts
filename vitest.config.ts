@@ -14,11 +14,12 @@ export default defineConfig({
       provider: "istanbul",
       include: ["src/**/*.ts"],
       exclude: ["src/**/browser.ts"],
+      reporter: process.env.TEST_REPORT ? ["cobertura", "text"] : ["text", "html"],
     },
 
-    ...(process.env.CODECOV_TOKEN
+    ...(process.env.TEST_REPORT
       ? {
-          reporters: ["junit"],
+          reporters: ["default", "junit"],
           outputFile: {
             junit: "coverage/test-report.junit.xml",
           },

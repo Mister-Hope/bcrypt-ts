@@ -11,7 +11,7 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
 export const getRounds = (hash: string): number => {
   if (typeof hash !== "string") throw getIllegalArgumentsTypeError(hash);
 
-  return parseInt(hash.split("$")[2], 10);
+  return Number.parseInt(hash.split("$")[2], 10);
 };
 
 /**

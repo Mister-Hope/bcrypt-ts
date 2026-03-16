@@ -12,9 +12,8 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
  * @returns `true` if the string matches the hash, `false` otherwise
  */
 export const compareSync = (content: string, hash: string): boolean => {
-  if (typeof content !== "string" || typeof hash !== "string") {
+  if (typeof content !== "string" || typeof hash !== "string")
     throw getIllegalArgumentsTypeError(content, hash);
-  }
 
   if (hash.length !== 60) return false;
 
@@ -38,19 +37,27 @@ export const compare = (
 ): Promise<boolean> =>
   new Promise((resolve, reject) => {
     if (typeof content !== "string" || typeof hash !== "string") {
-      nextTick(() => reject(new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`)));
+      nextTick(() => {
+        reject(new Error(`Illegal arguments: ${typeof content}, ${typeof hash}`));
+      });
 
       return;
     }
 
     if (hash.length !== 60) {
-      nextTick(() => resolve(false));
+      nextTick(() => {
+        resolve(false);
+      });
 
       return;
     }
 
     hashAsync(content, hash.slice(0, 29), progressCallback)
-      .then((comp) => resolve(comp === hash))
+      .then((comp) => {
+        resolve(comp === hash);
+      })
       // oxlint-disable-next-line promise/prefer-await-to-callbacks
-      .catch((err: unknown) => reject(err as Error));
+      .catch((err: unknown) => {
+        reject(err as Error);
+      });
   });

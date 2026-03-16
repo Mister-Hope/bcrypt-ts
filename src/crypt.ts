@@ -120,13 +120,14 @@ const streamToWord = (data: number[], offp: number): { key: number; offp: number
 
   for (let i = 0; i < 4; ++i) {
     word = (word << 8) | (data[offp] & 0xff);
+    // oxlint-disable-next-line no-param-reassign
     offp = (offp + 1) % data.length;
   }
 
   return { key: word, offp };
 };
 
-const key = (key: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffer>): void => {
+const key = (keyBytes: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffer>): void => {
   const pLength = P.length;
   const sLength = S.length;
   let offp = 0;
@@ -137,7 +138,7 @@ const key = (key: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffe
   };
 
   for (let i = 0; i < pLength; i++) {
-    sw = streamToWord(key, offp);
+    sw = streamToWord(keyBytes, offp);
     ({ offp } = sw);
     P[i] ^= sw.key;
   }
@@ -158,14 +159,14 @@ const key = (key: number[], P: Int32Array<ArrayBuffer>, S: Int32Array<ArrayBuffe
 /**
  * Expensive key schedule Blowfish.
  *
- * @param data Data bytes
- * @param key Key bytes
+ * @param dataBytes Data bytes
+ * @param keyBytes Key bytes
  * @param P P-array
  * @param S S-boxes
  */
 const expensiveKeyScheduleBlowFish = (
-  data: number[],
-  key: number[],
+  dataBytes: number[],
+  keyBytes: number[],
   P: Int32Array<ArrayBuffer>,
   S: Int32Array<ArrayBuffer>,
 ): void => {
@@ -179,7 +180,7 @@ const expensiveKeyScheduleBlowFish = (
   };
 
   for (let i = 0; i < pLength; i++) {
-    sw = streamToWord(key, offp);
+    sw = streamToWord(keyBytes, offp);
     ({ offp } = sw);
     P[i] ^= sw.key;
   }
@@ -187,10 +188,10 @@ const expensiveKeyScheduleBlowFish = (
   offp = 0;
 
   for (let i = 0; i < pLength; i += 2) {
-    sw = streamToWord(data, offp);
+    sw = streamToWord(dataBytes, offp);
     ({ offp } = sw);
     lr[0] ^= sw.key;
-    sw = streamToWord(data, offp);
+    sw = streamToWord(dataBytes, offp);
     ({ offp } = sw);
     lr[1] ^= sw.key;
     lr = encipher(lr, 0, P, S);
@@ -199,10 +200,10 @@ const expensiveKeyScheduleBlowFish = (
   }
 
   for (let i = 0; i < sLength; i += 2) {
-    sw = streamToWord(data, offp);
+    sw = streamToWord(dataBytes, offp);
     ({ offp } = sw);
     lr[0] ^= sw.key;
-    sw = streamToWord(data, offp);
+    sw = streamToWord(dataBytes, offp);
     ({ offp } = sw);
     lr[1] ^= sw.key;
     lr = encipher(lr, 0, P, S);
@@ -233,7 +234,7 @@ export const crypt = (
   const cdata = new Int32Array(C_ORIG);
   const cLength = cdata.length;
 
-  // oxlint-disable-next-line unicorn/prefer-math-trunc
+  // oxlint-disable-next-line no-param-reassign, unicorn/prefer-math-trunc
   rounds = (1 << rounds) >>> 0;
 
   const P = new Int32Array(P_ORIG);
@@ -261,9 +262,9 @@ export const crypt = (
         if (Date.now() - start > MAX_EXECUTION_TIME) break;
       }
     } else {
-      for (let i = 0; i < 64; i++) {
+      for (let i = 0; i < 64; i++)
         for (let j = 0; j < cLength >> 1; j++) encipher(cdata, j << 1, P, S);
-      }
+
       const result: number[] = [];
 
       for (let i = 0; i < cLength; i++) {
@@ -279,12 +280,11 @@ export const crypt = (
     }
 
     if (!sync) {
-      return new Promise((resolve) =>
-        // oxlint-disable-next-line no-promise-executor-return
+      return new Promise((resolve) => {
         nextTick(() => {
           void (next() as Promise<number[] | undefined>).then(resolve);
-        }),
-      );
+        });
+      });
     }
   };
 
@@ -292,9 +292,8 @@ export const crypt = (
 
   let result;
 
-  do {
-    result = next() as number[] | undefined;
-  } while (!result);
+  do result = next() as number[] | undefined;
+  while (!result);
 
   return result;
 };

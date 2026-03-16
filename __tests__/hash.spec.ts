@@ -15,6 +15,12 @@ describe(hash, () => {
     expect(hash4).toBeTypeOf("string");
     expect(hash1).not.toEqual(hash2);
     expect(hash3).not.toEqual(hash4);
+
+    const hash5 = await hash("hello", 4);
+    expect(hash5).toContain("$04$");
+
+    const hash6 = await hash("hello", "$2$10$abcdefghijklmnopqrstuv");
+    expect(hash6).toContain("$2$10$");
   });
 
   it("should reject for invalid argument types", async () => {
@@ -64,13 +70,21 @@ describe(hashSync, () => {
     const hash2 = hashSync("hello", 10);
     const hash3 = hashSync("中国我爱你！", 10);
     const hash4 = hashSync("中国我爱你！", 10);
+    const hash7 = hashSync("hello");
 
     expect(hash1).toBeTypeOf("string");
     expect(hash2).toBeTypeOf("string");
     expect(hash3).toBeTypeOf("string");
     expect(hash4).toBeTypeOf("string");
+    expect(hash7).toBeTypeOf("string");
     expect(hash1).not.toEqual(hash2);
     expect(hash3).not.toEqual(hash4);
+
+    const hash5 = hashSync("hello", 4);
+    expect(hash5).toContain("$04$");
+
+    const hash6 = hashSync("hello", "$2$10$abcdefghijklmnopqrstuv");
+    expect(hash6).toContain("$2$10$");
   });
 
   it("should throw error for invalid argument types", () => {

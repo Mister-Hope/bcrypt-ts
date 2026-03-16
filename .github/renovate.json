@@ -5,6 +5,10 @@
   "schedule": ["every weekend"],
   "packageRules": [
     {
+      "matchDepNames": ["@types/node"],
+      "matchUpdateTypes": ["patch"]
+    },
+    {
       "automerge": true,
       "matchDepTypes": ["devDependencies"]
     }

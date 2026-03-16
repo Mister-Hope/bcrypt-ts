@@ -41,9 +41,9 @@ describe(getRounds, () => {
 
 describe(truncates, () => {
   it("should work", () => {
-    expect(truncates("hello")).toBeFalsy();
-    expect(truncates("a".repeat(72))).toBeFalsy();
-    expect(truncates("a".repeat(73))).toBeTruthy();
+    expect(truncates("hello")).toBe(false);
+    expect(truncates("a".repeat(72))).toBe(false);
+    expect(truncates("a".repeat(73))).toBe(true);
   });
 
   it("should throw error for invalid argument types", () => {
