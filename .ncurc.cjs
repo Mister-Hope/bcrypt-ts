@@ -1,7 +1,4 @@
-// oxlint-disable-next-line typescript/no-unsafe-call
-const { defineConfig } = require("npm-check-updates");
-
-module.exports = defineConfig({
+module.exports = {
   upgrade: true,
   timeout: 360000,
   target: (name) => {
@@ -9,4 +6,4 @@ module.exports = defineConfig({
 
     return "latest";
   },
-});
+};
