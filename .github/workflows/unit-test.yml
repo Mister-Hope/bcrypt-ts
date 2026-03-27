@@ -36,12 +36,12 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build project
-        run: pnpm build
+        run: pnpm run build
 
       - name: Unit test and save results
         env:
           TEST_REPORT: ${{ matrix.node-version == 24  && 'true' || '' }}
-        run: pnpm test
+        run: pnpm run test
 
       - name: Upload test results
         if: ${{ !cancelled() && matrix.node-version == 24 }}

@@ -49,7 +49,7 @@
     "lint": "oxlint --fix --deny-warnings --report-unused-disable-directives && oxfmt",
     "lint:check": "oxlint --deny-warnings --report-unused-disable-directives && oxfmt --check",
     "prepare": "husky",
-    "prepublish": "pnpm clean && pnpm build",
+    "prepublish": "run clean && pnpm run build",
     "test": "vitest --coverage"
   },
   "devDependencies": {
