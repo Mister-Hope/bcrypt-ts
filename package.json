@@ -61,7 +61,7 @@
     "@vitest/coverage-istanbul": "4.1.2",
     "husky": "9.1.7",
     "nano-staged": "0.9.0",
-    "oxc-config-hope": "0.0.11",
+    "oxc-config-hope": "0.1.2",
     "oxfmt": "0.42.0",
     "oxlint": "1.57.0",
     "oxlint-tsgolint": "0.18.1",
