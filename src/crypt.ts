@@ -220,7 +220,6 @@ const expensiveKeyScheduleBlowFish = (
  * @param rounds Number of rounds
  * @param progressCallback Callback called with the current progress
  * @param sync Whether to run synchronously
- *
  * @returns Crypted bytes
  */
 // oxlint-disable-next-line max-params

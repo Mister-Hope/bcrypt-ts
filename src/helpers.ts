@@ -30,8 +30,9 @@ export const getSalt = (hash: string): string => {
 };
 
 /**
- * Tests if a content will be truncated when hashed, that is its length is
- * greater than 72 bytes when converted to UTF-8.
+ * Tests if a content will be truncated when hashed, that is its length is greater than 72 bytes
+ * when converted to UTF-8.
+ *
  * @param content The content to test
  * @returns `true` if truncated, otherwise `false`
  */

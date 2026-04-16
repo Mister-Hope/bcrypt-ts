@@ -8,7 +8,6 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
  *
  * @param content String to compare
  * @param hash Hash to test against
- *
  * @returns `true` if the string matches the hash, `false` otherwise
  */
 export const compareSync = (content: string, hash: string): boolean => {
@@ -25,8 +24,9 @@ export const compareSync = (content: string, hash: string): boolean => {
  *
  * @param content Data to compare
  * @param hash Data to be compared to
- * @param progressCallback Callback successively called with the percentage of rounds completed
- *  (0.0 - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
+ * @param progressCallback Callback successively called with the percentage of rounds completed (0.0
+ *
+ *   - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
  *
  * @returns Promise resolving to `true` if the data matches the hash, `false` otherwise
  */

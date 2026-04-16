@@ -12,7 +12,6 @@ import { convertToUFT8Bytes } from "./uft8.js";
  * @param salt Salt to use
  * @param progressCallback Callback called with the current progress
  * @param sync Whether to run synchronously
- *
  * @returns Resulting hash
  */
 // oxlint-disable-next-line complexity, max-statements
@@ -95,8 +94,8 @@ const _hash = (
 
   /**
    * Finishes hashing.
-   * @param bytes Byte array
    *
+   * @param bytes Byte array
    * @returns Resulting hash
    */
   const finish = (bytes: number[]): string =>
@@ -133,8 +132,9 @@ export const hashSync = (
  *
  * @param contentString String to hash
  * @param salt Salt length to generate or salt to use
- * @param progressCallback Callback successively called with the percentage of rounds completed
- *  (0.0 - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
+ * @param progressCallback Callback successively called with the percentage of rounds completed (0.0
+ *
+ *   - 1.0), maximally once per `MAX_EXECUTION_TIME = 100` ms.
  *
  * @returns Promise resolving to the resulting hash
  */

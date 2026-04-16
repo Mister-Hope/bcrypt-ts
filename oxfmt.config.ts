@@ -1,3 +1,3 @@
-import { config } from "oxc-config-hope/oxfmt";
+import { defineHopeConfig } from "oxc-config-hope/oxfmt";
 
-export default config;
+export default defineHopeConfig();

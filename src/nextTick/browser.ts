@@ -14,9 +14,7 @@ declare global {
   const scheduler: Scheduler | undefined;
 }
 
-/**
- * Continues with the callback on the next tick.
- */
+/** Continues with the callback on the next tick. */
 export const nextTick: (callback: () => void) => unknown =
   typeof scheduler === "object" && typeof scheduler.postTask === "function"
     ? scheduler.postTask.bind(scheduler)

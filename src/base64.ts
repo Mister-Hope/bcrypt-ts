@@ -2,11 +2,11 @@
 import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
 
 /**
- * Encodes a byte array to base64 with up to length bytes of input, using the custom bcrypt alphabet.
+ * Encodes a byte array to base64 with up to length bytes of input, using the custom bcrypt
+ * alphabet.
  *
  * @param byteArray Byte array
  * @param length Maximum input length
- *
  * @returns Encoded string
  */
 export const encodeBase64 = (byteArray: number[] | Buffer, length: number): string => {
@@ -47,7 +47,6 @@ export const encodeBase64 = (byteArray: number[] | Buffer, length: number): stri
  *
  * @param contentString String to decode
  * @param length Maximum output length
- *
  * @returns Decoded bytes
  */
 // oxlint-disable-next-line max-statements
