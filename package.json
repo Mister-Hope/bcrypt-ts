@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@codecov/rollup-plugin": "2.0.1",
-    "@commitlint/cli": "20.5.0",
+    "@commitlint/cli": "20.5.2",
     "@commitlint/config-conventional": "20.5.0",
     "@mr-hope/tsconfig": "0.0.4",
     "@types/node": "20.19.39",
