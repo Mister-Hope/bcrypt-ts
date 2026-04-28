@@ -65,18 +65,22 @@ describe(hash, () => {
 });
 
 describe(hashSync, () => {
+  it("hashSync should return a string", () => {
+    ["hello", "中国我爱你！"].forEach((input) => {
+      const result1 = hashSync(input, 10);
+      const result2 = hashSync(input);
+
+      expect(result1).toBeTypeOf("string");
+      expect(result2).toBeTypeOf("string");
+    });
+  });
+
   it("should generate hash for valid inputs", () => {
     const hash1 = hashSync("hello", 10);
     const hash2 = hashSync("hello", 10);
     const hash3 = hashSync("中国我爱你！", 10);
     const hash4 = hashSync("中国我爱你！", 10);
-    const hash7 = hashSync("hello");
 
-    expect(hash1).toBeTypeOf("string");
-    expect(hash2).toBeTypeOf("string");
-    expect(hash3).toBeTypeOf("string");
-    expect(hash4).toBeTypeOf("string");
-    expect(hash7).toBeTypeOf("string");
     expect(hash1).not.toEqual(hash2);
     expect(hash3).not.toEqual(hash4);
 

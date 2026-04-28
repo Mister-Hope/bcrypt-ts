@@ -15,7 +15,7 @@ import { convertToUFT8Bytes } from "./uft8.js";
  * @returns Resulting hash
  */
 // oxlint-disable-next-line complexity, max-statements
-const _hash = (
+const hashString = (
   content: string,
   salt: string,
   sync: boolean,
@@ -125,7 +125,7 @@ export const hashSync = (
   contentString: string,
   salt: string | number = GENERATE_SALT_DEFAULT_LOG2_ROUNDS,
 ): string =>
-  _hash(contentString, typeof salt === "number" ? genSaltSync(salt) : salt, true) as string;
+  hashString(contentString, typeof salt === "number" ? genSaltSync(salt) : salt, true) as string;
 
 /**
  * Asynchronously generates a hash for the given string.
@@ -143,7 +143,7 @@ export const hash = async (
   salt: number | string,
   progressCallback?: (progress: number) => void,
 ): Promise<string> =>
-  _hash(
+  hashString(
     contentString,
     typeof salt === "number" ? await genSalt(salt) : salt,
     false,
