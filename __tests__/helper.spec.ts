@@ -8,7 +8,7 @@ describe(getSalt, () => {
     const salt = getSalt(hash1);
     const hash2 = hashSync("hello", salt);
 
-    expect(hash1).toEqual(hash2);
+    expect(hash1).toStrictEqual(hash2);
   });
 
   it("should throw error for invalid argument types", () => {

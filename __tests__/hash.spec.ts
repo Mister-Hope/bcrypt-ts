@@ -13,8 +13,8 @@ describe(hash, () => {
     expect(hash2).toBeTypeOf("string");
     expect(hash3).toBeTypeOf("string");
     expect(hash4).toBeTypeOf("string");
-    expect(hash1).not.toEqual(hash2);
-    expect(hash3).not.toEqual(hash4);
+    expect(hash1).not.toStrictEqual(hash2);
+    expect(hash3).not.toStrictEqual(hash4);
 
     const hash5 = await hash("hello", 4);
     expect(hash5).toContain("$04$");
@@ -81,8 +81,8 @@ describe(hashSync, () => {
     const hash3 = hashSync("中国我爱你！", 10);
     const hash4 = hashSync("中国我爱你！", 10);
 
-    expect(hash1).not.toEqual(hash2);
-    expect(hash3).not.toEqual(hash4);
+    expect(hash1).not.toStrictEqual(hash2);
+    expect(hash3).not.toStrictEqual(hash4);
 
     const hash5 = hashSync("hello", 4);
     expect(hash5).toContain("$04$");

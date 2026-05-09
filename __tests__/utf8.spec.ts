@@ -28,31 +28,31 @@ describe(convertToUFT8Bytes, () => {
   it("should handle ASCII characters", () => {
     const result = convertToUFT8Bytes("hello");
 
-    expect(result).toEqual([104, 101, 108, 108, 111]);
+    expect(result).toStrictEqual([104, 101, 108, 108, 111]);
   });
 
   it("should handle 2-byte UTF8 characters", () => {
     const result = convertToUFT8Bytes("ñ");
 
-    expect(result).toEqual([195, 177]);
+    expect(result).toStrictEqual([195, 177]);
   });
 
   it("should handle 3-byte UTF8 characters", () => {
     const result = convertToUFT8Bytes("中");
 
-    expect(result).toEqual([228, 184, 173]);
+    expect(result).toStrictEqual([228, 184, 173]);
   });
 
   it("should handle 4-byte UTF8 characters (surrogate pairs)", () => {
     const result = convertToUFT8Bytes("🌟");
 
-    expect(result.length).toBe(4);
+    expect(result).toHaveLength(4);
     expect(result[0]).toBe(240); // First byte should start with 11110xxx
   });
 
   it("should handle mixed character types", () => {
     const result = convertToUFT8Bytes("a中🌟");
 
-    expect(result.length).toBe(8); // 1 + 3 + 4 bytes
+    expect(result).toHaveLength(8); // 1 + 3 + 4 bytes
   });
 });

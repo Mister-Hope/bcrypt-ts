@@ -12,7 +12,7 @@ describe("hash progress callback", () => {
       progress.push(percent);
     });
 
-    expect(typeof result === "string").toBe(true);
+    expect(result).toBeTypeOf("string");
     expect(progress.length).toBeGreaterThan(2);
     expect(progress[0]).toBe(0);
     expect(progress[progress.length - 1]).toBe(1);

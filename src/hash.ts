@@ -57,7 +57,7 @@ const hashString = (
   }
 
   const roundText = salt.slice(offset, offset + 2);
-  const rounds = /\d\d/.test(roundText) ? Number(roundText) : null;
+  const rounds = /\d\d/u.test(roundText) ? Number(roundText) : null;
 
   // Extract number of rounds
   if (rounds == null) {

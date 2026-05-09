@@ -12,7 +12,7 @@ describe(encodeBase64, () => {
         ],
         16,
       ),
-    ).toEqual("..CA.uOD/eaGAOmJB.yMBu");
+    ).toBe("..CA.uOD/eaGAOmJB.yMBu");
   });
 
   it("should throw error for invalid length", () => {
@@ -24,7 +24,7 @@ describe(encodeBase64, () => {
 
 describe(decodeBase64, () => {
   it("should decode base64 string to byte array", () => {
-    expect(decodeBase64("..CA.uOD/eaGAOmJB.yMBv.", 16)).toEqual([
+    expect(decodeBase64("..CA.uOD/eaGAOmJB.yMBv.", 16)).toStrictEqual([
       0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e,
       0x0f,
     ]);
@@ -44,47 +44,47 @@ describe(decodeBase64, () => {
   it("should handle characters with code >= BASE64_INDEX.length", () => {
     // \u0080 has code 128, which is >= BASE64_INDEX.length (128)
     const result1 = decodeBase64("\u0080\u0080\u0080\u0080", 5);
-    expect(result1.length).toBe(0);
+    expect(result1).toHaveLength(0);
 
     const result2 = decodeBase64("..\u0080\u0080", 5);
-    expect(result2.length).toBe(1);
+    expect(result2).toHaveLength(1);
 
     const result3 = decodeBase64("...\u0080", 5);
-    expect(result3.length).toBe(3);
+    expect(result3).toHaveLength(3);
   });
 
   it("should handle early break on invalid c1 or c2", () => {
     // Test with string containing invalid characters at start
     const result = decodeBase64("@invalid", 5);
 
-    expect(result.length).toBe(0);
+    expect(result).toHaveLength(0);
   });
 
   it("should handle early break on invalid c3", () => {
     // Test with valid start but invalid c3
     const result = decodeBase64("..@", 5);
 
-    expect(result.length).toBe(1);
+    expect(result).toHaveLength(1);
   });
 
   it("should handle early break on invalid c4", () => {
     // Test with valid start but invalid c4 to trigger c4 === -1 case
     const result = decodeBase64("...@", 5);
 
-    expect(result.length).toBe(3);
+    expect(result).toHaveLength(3);
   });
 
   it("should handle length limit reached", () => {
     // Test case where length limit is reached
     const result = decodeBase64("..CA.uOD/eaGAOmJB.yMBv.", 3);
 
-    expect(result.length).toBe(3);
+    expect(result).toHaveLength(3);
   });
 
   it("should handle string length limit reached", () => {
     // Test case where off >= stringLength
     const result = decodeBase64("..", 5);
 
-    expect(result.length).toBe(1);
+    expect(result).toHaveLength(1);
   });
 });

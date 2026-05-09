@@ -11,7 +11,7 @@ export default defineConfig([
       nextTick: "./nextTick/node.js",
       random: "./random/node.js",
     },
-    target: "node20",
+    target: "node22",
     dts: true,
     plugins: [
       codecovRollupPlugin({
