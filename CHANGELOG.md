@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v8.0.0...v9.0.0) (2026-05-09)
+
+### ⚠ BREAKING CHANGES
+
+- drop support for node20
+
 ## [8.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v7.0.0...v8.0.0) (2025-05-01)
 
 ### ⚠ BREAKING CHANGES
