@@ -1,3 +1,8 @@
+enableGlobalVirtualStore: true
+
+overrides:
+  rolldown: ^1.0.0
+
 packageExtensions:
   "@codecov/rollup-plugin":
     peerDependenciesMeta:
