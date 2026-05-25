@@ -1,7 +1,7 @@
-enableGlobalVirtualStore: true
+configDependencies:
+  pacquet: "^0.2.9"
 
-overrides:
-  rolldown: ^1.0.0
+enableGlobalVirtualStore: true
 
 packageExtensions:
   "@codecov/rollup-plugin":
