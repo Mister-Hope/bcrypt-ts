@@ -57,7 +57,7 @@
     "@commitlint/cli": "21.0.2",
     "@commitlint/config-conventional": "21.0.2",
     "@mr-hope/tsconfig": "0.0.4",
-    "@types/node": "20.19.42",
+    "@types/node": "20.19.43",
     "@vitest/coverage-istanbul": "4.1.8",
     "husky": "9.1.7",
     "nano-staged": "1.0.2",

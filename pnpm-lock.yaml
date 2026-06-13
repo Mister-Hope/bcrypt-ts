@@ -222,7 +222,7 @@ importers:
         version: 2.0.1
       '@commitlint/cli':
         specifier: 21.0.2
-        version: 21.0.2(@types/node@20.19.42)(conventional-commits-parser@6.4.0)(typescript@6.0.3)
+        version: 21.0.2(@types/node@20.19.43)(conventional-commits-parser@6.4.0)(typescript@6.0.3)
       '@commitlint/config-conventional':
         specifier: 21.0.2
         version: 21.0.2
@@ -230,8 +230,8 @@ importers:
         specifier: 0.0.4
         version: 0.0.4(typescript@6.0.3)
       '@types/node':
-        specifier: 20.19.42
-        version: 20.19.42
+        specifier: 20.19.43
+        version: 20.19.43
       '@vitest/coverage-istanbul':
         specifier: 4.1.8
         version: 4.1.8(vitest@4.1.8)
@@ -264,7 +264,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.8
-        version: 4.1.8(@types/node@20.19.42)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1))
+        version: 4.1.8(@types/node@20.19.43)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1))
 
 packages:
 
@@ -1053,8 +1053,8 @@ packages:
   '@types/jsesc@2.5.1':
     resolution: {integrity: sha512-9VN+6yxLOPLOav+7PwjZbxiID2bVaeq0ED4qSQmdQTdjnXJSaCVKTR58t15oqH1H5t8Ng2ZX1SabJVoN9Q34bw==}
 
-  '@types/node@20.19.42':
-    resolution: {integrity: sha512-5L7SUaFC1RyDraj2yRhyBzHTobyXHmohD100CChNtyPyleoq37Mqab5Gn8XEKI04dfN/oqPdpHk38MgcQWHbZg==}
+  '@types/node@20.19.43':
+    resolution: {integrity: sha512-6oYBAi5ikg4Pl+kGsoYtawUMBT2zZMCvPNF7pVLnHZfd1zf38DRiWn/gT01RYCdUqkv7Fhr+C9ot4/tb+2sVvA==}
 
   '@vitest/coverage-istanbul@4.1.8':
     resolution: {integrity: sha512-/h514nMZMKI6foh21mVgO1zlCH6pdDamwKMbla1uLU2GMxTlfp0PQMxovWozmzQdCIQYZ2XXEzg2zNZom2zAOg==}
@@ -2082,11 +2082,11 @@ snapshots:
       '@codecov/bundler-plugin-core': 2.0.1
       unplugin: 1.16.1
 
-  '@commitlint/cli@21.0.2(@types/node@20.19.42)(conventional-commits-parser@6.4.0)(typescript@6.0.3)':
+  '@commitlint/cli@21.0.2(@types/node@20.19.43)(conventional-commits-parser@6.4.0)(typescript@6.0.3)':
     dependencies:
       '@commitlint/format': 21.0.1
       '@commitlint/lint': 21.0.2
-      '@commitlint/load': 21.0.2(@types/node@20.19.42)(typescript@6.0.3)
+      '@commitlint/load': 21.0.2(@types/node@20.19.43)(typescript@6.0.3)
       '@commitlint/read': 21.0.2(conventional-commits-parser@6.4.0)
       '@commitlint/types': 21.0.1
       tinyexec: 1.2.2
@@ -2131,14 +2131,14 @@ snapshots:
       '@commitlint/rules': 21.0.2
       '@commitlint/types': 21.0.1
 
-  '@commitlint/load@21.0.2(@types/node@20.19.42)(typescript@6.0.3)':
+  '@commitlint/load@21.0.2(@types/node@20.19.43)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-validator': 21.0.1
       '@commitlint/execute-rule': 21.0.1
       '@commitlint/resolve-extends': 21.0.1
       '@commitlint/types': 21.0.1
       cosmiconfig: 9.0.1(typescript@6.0.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@20.19.42)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@20.19.43)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3)
       es-toolkit: 1.46.1
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -2563,7 +2563,7 @@ snapshots:
 
   '@types/jsesc@2.5.1': {}
 
-  '@types/node@20.19.42':
+  '@types/node@20.19.43':
     dependencies:
       undici-types: 6.21.0
 
@@ -2579,7 +2579,7 @@ snapshots:
       magicast: 0.5.3
       obug: 2.1.1
       tinyrainbow: 3.1.0
-      vitest: 4.1.8(@types/node@20.19.42)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1))
+      vitest: 4.1.8(@types/node@20.19.43)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -2592,13 +2592,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.8(vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1))':
+  '@vitest/mocker@4.1.8(vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1))':
     dependencies:
       '@vitest/spy': 4.1.8
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.14(@types/node@20.19.42)(jiti@2.6.1)
+      vite: 8.0.14(@types/node@20.19.43)(jiti@2.6.1)
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -2722,9 +2722,9 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@20.19.42)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@20.19.43)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
-      '@types/node': 20.19.42
+      '@types/node': 20.19.43
       cosmiconfig: 9.0.1(typescript@6.0.3)
       jiti: 2.6.1
       typescript: 6.0.3
@@ -3222,7 +3222,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1):
+  vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -3230,14 +3230,14 @@ snapshots:
       rolldown: 1.0.2
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 20.19.42
+      '@types/node': 20.19.43
       fsevents: 2.3.3
       jiti: 2.6.1
 
-  vitest@4.1.8(@types/node@20.19.42)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1)):
+  vitest@4.1.8(@types/node@20.19.43)(@vitest/coverage-istanbul@4.1.8)(vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1)):
     dependencies:
       '@vitest/expect': 4.1.8
-      '@vitest/mocker': 4.1.8(vite@8.0.14(@types/node@20.19.42)(jiti@2.6.1))
+      '@vitest/mocker': 4.1.8(vite@8.0.14(@types/node@20.19.43)(jiti@2.6.1))
       '@vitest/pretty-format': 4.1.8
       '@vitest/runner': 4.1.8
       '@vitest/snapshot': 4.1.8
@@ -3254,10 +3254,10 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.0.14(@types/node@20.19.42)(jiti@2.6.1)
+      vite: 8.0.14(@types/node@20.19.43)(jiti@2.6.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 20.19.42
+      '@types/node': 20.19.43
       '@vitest/coverage-istanbul': 4.1.8(vitest@4.1.8)
     transitivePeerDependencies:
       - msw
