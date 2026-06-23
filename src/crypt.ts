@@ -267,10 +267,12 @@ export const crypt = (
       const result: number[] = [];
 
       for (let i = 0; i < cLength; i++) {
-        result.push((cdata[i] >> 24) & 0xff);
-        result.push((cdata[i] >> 16) & 0xff);
-        result.push((cdata[i] >> 8) & 0xff);
-        result.push(cdata[i] & 0xff);
+        result.push(
+          (cdata[i] >> 24) & 0xff,
+          (cdata[i] >> 16) & 0xff,
+          (cdata[i] >> 8) & 0xff,
+          cdata[i] & 0xff,
+        );
       }
 
       if (!sync) return Promise.resolve(result);

@@ -5,9 +5,9 @@ interface SchedulerPostTaskOptions {
 }
 
 interface Scheduler {
-  postTask<T>(callback: () => T | Promise<T>, options?: SchedulerPostTaskOptions): Promise<T>;
+  postTask: <T>(callback: () => T | Promise<T>, options?: SchedulerPostTaskOptions) => Promise<T>;
 
-  yield?(): Promise<void>;
+  yield?: () => Promise<void>;
 }
 
 declare global {
