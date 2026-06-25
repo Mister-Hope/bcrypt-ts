@@ -1,11 +1,12 @@
 configDependencies:
-  pacquet: "^0.11.10"
+  pacquet: ^0.11.10
 
 enableGlobalVirtualStore: true
 
 minimumReleaseAgeExclude:
   - "@oxfmt/*"
   - "@oxlint/*"
+  - oxc-config-hope
   - oxfmt
   - oxlint
 
