@@ -33,7 +33,8 @@ export const genSalt = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): Promise<str
       try {
         resolve(genSaltSync(rounds));
       } catch (err) {
-        reject(err as Error);
+        // oxlint-disable-next-line typescript/prefer-promise-reject-errors
+        reject(err);
       }
     });
   });

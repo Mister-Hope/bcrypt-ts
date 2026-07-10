@@ -58,6 +58,7 @@ export const compare = (
       })
       // oxlint-disable-next-line promise/prefer-await-to-callbacks
       .catch((err: unknown) => {
-        reject(err as Error);
+        // oxlint-disable-next-line typescript/prefer-promise-reject-errors
+        reject(err);
       });
   });

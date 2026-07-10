@@ -148,4 +148,4 @@ export const hash = async (
     typeof salt === "number" ? await genSalt(salt) : salt,
     false,
     progressCallback,
-  ) as Promise<string>;
+  );
