@@ -16,6 +16,13 @@ packageExtensions:
       rollup:
         optional: true
 
+  conventional-changelog-preset-loader:
+    peerDependencies:
+      conventional-changelog-conventionalcommits: ^10.0.0
+    peerDependenciesMeta:
+      "conventional-changelog-core":
+        optional: true
+
 trustPolicy: no-downgrade
 
 trustPolicyExclude:
