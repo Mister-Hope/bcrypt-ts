@@ -1,3 +1,9 @@
+## [9.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v9.0.0...v9.0.1) (2026-07-10)
+
+### Performance Improvements
+
+- improve code performance ([4b35bf0](https://github.com/Mister-Hope/bcrypt-ts/commit/4b35bf034c26ccfbde76203f2f9e165fabd4f25b))
+
 ## [9.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v8.0.1...v9.0.0) (2026-05-09)
 
 ### ⚠ BREAKING CHANGES
