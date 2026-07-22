@@ -6,9 +6,12 @@ enableGlobalVirtualStore: true
 minimumReleaseAgeExclude:
   - "@oxfmt/*"
   - "@oxlint/*"
+  - "@oxlint-tsgolint/*"
   - oxc-config-hope
   - oxfmt
   - oxlint
+  - oxlint-tsgolint
+  - tsdown
 
 packageExtensions:
   "@codecov/rollup-plugin":
