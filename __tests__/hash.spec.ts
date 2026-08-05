@@ -62,6 +62,22 @@ describe(hash, () => {
       "Illegal salt: validsalthere",
     );
   });
+
+  it("should reject for invalid character at the c4 position of any salt group", async () => {
+    // Positions 3, 7, 11, 15, 19 are the 4th char of each 4-char group. An invalid char there
+    // currently corrupts one salt byte to 0xffff while still yielding 16 bytes, silently
+    // bypassing the "Illegal salt" length check and producing a hash.
+    await Promise.all(
+      [3, 7, 11, 15, 19].map((pos) => {
+        // oxlint-disable-next-line typescript/no-misused-spread
+        const saltChars = [..."A".repeat(22)];
+
+        saltChars[pos] = "@";
+
+        return expect(hash("pw", `$2b$10$${saltChars.join("")}`)).rejects.toThrow("Illegal salt");
+      }),
+    );
+  });
 });
 
 describe(hashSync, () => {
@@ -127,5 +143,16 @@ describe(hashSync, () => {
 
   it("should reject for invalid salt length", () => {
     expect(() => hashSync("hello", "$2$10$validsalthere")).toThrow("Illegal salt: validsalthere");
+  });
+
+  it("should throw for invalid character at the c4 position of any salt group", () => {
+    for (const pos of [3, 7, 11, 15, 19]) {
+      // oxlint-disable-next-line typescript/no-misused-spread
+      const saltChars = [..."A".repeat(22)];
+
+      saltChars[pos] = "@";
+
+      expect(() => hashSync("pw", `$2b$10$${saltChars.join("")}`)).toThrow("Illegal salt");
+    }
   });
 });

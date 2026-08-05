@@ -49,8 +49,10 @@ describe(decodeBase64, () => {
     const result2 = decodeBase64("..\u0080\u0080", 5);
     expect(result2).toHaveLength(1);
 
+    // \u0080 at the 4th char of the group is also invalid: decoding must stop,
+    // leaving only the first 2 bytes (currently a corrupted 0xffff byte is emitted)
     const result3 = decodeBase64("...\u0080", 5);
-    expect(result3).toHaveLength(3);
+    expect(result3).toStrictEqual([0, 0]);
   });
 
   it("should handle early break on invalid c1 or c2", () => {
@@ -68,10 +70,26 @@ describe(decodeBase64, () => {
   });
 
   it("should handle early break on invalid c4", () => {
-    // Test with valid start but invalid c4 to trigger c4 === -1 case
+    // Test with valid start but invalid c4 to trigger c4 === -1 case.
+    // Decoding must stop like c3 does, not emit a corrupted byte (0xffff).
     const result = decodeBase64("...@", 5);
 
-    expect(result).toHaveLength(3);
+    expect(result).toStrictEqual([0, 0]);
+  });
+
+  it("should stop decoding at invalid c4 mid-stream", () => {
+    // An invalid c4 in the middle of the string must stop decoding entirely.
+    const result = decodeBase64("...@...", 5);
+
+    expect(result).toStrictEqual([0, 0]);
+  });
+
+  it("should never emit bytes outside the 0-255 range", () => {
+    // Any invalid c4 currently produces byte 65535; decoded bytes must stay 0-255.
+    const result = decodeBase64("...@", 5);
+
+    expect(Math.max(...result)).toBeLessThanOrEqual(255);
+    expect(Math.min(...result)).toBeGreaterThanOrEqual(0);
   });
 
   it("should handle length limit reached", () => {

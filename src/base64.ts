@@ -88,6 +88,7 @@ export const decodeBase64 = (contentString: string, length: number): number[] =>
 
     code = contentString.charCodeAt(off++);
     c4 = code < BASE64_INDEX.length ? BASE64_INDEX[code] : -1;
+    if (c4 === -1) break;
     o = ((c3 & 0x03) << 6) >>> 0;
     o |= c4;
     result.push(String.fromCharCode(o));
