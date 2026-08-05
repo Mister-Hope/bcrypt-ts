@@ -41,13 +41,11 @@ npm install bcrypt-ts
 
 jsDelivr:
 
-- `https://cdn.jsdelivr.net/npm/bcrypt-ts/dist/browser.mjs` (ESM)
-- `https://cdn.jsdelivr.net/npm/bcrypt-ts/dist/browser.umd.js` (UMD)
+- `https://cdn.jsdelivr.net/npm/bcrypt-ts/dist/browser.js` (ESM)
 
 unpkg:
 
-- `https://unpkg.com/bcrypt-ts/dist/browser.mjs` (ESM)
-- `https://unpkg.com/n/bcrypt-ts/dist/browser.umd.js` (UMD)
+- `https://unpkg.com/bcrypt-ts/dist/browser.js` (ESM)
 
 ## Usage
 
