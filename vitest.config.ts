@@ -5,8 +5,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
-      nextTick: path.resolve(__dirname, "src/nextTick/node.ts"),
-      random: path.resolve(__dirname, "src/random/node.ts"),
+      nextTick: path.resolve(import.meta.dirname, "src/nextTick/node.ts"),
+      random: path.resolve(import.meta.dirname, "src/random/node.ts"),
     },
   },
   test: {
