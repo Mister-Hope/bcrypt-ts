@@ -4,7 +4,7 @@ This file provides AI coding assistants (GitHub Copilot, Claude Code, etc.) with
 
 ## Project overview
 
-bcrypt-ts is a pure TypeScript implementation of the bcrypt password hashing function with zero runtime dependencies. It is hash-format compatible with the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on Node.js and also runs in the browser. It is derived from dcodeIO/bcrypt.js (whose copyright and Apache-2.0 license notice are preserved in the source); this project is released under MIT. Current version: v9.0.1. Selling points over bcrypt.js: fully written in TypeScript, separate ESM bundles for Node and browser, minified builds, and better tree-shaking. Note the inherent properties of the bcrypt algorithm: the pure JS implementation is ~30% slower than the C++ binding, the input limit is 72 bytes (mind multi-byte UTF-8 characters), and hashes are fixed at 60 characters (`$2b$` format).
+bcrypt-ts is a pure TypeScript implementation of the bcrypt password hashing function with zero runtime dependencies. It is hash-format compatible with the C++ [bcrypt](https://npmjs.org/package/bcrypt) binding on Node.js and also runs in the browser. It is derived from dcodeIO/bcrypt.js (whose copyright and Apache-2.0 license notice are preserved in the source); this project is released under MIT. Current version: v9.0.2. Selling points over bcrypt.js: fully written in TypeScript, separate ESM bundles for Node and browser, minified builds, and better tree-shaking. Note the inherent properties of the bcrypt algorithm: the pure JS implementation is ~30% slower than the C++ binding, the input limit is 72 bytes (mind multi-byte UTF-8 characters), and hashes are fixed at 60 characters (`$2b$` format).
 
 ## Architecture & modules
 

@@ -1,3 +1,9 @@
+## [9.0.2](https://github.com/Mister-Hope/bcrypt-ts/compare/v9.0.1...v9.0.2) (2026-08-06)
+
+### Bug Fixes
+
+- validate the fourth character in decodeBase64 ([7f40731](https://github.com/Mister-Hope/bcrypt-ts/commit/7f40731f1f3c83de0912531e16492c62691cb462))
+
 ## [9.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v9.0.0...v9.0.1) (2026-07-10)
 
 ### Performance Improvements
