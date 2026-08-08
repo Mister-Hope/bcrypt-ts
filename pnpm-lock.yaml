@@ -307,8 +307,8 @@ importers:
         specifier: 4.1.10
         version: 4.1.10(supports-color@7.2.0)(vitest@4.1.10)
       conventional-changelog:
-        specifier: 8.1.0
-        version: 8.1.0(conventional-changelog-conventionalcommits@10.2.1)(conventional-commits-filter@6.0.1)
+        specifier: 8.1.1
+        version: 8.1.1(conventional-changelog-conventionalcommits@10.2.1)(conventional-commits-filter@6.0.1)
       conventional-changelog-conventionalcommits:
         specifier: 10.2.1
         version: 10.2.1
@@ -1342,8 +1342,8 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  conventional-changelog@8.1.0:
-    resolution: {integrity: sha512-idt1JK+3+Nt7gqH/d/sEYWdDeR+5XPov/jssmFN6XxmYSRlonTWSDWhWUPkmm0zbwYjtVdt+4My5aiPkKyvocw==}
+  conventional-changelog@8.1.1:
+    resolution: {integrity: sha512-my0arqBpzr8mg+7RKDGnw8OiDvBr8/QVJIxazYJlIDeKx/2GCBYxZELaDYpbRhM5gNKfZB8h9SHuetrUFxd5HQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -2687,7 +2687,7 @@ snapshots:
       conventional-commits-filter: 6.0.1
       semver: 7.8.5
 
-  conventional-changelog@8.1.0(conventional-changelog-conventionalcommits@10.2.1)(conventional-commits-filter@6.0.1):
+  conventional-changelog@8.1.1(conventional-changelog-conventionalcommits@10.2.1)(conventional-commits-filter@6.0.1):
     dependencies:
       '@conventional-changelog/git-client': 3.1.0(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.2)
       '@simple-libs/hosted-git-info': 2.0.0
