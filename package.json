@@ -62,7 +62,7 @@
     "conventional-changelog-conventionalcommits": "10.4.0",
     "husky": "9.1.7",
     "nano-staged": "1.0.2",
-    "oxc-config-hope": "0.3.12",
+    "oxc-config-hope": "0.3.13",
     "oxfmt": "0.64.0",
     "oxlint": "1.76.0",
     "oxlint-tsgolint": "7.0.2001",
