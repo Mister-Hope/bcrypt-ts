@@ -308,10 +308,10 @@ importers:
         version: 4.1.11(supports-color@7.2.0)(vitest@4.1.11)
       conventional-changelog:
         specifier: 8.1.3
-        version: 8.1.3(conventional-changelog-conventionalcommits@10.3.0)
+        version: 8.1.3(conventional-changelog-conventionalcommits@10.4.0)
       conventional-changelog-conventionalcommits:
-        specifier: 10.3.0
-        version: 10.3.0
+        specifier: 10.4.0
+        version: 10.4.0
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -463,6 +463,10 @@ packages:
 
   '@conventional-changelog/template@1.3.0':
     resolution: {integrity: sha512-GsCw/qu92GI0EX6s7fxUi/SG1lmFjG9XZivxxEDZXqztuQKCn5o5wKdz4v005zci0Md7EZzgAwmQLoIEDZoaow==}
+    engines: {node: '>=22'}
+
+  '@conventional-changelog/template@1.4.0':
+    resolution: {integrity: sha512-aalGyl7dbB5PArRebDIX43ZvBlXrYm9uWzGJ26t+4SzJVPsOuvfILGGbw5X4yX7i50YEmJ8zvbiWnqH/AAnZqg==}
     engines: {node: '>=22'}
 
   '@emnapi/core@2.0.0-alpha.3':
@@ -1323,8 +1327,8 @@ packages:
     resolution: {integrity: sha512-j/O/d7GcZCyNl7/hwZAb606rzqkyvaDctLmckbxLzHvFBzTJHuGEdodATcP3yIRoDrLHkIATJuvzbFlp/ki2cQ==}
     engines: {node: '>=18'}
 
-  conventional-changelog-conventionalcommits@10.3.0:
-    resolution: {integrity: sha512-qag0zFD867Qq1DK0jAWicyWlEMS1FFC/BLVLISaoeI7Y6Em6aWchk7BCkhOTsecRpMsV6qX41XmlNnghiiTmSw==}
+  conventional-changelog-conventionalcommits@10.4.0:
+    resolution: {integrity: sha512-Rriac6ZrAlVm6cy9Bz4NSp+WMHpwNXoPIYex+HjCgduAVUSbnew29DQjQw0C4g9u3HtSYzGiGY+pdBXAZo+4aA==}
     engines: {node: '>=22'}
 
   conventional-changelog-preset-loader@6.0.1:
@@ -2103,6 +2107,8 @@ snapshots:
 
   '@conventional-changelog/template@1.3.0': {}
 
+  '@conventional-changelog/template@1.4.0': {}
+
   '@emnapi/core@2.0.0-alpha.3':
     dependencies:
       '@emnapi/wasi-threads': 2.0.1
@@ -2671,13 +2677,13 @@ snapshots:
 
   content-type@2.0.0: {}
 
-  conventional-changelog-conventionalcommits@10.3.0:
+  conventional-changelog-conventionalcommits@10.4.0:
     dependencies:
-      '@conventional-changelog/template': 1.3.0
+      '@conventional-changelog/template': 1.4.0
 
-  conventional-changelog-preset-loader@6.0.1(conventional-changelog-conventionalcommits@10.3.0):
+  conventional-changelog-preset-loader@6.0.1(conventional-changelog-conventionalcommits@10.4.0):
     dependencies:
-      conventional-changelog-conventionalcommits: 10.3.0
+      conventional-changelog-conventionalcommits: 10.4.0
 
   conventional-changelog-writer@9.2.1:
     dependencies:
@@ -2687,13 +2693,13 @@ snapshots:
       conventional-commits-filter: 6.0.1
       semver: 7.8.5
 
-  conventional-changelog@8.1.3(conventional-changelog-conventionalcommits@10.3.0):
+  conventional-changelog@8.1.3(conventional-changelog-conventionalcommits@10.4.0):
     dependencies:
       '@conventional-changelog/git-client': 3.1.2(conventional-commits-filter@6.0.1)(conventional-commits-parser@7.1.2)
       '@simple-libs/hosted-git-info': 2.0.0
       '@simple-libs/normalize-package-data': 1.0.0
       argue-cli: 3.1.0
-      conventional-changelog-preset-loader: 6.0.1(conventional-changelog-conventionalcommits@10.3.0)
+      conventional-changelog-preset-loader: 6.0.1(conventional-changelog-conventionalcommits@10.4.0)
       conventional-changelog-writer: 9.2.1
       conventional-commits-filter: 6.0.1
       conventional-commits-parser: 7.1.2
