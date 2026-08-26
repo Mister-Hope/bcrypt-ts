@@ -1,4 +1,4 @@
-// oxlint-disable unicorn/prefer-code-point, unicorn/prefer-math-trunc
+// oxlint-disable unicorn/prefer-code-point
 import { BASE64_CODE, BASE64_INDEX } from "./constant.js";
 
 /**
@@ -13,8 +13,7 @@ export const encodeBase64 = (byteArray: number[] | Buffer, length: number): stri
   if (length <= 0 || length > byteArray.length) throw new Error(`Illegal length: ${length}`);
 
   let off = 0;
-  let c1: number;
-  let c2: number;
+  let c1: number, c2: number;
   const result: string[] = [];
 
   while (off < length) {
@@ -55,12 +54,7 @@ export const decodeBase64 = (contentString: string, length: number): number[] =>
   const stringLength = contentString.length;
   let off = 0;
   let olen = 0;
-  let c1: number;
-  let c2: number;
-  let c3: number;
-  let c4: number;
-  let o: number;
-  let code: number;
+  let c1: number, c2: number, c3: number, c4: number, code: number, o: number;
   const result: string[] = [];
 
   while (off < stringLength - 1 && olen < length) {

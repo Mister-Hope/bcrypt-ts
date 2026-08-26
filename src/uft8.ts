@@ -37,8 +37,7 @@ export const getUTF8ByteLength = (content: string): number => {
  */
 export const convertToUFT8Bytes = (content: string): number[] => {
   let offset = 0;
-  let c1;
-  let c2;
+  let c1: number, c2: number;
 
   const buffer = Array.from<number>({ length: getUTF8ByteLength(content) });
 

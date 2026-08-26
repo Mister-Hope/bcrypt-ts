@@ -30,8 +30,7 @@ const hashString = (
   }
 
   // Validate the salt
-  let minor: string;
-  let offset: number;
+  let minor: string, offset: number;
 
   if (salt.charAt(0) !== "$" || salt.charAt(1) !== "2") {
     const err = new Error(`Invalid salt version: ${salt.slice(0, 2)}`);
@@ -81,8 +80,8 @@ const hashString = (
   // oxlint-disable-next-line no-param-reassign
   content += minor >= "a" ? "\u0000" : "";
 
-  const passwordBytes = convertToUFT8Bytes(content),
-    saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
+  const passwordBytes = convertToUFT8Bytes(content);
+  const saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
 
   if (saltBytes.length !== BCRYPT_SALT_LEN) {
     const err = new Error(`Illegal salt: ${realSalt}`);
