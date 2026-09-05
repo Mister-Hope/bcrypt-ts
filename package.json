@@ -63,7 +63,7 @@
     "husky": "9.1.7",
     "nano-staged": "1.0.2",
     "oxc-config-hope": "0.3.13",
-    "oxfmt": "0.65.0",
+    "oxfmt": "0.66.0",
     "oxlint": "1.80.0",
     "oxlint-tsgolint": "7.0.2001",
     "picocolors": "1.1.1",
