@@ -1,4 +1,4 @@
-import { bench, describe } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { hash, hashSync } from "../src/index.js";
 
@@ -15,53 +15,53 @@ Aliquet curae fames vel; purus dolor maecenas. Fermentum sagittis nulla ornare b
 `;
 
 describe(hash, () => {
-  bench(
-    "hash hello 5",
-    async () => {
+  it("hash hello 5", async ({ bench }) => {
+    const result = await bench("hash hello 5", async () => {
       await hash("hello", 5);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "hash hello 10",
-    async () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("hash hello 10", async ({ bench }) => {
+    const result = await bench("hash hello 10", async () => {
       await hash("hello", 10);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "hash lorem 5",
-    async () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("hash lorem 5", async ({ bench }) => {
+    const result = await bench("hash lorem 5", async () => {
       await hash(lorem, 5);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
+
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
 });
 
 describe(hashSync, () => {
-  bench(
-    "hashSync hello 5",
-    () => {
+  it("hashSync hello 5", async ({ bench }) => {
+    const result = await bench("hashSync hello 5", () => {
       hashSync("hello", 5);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "hashSync hello 10",
-    () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("hashSync hello 10", async ({ bench }) => {
+    const result = await bench("hashSync hello 10", () => {
       hashSync("hello", 10);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "hashSync lorem 5",
-    () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("hashSync lorem 5", async ({ bench }) => {
+    const result = await bench("hashSync lorem 5", () => {
       hashSync(lorem, 5);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
+
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
 });

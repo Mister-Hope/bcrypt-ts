@@ -1,4 +1,4 @@
-import { bench, describe } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { compare, compareSync, hash, hashSync } from "../src/index.js";
 
@@ -14,61 +14,66 @@ Eget ultricies potenti aptent augue eget quisque erat habitasse feugiat. Commodo
 Aliquet curae fames vel; purus dolor maecenas. Fermentum sagittis nulla ornare bibendum justo pellentesque lacinia, sem eleifend. Justo eleifend etiam suspendisse sagittis; fames ipsum. Sodales cras mus non metus sapien parturient maximus adipiscing blandit. Praesent amet risus; auctor molestie eros morbi. Torquent pulvinar sodales; a nisi cursus tempus. Dignissim ipsum placerat nisl litora auctor.
 `;
 
-describe(compare, async () => {
-  const hellow5Hash = await hash("hello", 5);
-  const hellow10Hash = await hash("hello", 10);
-  const lorenHash = await hash(lorem, 5);
+describe(compare, () => {
+  it("compare hello 5", async ({ bench }) => {
+    const hellow5Hash = await hash("hello", 5);
 
-  bench(
-    "compare hello 5",
-    async () => {
+    const result = await bench("compare hello 5", async () => {
       await compare("hello", hellow5Hash);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "compare hello 10",
-    async () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("compare hello 10", async ({ bench }) => {
+    const hellow10Hash = await hash("hello", 10);
+
+    const result = await bench("compare hello 10", async () => {
       await compare("hello", hellow10Hash);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "compare lorem",
-    async () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("compare lorem", async ({ bench }) => {
+    const lorenHash = await hash(lorem, 5);
+
+    const result = await bench("compare lorem", async () => {
       await compare(lorem, lorenHash);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
+
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
 });
 
 describe(compareSync, () => {
-  const hellow5Hash = hashSync("hello", 5);
-  const hellow10Hash = hashSync("hello", 10);
-  const lorenHash = hashSync(lorem, 5);
+  it("compareSync hello 5", async ({ bench }) => {
+    const hellow5Hash = hashSync("hello", 5);
 
-  bench(
-    "compare hello 5",
-    () => {
+    const result = await bench("compareSync hello 5", () => {
       compareSync("hello", hellow5Hash);
-    },
-    { iterations: 10 },
-  );
-  bench(
-    "compare hello 10",
-    () => {
-      compareSync("hello", hellow10Hash);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
 
-  bench(
-    "compare lorem 5",
-    () => {
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("compareSync hello 10", async ({ bench }) => {
+    const hellow10Hash = hashSync("hello", 10);
+
+    const result = await bench("compareSync hello 10", () => {
+      compareSync("hello", hellow10Hash);
+    }).run({ iterations: 10 });
+
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
+
+  it("compareSync lorem 5", async ({ bench }) => {
+    const lorenHash = hashSync(lorem, 5);
+
+    const result = await bench("compareSync lorem 5", () => {
       compareSync(lorem, lorenHash);
-    },
-    { iterations: 10 },
-  );
+    }).run({ iterations: 10 });
+
+    expect(result.throughput.mean).toBeGreaterThan(0);
+  });
 });
