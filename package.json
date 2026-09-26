@@ -64,7 +64,7 @@
     "nano-staged": "1.0.2",
     "oxc-config-hope": "0.3.13",
     "oxfmt": "0.70.0",
-    "oxlint": "1.83.0",
+    "oxlint": "1.85.0",
     "oxlint-tsgolint": "7.0.2003",
     "picocolors": "1.1.1",
     "rimraf": "6.1.3",
