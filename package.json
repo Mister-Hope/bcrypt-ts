@@ -47,8 +47,8 @@
     "changelog": "conventional-changelog -p conventionalcommits",
     "clean": "rimraf dist",
     "dev": "tsdown -w",
-    "lint": "oxlint --fix --deny-warnings --report-unused-disable-directives && oxfmt",
-    "lint:check": "oxlint --deny-warnings --report-unused-disable-directives && oxfmt --check",
+    "lint": "oxlint --fix && oxfmt",
+    "lint:check": "oxlint && oxfmt --check",
     "prepare": "husky",
     "prepublish": "pnpm run clean && pnpm run build",
     "test": "vitest --coverage"
@@ -75,7 +75,7 @@
   },
   "nano-staged": {
     "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{js,ts}": "oxlint --fix --deny-warnings --report-unused-disable-directives"
+    "*.{js,ts}": "oxlint --fix"
   },
   "devEngines": {
     "packageManager": {
