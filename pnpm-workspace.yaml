@@ -1,7 +1,10 @@
-configDependencies:
-  pacquet: ^0.11.12
+virtualStoreType: global
 
-enableGlobalVirtualStore: true
+packageExtensions:
+  "@codecov/rollup-plugin":
+    peerDependenciesMeta:
+      rollup:
+        optional: true
 
 minimumReleaseAgeExclude:
   - "@oxfmt/*"
@@ -14,24 +17,6 @@ minimumReleaseAgeExclude:
   - oxlint-tsgolint
   - tsdown
   - vitest
-
-packageExtensions:
-  "@codecov/rollup-plugin":
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-
-  conventional-changelog-preset-loader:
-    peerDependencies:
-      conventional-changelog-conventionalcommits: ^10.0.0
-    peerDependenciesMeta:
-      "conventional-changelog-core":
-        optional: true
-
+minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
-
-trustPolicyExclude:
-  # babel
-  - semver@6.3.1
-  # node types
-  - undici-types@6.21.0
+trustPolicyIgnoreAfter: 720
