@@ -19,6 +19,8 @@
     "platformAutomerge": true,
     "extends": ["group:allNonMajor", "schedule:weekly"]
   },
+  "minimumReleaseAge": "1 day",
+  "timezone": "Asia/Shanghai",
   "vulnerabilityAlerts": {
     "enabled": true
   }

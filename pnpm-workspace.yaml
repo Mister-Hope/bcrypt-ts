@@ -7,6 +7,7 @@ packageExtensions:
         optional: true
 
 minimumReleaseAgeExclude:
+  - "@mr-hope/*"
   - "@oxfmt/*"
   - "@oxlint/*"
   - "@oxlint-tsgolint/*"
@@ -19,4 +20,5 @@ minimumReleaseAgeExclude:
   - vitest
 minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
+trustPolicyExcludePrune: true
 trustPolicyIgnoreAfter: 720

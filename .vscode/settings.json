@@ -1,5 +1,4 @@
 {
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "oxc.unusedDisableDirectives": "deny",
   "cSpell.words": ["crypted"]
 }
