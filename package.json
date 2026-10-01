@@ -80,12 +80,12 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.3.4",
+      "version": "12.8.1",
       "onFail": "download"
     },
     "runtime": {
       "name": "node",
-      "version": "^22.22.0 || ^24.20.0 || ^26.6.0",
+      "version": "^22.22.0 || ^24.21.0 || ^26.10.0",
       "onFail": "error"
     }
   },
