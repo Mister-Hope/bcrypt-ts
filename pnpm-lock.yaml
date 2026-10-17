@@ -4,60 +4,13 @@ lockfileVersion: '9.0'
 importers:
 
   .:
-    configDependencies:
-      pacquet:
-        specifier: ^0.11.12
-        version: 0.11.12
+    configDependencies: {}
     packageManagerDependencies:
       pnpm:
         specifier: 12.11.1
         version: 12.11.1
 
 packages:
-
-  '@pacquet/darwin-arm64@0.11.12':
-    resolution: {integrity: sha512-QyaYtUStulUDeKWEXchY6kQCBX2GFE6vmkbvsFTGxG9Koy/CqF5aerDKWao1WVuYKogtcXp4DEmdQdVXbhvnXA==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@pacquet/darwin-x64@0.11.12':
-    resolution: {integrity: sha512-vmgSEHU98FdkXIsvdd0gpcPRkrgEcyu2V0NXGaXPz6QtHPsKsLy+VelxBvcdWPqZvjg2B9FOxIBcOLvsGidhSQ==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@pacquet/linux-arm64-musl@0.11.12':
-    resolution: {integrity: sha512-sf7R+YIWSwKzwq2Pg8Ko1b8j2FKQOntdi8G7TRpp66ORiszuf+3Hg9Z+vRxt0UyaW6IT4WRcWndAs17DGY3fjQ==}
-    cpu: [arm64]
-    os: [linux]
-    libc: [musl]
-
-  '@pacquet/linux-arm64@0.11.12':
-    resolution: {integrity: sha512-YACkBzTxvZz56QKZfHylouvJCOQ7qsmvfn9fV85CpX9315V3VvmwXnqQgoqe6HJwqQ5qUDJOxXo2CbSJ3m9mCQ==}
-    cpu: [arm64]
-    os: [linux]
-    libc: [glibc]
-
-  '@pacquet/linux-x64-musl@0.11.12':
-    resolution: {integrity: sha512-A8nzBWCMVO9VEeZDE0QjYSf6h6eJIuTPddj/JXVGW0R89GJ53hg2kreA3lt36KhtXmx9sTgPxGiX4vyB/grGZA==}
-    cpu: [x64]
-    os: [linux]
-    libc: [musl]
-
-  '@pacquet/linux-x64@0.11.12':
-    resolution: {integrity: sha512-X3KFnyf4Gd+dEGV+yFQT2UKITPIh9PmPCi9HdSQXIWV+yrTf4q38gH/hEf0nrhqji/kkZrvvynZP2DnzSNQPjw==}
-    cpu: [x64]
-    os: [linux]
-    libc: [glibc]
-
-  '@pacquet/win32-arm64@0.11.12':
-    resolution: {integrity: sha512-m6StjPOMYA3vohgU0PrA2PTyppr89GKOskWdkaW1FLtQa7pSZNAXFZWbGQy9hmAdOGKM5OS42Ks43tCmJaJivA==}
-    cpu: [arm64]
-    os: [win32]
-
-  '@pacquet/win32-x64@0.11.12':
-    resolution: {integrity: sha512-ZYPGtHreNgkDqC0Q118hb2UByo3Xtjsh6wWcVbHt7DllWVB6kVj347IwkFT0F+hsWQlW0PVPrNps/+UjiYSgYA==}
-    cpu: [x64]
-    os: [win32]
 
   '@pnpm/exe.android-arm64@12.11.1':
     resolution: {integrity: sha512-zoVTfgk2x7/Co7jBGDiDs9dyi2YnxdIDc0+iV2z+QxXHHq39hSJemhuyAgHRiwjpa052+FreoZx0C6nZ/kj1Lw==}
@@ -136,39 +89,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  pacquet@0.11.12:
-    resolution: {integrity: sha512-SqZ2Iar8QQSOmvdg4M//w3Zv8RicEtDH+2wRp5d4NC/5uzTFJ/NkXc9ZOvwNqERqMx0GolJ3lRMevsEKHUsXcQ==}
-
   pnpm@12.11.1:
     resolution: {integrity: sha512-Ww4yiCOafqQVXSCU9UcGbhIqE3azzXhaaAyREuEWkT5kqq7PIN2DzDQDD6ZwE/XFUR+c9DDdg4QYi0xguKKtHg==}
     engines: {node: '>=18.*'}
     hasBin: true
 
 snapshots:
-
-  '@pacquet/darwin-arm64@0.11.12':
-    optional: true
-
-  '@pacquet/darwin-x64@0.11.12':
-    optional: true
-
-  '@pacquet/linux-arm64-musl@0.11.12':
-    optional: true
-
-  '@pacquet/linux-arm64@0.11.12':
-    optional: true
-
-  '@pacquet/linux-x64-musl@0.11.12':
-    optional: true
-
-  '@pacquet/linux-x64@0.11.12':
-    optional: true
-
-  '@pacquet/win32-arm64@0.11.12':
-    optional: true
-
-  '@pacquet/win32-x64@0.11.12':
-    optional: true
 
   '@pnpm/exe.android-arm64@12.11.1':
     optional: true
@@ -211,17 +137,6 @@ snapshots:
 
   '@pnpm/exe.win32-x64@12.11.1':
     optional: true
-
-  pacquet@0.11.12:
-    optionalDependencies:
-      '@pacquet/darwin-arm64': 0.11.12
-      '@pacquet/darwin-x64': 0.11.12
-      '@pacquet/linux-arm64': 0.11.12
-      '@pacquet/linux-arm64-musl': 0.11.12
-      '@pacquet/linux-x64': 0.11.12
-      '@pacquet/linux-x64-musl': 0.11.12
-      '@pacquet/win32-arm64': 0.11.12
-      '@pacquet/win32-x64': 0.11.12
 
   pnpm@12.11.1:
     optionalDependencies:
