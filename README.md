@@ -24,7 +24,7 @@ increasing computation power. ([see](http://en.wikipedia.org/wiki/Bcrypt))
 While bcrypt-ts is compatible with the C++ bcrypt binding, it is built in pure JavaScript and thus slower ([about 30%](https://github.com/dcodeIO/bcrypt.js/wiki/Benchmark)), effectively reducing the number of iterations that can be processed in an equal time span.
 
 The maximum input length is 72 bytes (note that UTF-8 encoded characters use up to 4 bytes) and the length of generated
-hashes is 60 characters. Note that maximum input length is not implicitly checked by the library for compatibility with
+hashes is 60 characters (59 for legacy `$2$` hashes). Note that maximum input length is not implicitly checked by the library for compatibility with
 the C++ binding on Node.js, but should be checked with `truncates(password)` where necessary.
 
 ## Install
@@ -49,11 +49,11 @@ unpkg:
 
 ## Usage
 
-On Node.js, the inbuilt [crypto module](http://nodejs.org/api/crypto.html)'s randomBytes interface is used to obtain secure random numbers.
+On Node.js, secure random numbers are obtained from [Web Crypto](https://nodejs.org/api/globals.html#cryptogetrandomvaluestypedarray)'s `getRandomValues`.
 
 ### Browser
 
-In the browser, bcrypt.js relies on [Web Crypto API](http://www.w3.org/TR/WebCryptoAPI)'s getRandomValues interface to obtain secure random numbers. If no cryptographically secure source of randomness is available, the package will **throw an error**.
+In the browser, bcrypt-ts relies on [Web Crypto API](http://www.w3.org/TR/WebCryptoAPI)'s getRandomValues interface to obtain secure random numbers. If no cryptographically secure source of randomness is available, the package will **throw an error**.
 
 ### How to choose between them
 
@@ -128,14 +128,6 @@ const result = await hash("B4c0//", 10);
 
 **Note:** Under the hood, asynchronous APIs split an operation into small chunks. After the completion of a chunk, the execution of the next chunk is placed on the back of the [JS event queue](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop), efficiently yielding for other computation to execute.
 
-### Usage - Command Line
-
-```
-
-Usage: bcrypt <input> [rounds|salt]
-
-```
-
 ## API
 
 ```ts
@@ -191,13 +183,22 @@ export const hash: (
  */
 export const getRounds: (hash: string) => number;
 /**
- * Gets the salt portion from a hash. Does not validate the hash.
+ * Gets the salt portion from a hash. Throws if the hash length is neither 60 nor a legacy 59-character `$2$` hash.
  *
  * @param hash Hash to extract the salt from
  * @returns Extracted salt part
  * @throws {Error} If `hash` is not a string or otherwise invalid
  */
 export const getSalt: (hash: string) => string;
+
+/**
+ * Tests if a content will be truncated when hashed, that is its length is greater than 72 bytes
+ * when converted to UTF-8.
+ *
+ * @param content The content to test
+ * @returns `true` if truncated, otherwise `false`
+ */
+export const truncates: (content: string) => boolean;
 
 /**
  * Synchronously generates a salt.
