@@ -1,3 +1,12 @@
+## [9.0.3](https://github.com/Mister-Hope/bcrypt-ts/compare/v9.0.2...v9.0.3) (2026-10-31)
+
+### Bug Fixes
+
+- **renovate:** disable major @types/node updates with the official helper ([#865](https://github.com/Mister-Hope/bcrypt-ts/issues/865)) ([33e789b](https://github.com/Mister-Hope/bcrypt-ts/commit/33e789b4cd8686f16151d2abd9a2391478ea614f))
+- return bytes from browser random helper ([#877](https://github.com/Mister-Hope/bcrypt-ts/issues/877)) ([ad9fa85](https://github.com/Mister-Hope/bcrypt-ts/commit/ad9fa85becce01fb335587a5b5dae66be56a9f77))
+- validate salt rounds are integers ([#879](https://github.com/Mister-Hope/bcrypt-ts/issues/879)) ([332d26a](https://github.com/Mister-Hope/bcrypt-ts/commit/332d26aab95f7a1cc5cf021f2d2b7f249b31290c))
+- verify legacy $2$ hashes ([#883](https://github.com/Mister-Hope/bcrypt-ts/issues/883)) ([2892307](https://github.com/Mister-Hope/bcrypt-ts/commit/2892307efcde05e85a7128d21308f094f24b8114))
+
 ## [9.0.2](https://github.com/Mister-Hope/bcrypt-ts/compare/v9.0.1...v9.0.2) (2026-08-06)
 
 ### Bug Fixes
