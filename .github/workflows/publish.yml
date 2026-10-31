@@ -10,8 +10,9 @@ on:
     inputs:
       bump:
         type: choice
-        description: Version bump
+        description: Version bump (auto follows conventional commits since the last tag)
         options:
+          - auto
           - patch
           - minor
           - major
@@ -20,7 +21,7 @@ on:
           - premajor
           - prerelease
           - none
-        default: patch
+        default: auto
       preid:
         type: string
         description: Prerelease identifier used by pre* bumps (e.g. beta)
@@ -84,15 +85,27 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Resolve version bump
+        id: bump
+        run: |
+          if [ "${{ inputs.bump }}" = "auto" ]; then
+            BUMP="$(node scripts/release-bump.ts)"
+          else
+            BUMP="${{ inputs.bump }}"
+          fi
+
+          echo "bump=$BUMP" >> "$GITHUB_OUTPUT"
+          echo "Version bump: $BUMP"
+
       - name: Bump version
         if: ${{ inputs.bump != 'none' }}
         run: |
           ARGS=(--no-commit-hooks --no-git-tag-version)
 
           if [ -n "${{ inputs.preid }}" ]; then
-            pnpm version "${{ inputs.bump }}" --preid "${{ inputs.preid }}" "${ARGS[@]}"
+            pnpm version "${{ steps.bump.outputs.bump }}" --preid "${{ inputs.preid }}" "${ARGS[@]}"
           else
-            pnpm version "${{ inputs.bump }}" "${ARGS[@]}"
+            pnpm version "${{ steps.bump.outputs.bump }}" "${ARGS[@]}"
           fi
 
       - name: Show release version
