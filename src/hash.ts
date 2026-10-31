@@ -3,7 +3,7 @@ import { decodeBase64, encodeBase64 } from "./base64.js";
 import { BCRYPT_SALT_LEN, C_ORIG, GENERATE_SALT_DEFAULT_LOG2_ROUNDS } from "./constant.js";
 import { crypt } from "./crypt.js";
 import { genSalt, genSaltSync } from "./salt.js";
-import { convertToUFT8Bytes } from "./uft8.js";
+import { convertToUTF8Bytes } from "./utf8.js";
 
 /**
  * Internally hashes a string.
@@ -80,7 +80,7 @@ const hashString = (
   // oxlint-disable-next-line no-param-reassign
   content += minor >= "a" ? "\u0000" : "";
 
-  const passwordBytes = convertToUFT8Bytes(content);
+  const passwordBytes = convertToUTF8Bytes(content);
   const saltBytes = decodeBase64(realSalt, BCRYPT_SALT_LEN);
 
   if (saltBytes.length !== BCRYPT_SALT_LEN) {
