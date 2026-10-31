@@ -1,20 +1,68 @@
+# Publishes the package via npm Trusted Publishing (OIDC), so no npm token is stored here.
+# Configure the trusted publisher on npmjs.com first:
+#   repository: Mister-Hope/bcrypt-ts
+#   workflow: publish.yml
+#   environment: (leave empty)
 name: Publish
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        description: Version bump
+        options:
+          - patch
+          - minor
+          - major
+          - prepatch
+          - preminor
+          - premajor
+          - prerelease
+          - none
+        default: patch
+      preid:
+        type: string
+        description: Prerelease identifier used by pre* bumps (e.g. beta)
+        default: ""
+      dist_tag:
+        type: string
+        description: npm dist-tag; required for prereleases (e.g. next), stable releases use latest
+        default: ""
+      dryrun:
+        type: boolean
+        description: Dry run (no commit, tag, push or publish)
+        default: false
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
 
 jobs:
   publish:
-    name: Publish Package
+    name: Publish package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Check if user is allowed to publish
+        if: ${{ github.actor != 'Mister-Hope' }}
+        run: |
+          echo "You are not allowed to publish a release."
+          exit 1
+
+      - name: Ensure release runs on main
+        if: ${{ github.ref_name != 'main' }}
+        run: |
+          echo "A release must be triggered from the main branch."
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/setup@v3
@@ -22,8 +70,115 @@ jobs:
           runtime: node@^26.13.0
           require-lockfile: true
 
-      - name: Build project
+      - name: Linter test
+        run: pnpm run lint:check
+
+      - name: Unit test
+        run: pnpm run test
+
+      - name: Build
         run: pnpm run build
 
+      - name: Config git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Bump version
+        if: ${{ inputs.bump != 'none' }}
+        run: |
+          ARGS=(--no-commit-hooks --no-git-tag-version)
+
+          if [ -n "${{ inputs.preid }}" ]; then
+            pnpm version "${{ inputs.bump }}" --preid "${{ inputs.preid }}" "${ARGS[@]}"
+          else
+            pnpm version "${{ inputs.bump }}" "${ARGS[@]}"
+          fi
+
+      - name: Show release version
+        id: version
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Releasing v$VERSION"
+
+      - name: Update CHANGELOG.md
+        if: ${{ !inputs.dryrun && inputs.bump != 'none' }}
+        run: pnpm run changelog -- -i CHANGELOG.md -o CHANGELOG.md
+
+      - name: Commit release commit and tag
+        if: ${{ !inputs.dryrun && inputs.bump != 'none' }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git add CHANGELOG.md package.json
+          git commit -m "chore: release v$VERSION"
+          git tag -a "v$VERSION" -m "v$VERSION"
+
+      - name: Resolve npm dist-tag
+        id: dist-tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          DIST_TAG: ${{ inputs.dist_tag }}
+        run: |
+          if [ -n "$DIST_TAG" ]; then
+            echo "tag=$DIST_TAG" >> "$GITHUB_OUTPUT"
+            echo "Publishing v$VERSION with dist-tag $DIST_TAG"
+          elif [[ "$VERSION" == *-* ]]; then
+            echo "::error::v$VERSION is a prerelease, so dist_tag must be set (e.g. next); otherwise pnpm publishes it as latest."
+            exit 1
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+            echo "Publishing v$VERSION with dist-tag latest"
+          fi
+
+      - name: Push release commit and tag
+        if: ${{ !inputs.dryrun && inputs.bump != 'none' }}
+        run: git push origin "HEAD:${GITHUB_REF_NAME}" --follow-tags
+
+      - name: Publish to npm (dry run)
+        if: ${{ inputs.dryrun }}
+        run: pnpm publish --dry-run --access public --no-git-checks --tag "${{ steps.dist-tag.outputs.tag }}"
+
       - name: Publish to npm
-        run: pnpm publish --no-git-checks
+        if: ${{ !inputs.dryrun }}
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          # `bump = none` may retry a release that only partially completed, so skip an
+          # already published version instead of failing the workflow.
+          if curl -sf "https://registry.npmjs.org/bcrypt-ts/$VERSION" >/dev/null; then
+            echo "v$VERSION is already published on npm; skipping."
+          else
+            pnpm publish --access public --no-git-checks --provenance --tag "${{ steps.dist-tag.outputs.tag }}"
+          fi
+
+      - name: Create or update GitHub Release
+        if: ${{ !inputs.dryrun }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          NOTES="$RUNNER_TEMP/release-notes.md"
+
+          awk -v ver="$VERSION" '
+            $0 ~ "^## \\[" ver "\\]" { found = 1; next }
+            found && /^## \[/ { exit }
+            found { print }
+          ' CHANGELOG.md > "$NOTES"
+
+          if grep -q '[^[:space:]]' "$NOTES"; then
+            if gh release view "v$VERSION" >/dev/null 2>&1; then
+              gh release edit "v$VERSION" --notes-file "$NOTES"
+            else
+              gh release create "v$VERSION" --verify-tag --title "v$VERSION" --notes-file "$NOTES"
+            fi
+          elif ! gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release create "v$VERSION" --verify-tag --title "v$VERSION" --generate-notes
+          fi
+
+          if [[ "$VERSION" == *-* ]]; then
+            gh release edit "v$VERSION" --prerelease
+          else
+            gh release edit "v$VERSION" --latest
+          fi

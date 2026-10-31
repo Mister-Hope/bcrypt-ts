@@ -45,7 +45,7 @@
   "scripts": {
     "bench": "vitest bench",
     "build": "tsdown",
-    "changelog": "conventional-changelog -p conventionalcommits",
+    "changelog": "node scripts/changelog.ts",
     "clean": "rimraf dist",
     "dev": "tsdown -w",
     "lint": "oxlint --fix && oxfmt",
