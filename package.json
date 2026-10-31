@@ -23,6 +23,7 @@
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "browser": "./dist/browser.js",
   "types": "./dist/node.d.ts",
   "exports": {
