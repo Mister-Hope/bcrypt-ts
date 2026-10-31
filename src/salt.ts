@@ -15,6 +15,8 @@ import { getIllegalArgumentsTypeError } from "./utils.js";
 export const genSaltSync = (rounds = GENERATE_SALT_DEFAULT_LOG2_ROUNDS): string => {
   if (typeof rounds !== "number") throw getIllegalArgumentsTypeError(rounds);
 
+  if (!Number.isInteger(rounds)) throw new Error(`Illegal number of rounds (4-31): ${rounds}`);
+
   // oxlint-disable-next-line no-param-reassign
   rounds = Math.max(4, Math.min(31, rounds));
 
