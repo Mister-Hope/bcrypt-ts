@@ -7,7 +7,7 @@
  */
 export const random = (length: number): number[] => {
   try {
-    const array = new Uint32Array(length);
+    const array = new Uint8Array(length);
 
     globalThis.crypto.getRandomValues(array);
 
