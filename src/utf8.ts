@@ -35,7 +35,7 @@ export const getUTF8ByteLength = (content: string): number => {
  * @param content String to convert
  * @returns Byte array
  */
-export const convertToUFT8Bytes = (content: string): number[] => {
+export const convertToUTF8Bytes = (content: string): number[] => {
   let offset = 0;
   let c1: number, c2: number;
 

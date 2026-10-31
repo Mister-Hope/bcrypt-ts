@@ -1,4 +1,4 @@
-import { getUTF8ByteLength } from "./uft8.js";
+import { getUTF8ByteLength } from "./utf8.js";
 import { getIllegalArgumentsTypeError } from "./utils.js";
 
 /**
