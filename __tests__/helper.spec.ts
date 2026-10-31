@@ -11,6 +11,15 @@ describe(getSalt, () => {
     expect(hash1).toStrictEqual(hash2);
   });
 
+  it("should support legacy $2$ hashes", () => {
+    const legacyHash = hashSync("hello", "$2$10$abcdefghijklmnopqrstuv");
+    const salt = getSalt(legacyHash);
+
+    expect(legacyHash).toHaveLength(59);
+    expect(salt).toBe(legacyHash.slice(0, 28));
+    expect(hashSync("hello", salt)).toBe(legacyHash);
+  });
+
   it("should throw error for invalid argument types", () => {
     // @ts-expect-error: error type check
     expect(() => getSalt(123)).toThrow("Illegal arguments: number");
@@ -21,6 +30,7 @@ describe(getSalt, () => {
   it("should throw error for invalid hash length", () => {
     expect(() => getSalt("invalid")).toThrow("Illegal hash length: 7 != 60");
     expect(() => getSalt("short")).toThrow("Illegal hash length: 5 != 60");
+    expect(() => getSalt(`$1$${"a".repeat(56)}`)).toThrow("Illegal hash length: 59 != 60");
   });
 });
 

@@ -16,6 +16,22 @@ describe(compare, () => {
     await expect(compare("world", hash2)).resolves.toBe(true);
   });
 
+  it("should verify legacy $2$ hashes", async () => {
+    const legacyHash = hashSync("hello", "$2$10$abcdefghijklmnopqrstuv");
+
+    expect(legacyHash).toHaveLength(59);
+    expect(legacyHash.slice(0, 3)).toBe("$2$");
+    await expect(compare("hello", legacyHash)).resolves.toBe(true);
+    await expect(compare("world", legacyHash)).resolves.toBe(false);
+  });
+
+  it("should resolve false for a 59-character hash without the $2$ prefix", async () => {
+    const invalidHash = `$1$${"a".repeat(56)}`;
+
+    expect(invalidHash).toHaveLength(59);
+    await expect(compare("hello", invalidHash)).resolves.toBe(false);
+  });
+
   it("should reject with error for invalid argument types", async () => {
     // @ts-expect-error: error type check
     await expect(compare(123, "hash")).rejects.toThrow("Illegal arguments: number, string");
@@ -52,6 +68,22 @@ describe(compareSync, () => {
     expect(hash2.slice(0, 4)).toBe("$2y$");
     expect(compareSync("world", hash1)).toBe(false);
     expect(compareSync("world", hash2)).toBe(true);
+  });
+
+  it("should verify legacy $2$ hashes", () => {
+    const legacyHash = hashSync("hello", "$2$10$abcdefghijklmnopqrstuv");
+
+    expect(legacyHash).toHaveLength(59);
+    expect(legacyHash.slice(0, 3)).toBe("$2$");
+    expect(compareSync("hello", legacyHash)).toBe(true);
+    expect(compareSync("world", legacyHash)).toBe(false);
+  });
+
+  it("should return false for a 59-character hash without the $2$ prefix", () => {
+    const invalidHash = `$1$${"a".repeat(56)}`;
+
+    expect(invalidHash).toHaveLength(59);
+    expect(compareSync("hello", invalidHash)).toBe(false);
   });
 
   it("should throw error for invalid argument types", () => {
