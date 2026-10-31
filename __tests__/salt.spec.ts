@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { genSalt, genSaltSync } from "../src/index.js";
+import { genSalt, genSaltSync, hashSync } from "../src/index.js";
 
 describe(genSalt, () => {
   it("should generate valid salt", async () => {
@@ -22,6 +22,10 @@ describe(genSalt, () => {
     await expect(genSalt(4)).resolves.toMatch(/^\$2b\$04\$/u);
     await expect(genSalt(31)).resolves.toMatch(/^\$2b\$31\$/u);
     await expect(genSalt(32)).resolves.toMatch(/^\$2b\$31\$/u);
+  });
+
+  it("should throw error for non-integer rounds", async () => {
+    await expect(genSalt(10.5)).rejects.toThrow("Illegal number of rounds (4-31)");
   });
 });
 
@@ -45,5 +49,16 @@ describe(genSaltSync, () => {
     expect(genSaltSync(4)).toMatch(/^\$2b\$04\$/u);
     expect(genSaltSync(31)).toMatch(/^\$2b\$31\$/u);
     expect(genSaltSync(32)).toMatch(/^\$2b\$31\$/u); // Should be clamped to 31
+  });
+
+  it("should throw error for non-integer rounds", () => {
+    expect(() => genSaltSync(10.5)).toThrow("Illegal number of rounds (4-31)");
+    expect(() => genSaltSync(10.9)).toThrow("Illegal number of rounds (4-31)");
+    expect(() => genSaltSync(Number.NaN)).toThrow("Illegal number of rounds (4-31)");
+    expect(() => genSaltSync(Infinity)).toThrow("Illegal number of rounds (4-31)");
+  });
+
+  it("should throw error when hashing with non-integer rounds", () => {
+    expect(() => hashSync("pw", 10.5)).toThrow("Illegal number of rounds (4-31): 10.5");
   });
 });
