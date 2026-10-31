@@ -51,7 +51,7 @@
     "lint": "oxlint --fix && oxfmt",
     "lint:check": "oxlint && oxfmt --check",
     "prepare": "husky",
-    "prepublish": "pnpm run clean && pnpm run build",
+    "prepublishOnly": "pnpm run clean && pnpm run build",
     "test": "vitest --coverage"
   },
   "devDependencies": {
