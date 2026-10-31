@@ -88,7 +88,7 @@
 
 ## [4.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v4.0.0...v4.0.1) (2023-10-10)
 
-## [4.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v3.0.0...v4.0.0) (2023-06-29)
+## [4.0.0](https://github.com/Mister-Hope/bcrypt-ts/compare/v3.0.1...v4.0.0) (2023-06-29)
 
 ### ⚠ BREAKING CHANGES
 
@@ -97,6 +97,8 @@
 ### Features
 
 - drop node14 ([b421a0f](https://github.com/Mister-Hope/bcrypt-ts/commit/b421a0f3cedb7c3468b8b280db8435f0655440a4))
+
+## [3.0.1](https://github.com/Mister-Hope/bcrypt-ts/compare/v3.0.0...v3.0.1) (2023-04-28)
 
 ### Performance Improvements
 
