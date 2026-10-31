@@ -13,7 +13,6 @@ export default defineConfig({
     coverage: {
       provider: "istanbul",
       include: ["src/**/*.ts"],
-      exclude: ["src/**/browser.ts"],
       reporter: process.env.TEST_REPORT ? ["cobertura", "text"] : ["text", "html"],
     },
 
