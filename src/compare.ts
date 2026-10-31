@@ -14,9 +14,9 @@ export const compareSync = (content: string, hash: string): boolean => {
   if (typeof content !== "string" || typeof hash !== "string")
     throw getIllegalArgumentsTypeError(content, hash);
 
-  if (hash.length !== 60) return false;
+  if (hash.length !== 60 && !(hash.length === 59 && hash.startsWith("$2$"))) return false;
 
-  return hashSync(content, hash.slice(0, 29)) === hash;
+  return hashSync(content, hash.slice(0, -31)) === hash;
 };
 
 /**
@@ -44,7 +44,7 @@ export const compare = (
       return;
     }
 
-    if (hash.length !== 60) {
+    if (hash.length !== 60 && !(hash.length === 59 && hash.startsWith("$2$"))) {
       nextTick(() => {
         resolve(false);
       });
@@ -52,7 +52,7 @@ export const compare = (
       return;
     }
 
-    hashAsync(content, hash.slice(0, 29), progressCallback)
+    hashAsync(content, hash.slice(0, -31), progressCallback)
       .then((comp) => {
         resolve(comp === hash);
       })
