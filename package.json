@@ -68,8 +68,8 @@
     "nano-staged": "1.0.2",
     "oxc-config-hope": "0.3.15",
     "oxfmt": "0.78.0",
-    "oxlint": "1.90.0",
-    "oxlint-tsgolint": "7.0.2006",
+    "oxlint": "1.93.0",
+    "oxlint-tsgolint": "7.0.2007",
     "rimraf": "6.1.4",
     "tsdown": "0.23.7",
     "typescript": "7.0.2",
@@ -83,12 +83,12 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.16.1",
+      "version": "12.18.0",
       "onFail": "download"
     },
     "runtime": {
       "name": "node",
-      "version": "^22.23.4 || ^24.22.1 || ^26.13.0",
+      "version": "^22.23.4 || ^24.22.1 || ^26.13.1",
       "onFail": "error"
     }
   },
